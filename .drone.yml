@@ -11,6 +11,7 @@ pipeline:
             - npm run build
 
     docker:
+        image: plugins/docker
         repo: sierrasoftworks/blog
         tag:
             - latest
