@@ -1,0 +1,13 @@
+/* TEAM */
+Lead Developer: Benjamin Pannell
+Site: https://github.com/spartan563
+Twitter: @Sierra563
+Location: Dublin, Ireland
+
+/* THANKS */
+Louis Barranqueiro: https://github.com/LouisBarranqueiro (For the base theme)
+
+/* SITE */
+Standards: HTML5, CSS3, ES6
+Components: jQuery
+Software: VSCode, PowerShell, Hexo, Docker, NodeJS, Drone.io, Kubernetes, Traefik, LetsEncrypt
