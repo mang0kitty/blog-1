@@ -1,0 +1,22 @@
+pipeline:
+
+    npm:install:
+        image: node:7-slim
+        commands:
+            - npm install --silent --progress=false
+
+    npm:build:
+        image: node:7-slim
+        commands:
+            - npm run build
+
+    docker:
+        repo: sierrasoftworks/blog
+        tag:
+            - latest
+            - "${DRONE_COMMIT_BRANCH}"
+        username: "${DOCKER_USERNAME}"
+        password: "${DOCKER_PASSWORD}"
+        email: "${DOCKER_EMAIL}"
+        build_args:
+            - "VERSION=${DRONE_COMMIT_SHA}"
