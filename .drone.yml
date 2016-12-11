@@ -4,6 +4,7 @@ pipeline:
         image: node:7-slim
         commands:
             - npm install --silent --progress=false
+            - npm run install:theme
 
     npm:build:
         image: node:7-slim
