@@ -1,0 +1,10 @@
+<div class="post">
+    <% for (var release in gh_releases()) { %>
+        <div itemscope itemType="http://schema.org/SoftwareApplication">
+            <h5 itemprop="name"><%= release.name || release.tag_name %></h5>
+            <p itemprop="releaseNotes">
+                <%- markdown(release.body) %>
+            </p>
+        </div>
+    <% } %>
+</div>

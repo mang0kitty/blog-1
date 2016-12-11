@@ -5,6 +5,8 @@ tags:
     - docker
     - docker-swarm
     - ops
+categories:
+    - Operations
 ---
 [Traefik][traefik] is an application load balancer written in Go and designed to simplify
 the task of serving HTTP(S) services whose configuration changes on the fly. Traefik v1.1.0

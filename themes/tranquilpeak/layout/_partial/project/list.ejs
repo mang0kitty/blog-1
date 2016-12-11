@@ -1,0 +1,55 @@
+<div class="post-header main-content-wrap">
+    <h1><%= post.title %></h1>
+</div>
+
+<div class="main-content-wrap">
+    <%- page.content %>
+    
+    <section>
+        <%
+            var gh = gh_opts()
+            var repos = gh_repos(page.gh || gh)
+
+            repos.sort(function(a, b) {
+                if (a.stargazers_count > b.stargazers_count) return -1;
+                if (a.stargazers_count < b.stargazers_count) return 1;
+                return 0;
+            });
+        %>
+        <% for (var repo of repos) { %>
+            <div class="github-project">
+                <h4>
+                    <a href="<%= repo.owner.html_url %>" class="gh-repo-owner">
+                        <%= repo.owner.login %>
+                    </a>
+                    
+                    <a class="gh-repo-name" href="<%= repo.html_url %>">
+                        <%= repo.name %>
+                    </a>
+
+                    <% if (repo.fork) { %>
+                    <span class="gh-repo-forked">
+                        <i class="fa fa-code-fork"></i>
+                    </span>
+                    <% } %>
+
+                    <span class="gh-repo-meta">
+                        <i class="fa fa-star"></i> <%= repo.stargazers_count %>
+
+                        <i class="fa fa-code-fork"></i> <%= repo.forks_count %>
+                    </span>
+                </h4>
+                <div class="gh-project-homepage">
+                    <% if (repo.homepage) { %>
+                        <a href="<%= repo.homepage %>"><%= repo.homepage %></a>
+                    <% } %>
+                </div>
+                <div class="gh-project-body">
+                    <p>
+                        <%= repo.description %>
+                    </p>
+                </div>
+            </div>
+        <% } %>
+    </section>
+</div>

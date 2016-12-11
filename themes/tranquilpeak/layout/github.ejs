@@ -1,0 +1,30 @@
+<%
+if (page.gh) {
+    var gh = gh_opts()
+    switch(gh.type) {
+        case "get_contents":
+            page.content = gh_contents(gh)
+%>
+            <%- partial('_partial/project/readme', { post: page }) %>
+<%
+            break;
+        case "get_releases":
+%>
+            <%- partial('_partial/project/releases', { post: page }) %>
+<%
+            break;
+        case "get_repos":
+%>
+            <%- partial('_partial/project/list', { post: page }) %>
+<%
+            break;
+        default:
+%>
+            <%- partial('_partial/post', { post: page }) %>
+<%
+            break;
+    }
+} else {
+%>
+    <%- partial('_partial/post', { post: page }) %>
+<% } %>

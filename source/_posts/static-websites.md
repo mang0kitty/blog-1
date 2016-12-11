@@ -3,6 +3,8 @@ title: Do you need a dynamic website?
 date: 2013-10-17 09:20:12
 tags:
     - web
+categories:
+    - Web Development
 ---
 Static websites are synonomous with the dawn of the internet, before database servers became mainstream, before the advent of the CMS and long before the dawn of the web application. Over the years we've seen the advent of web development frameworks like Ruby on Rails, Express.js and MVC to name but a few. These frameworks include support for advanced templating engines, database backed page generation and custom routing, but is it really necessary to use such a framework when a static website might address all the same problems at a fraction of the cost.
 

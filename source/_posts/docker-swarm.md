@@ -5,6 +5,8 @@ tags:
     - docker
     - docker-swarm
     - ops
+categories:
+    - Operations
 ---
 Docker Swarm is one of those interesting new technologies which has succeeded in shaking up
 people's preconceptions around what it means to run a scaleable cluster. In an environment

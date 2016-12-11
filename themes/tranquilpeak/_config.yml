@@ -35,28 +35,29 @@ sidebar:
             title: global.home
             url: /
             icon: home
-        # categories:
-        #     title: global.categories
-        #     url: /all-categories
-        #     icon: bookmark
+            
+        projects:
+            title: global.projects
+            url: /projects
+            icon: code
+        categories:
+            title: global.categories
+            url: /all-categories
+            icon: bookmark
         tags:
             title: global.tags
             url: /all-tags
             icon: tags
-        archives:
-            title: global.archives
-            url: /all-archives
-            icon: archive
+        # archives:
+        #     title: global.archives
+        #     url: /all-archives
+        #     icon: archive
         # search:
         #     title: global.search
         #     url: /#search
         #     icon: search
         #     # `open-algolia-search` classes are used to open algolia search modal
         #     class: open-algolia-search
-        about:
-            title: global.about
-            url: /#about
-            icon: question
     author_links:
         github:
             title: global.github
@@ -82,18 +83,18 @@ sidebar:
         #     title: global.linkedin
         #     url: https://www.linkedin.com/profile/
         #     icon: linkedin
-        mail:
-            title: global.mail
-            url: mailto:contact@sierrasoftworks.com
-            icon: envelope-o
-        licenses:
-            title: global.licenses
-            url: /licenses
-            icon: gavel
         keybase:
             title: global.keybase
             url: https://keybase.io/spartan563
             icon: key
+        mail:
+            title: global.mail
+            url: mailto:contact@sierrasoftworks.com
+            icon: envelope-o
+        about:
+            title: global.about
+            url: /#about
+            icon: question
     rss:
         rss:
             title: global.rss

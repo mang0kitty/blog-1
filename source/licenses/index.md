@@ -1,5 +1,7 @@
 ---
 title: Licenses
+categories:
+  - Licenses
 comments: false
 ---
 Sierra Softworks applies a couple of difference licenses to the software we release

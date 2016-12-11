@@ -3,6 +3,8 @@ title: Behind Our Corporate Logo
 tags:
     - branding
     - design
+categories:
+    - Design
 date: 2013-09-13 20:13:00
 ---
 First off, I'm not a graphic designer by profession and haven't received any kind of training in the field -

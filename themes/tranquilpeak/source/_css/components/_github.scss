@@ -1,0 +1,49 @@
+.post {
+    .github-readme.post-content {
+        a >img {
+            display: inline-block;
+        }
+    }
+}
+
+.github-project {
+    a {
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+    }
+
+    a.gh-repo-owner {
+        color: #888;
+    }
+
+    a.gh-repo-name {
+        padding-left: 0.5rem;
+    }
+
+    .gh-repo-forked {
+        i.fa {
+            font-size: 0.8em;
+            color: #888;
+            padding-left: 1rem;
+        }
+    }
+
+    .gh-repo-meta {
+        float: right;
+
+        i.fa {
+            padding-left: 1rem;
+        }
+    }
+
+    .gh-project-homepage {
+        font-size: 0.9em;
+    }
+
+    .gh-project-body {
+
+    }
+}
