@@ -11,7 +11,7 @@
     "postinstall": "npm run install:theme",
     "install:theme": "npm run install:theme:npm && npm run install:theme:bower",
     "install:theme:npm": "cd themes/tranquilpeak && npm install",
-    "install:theme:bower": "cd themes/tranquilpeak && bower install",
+    "install:theme:bower": "cd themes/tranquilpeak && bower install --allow-sudo",
     "build:theme": "cd themes/tranquilpeak && grunt buildProd",
     "start": "hexo server",
     "server": "npm run server:dev",
