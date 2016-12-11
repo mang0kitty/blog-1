@@ -1,7 +1,5 @@
 ---
 title: Licenses
-categories:
-  - Licenses
 comments: false
 ---
 Sierra Softworks applies a couple of difference licenses to the software we release
@@ -50,5 +48,26 @@ software under the very permissive MIT license whenever possible.
 
 ##### You Can't
 <ul class="fa-ul">
+  <li><i class="fa fa-li fa-times"></i> Hold us liable</li>
+</ul>
+
+
+## [Sierra Softworks License](/licenses/general/)
+
+##### You May
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-check"></i> Use it privately</li>
+</ul>
+
+##### You Must
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-warning"></i> Include the original license and copyright notice</li>
+</ul>
+
+##### You Can't
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-times"></i> Use it commercially without written permission</li>
+  <li><i class="fa fa-li fa-times"></i> Distribute the software yourself</li>
+  <li><i class="fa fa-li fa-times"></i> Modify the software</li>
   <li><i class="fa fa-li fa-times"></i> Hold us liable</li>
 </ul>

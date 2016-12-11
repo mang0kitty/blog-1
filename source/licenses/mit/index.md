@@ -1,10 +1,6 @@
 ---
 title: The MIT License (MIT)
-tags:
-    - licenses
 comments: false
-categories:
-  - Licenses
 ---
 Copyright &copy; 2016 Sierra Softworks
 
