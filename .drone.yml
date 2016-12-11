@@ -1,13 +1,13 @@
 pipeline:
 
     npm:install:
-        image: node:7-slim
+        image: node
         commands:
             - npm install --silent --progress=false
             - npm run install:theme
 
     npm:build:
-        image: node:7-slim
+        image: node
         commands:
             - npm run build
 
