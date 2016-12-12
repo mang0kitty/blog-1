@@ -11,6 +11,7 @@
     "install:theme:bower": "cd themes/tranquilpeak && bower install --allow-root",
     "build:theme:prod": "cd themes/tranquilpeak && grunt buildProd",
     "build:theme": "cd themes/tranquilpeak && grunt build",
+    "build:theme:watch": "cd themes/tranquilpeak && grunt watch",
     "prebuild": "npm run build:theme:prod",
     "postinstall": "npm run install:theme",
     "install:theme": "npm run install:theme:npm && npm run install:theme:bower",
@@ -21,6 +22,7 @@
   },
   "dependencies": {
     "hexo": "^3.2.0",
+    "hexo-browsersync": "^0.2.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
     "hexo-generator-feed": "^1.2.0",
