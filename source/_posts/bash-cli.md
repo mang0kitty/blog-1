@@ -5,6 +5,7 @@ tags:
   - development
   - github
   - bash
+  - opensource
 ---
 
 {% alert info %}
