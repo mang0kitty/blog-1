@@ -10,8 +10,8 @@ categories:
   - Projects
 ---
 [Inki][] is a small proof of concept project I've been working on which is
-designed to manage transient, single-use, SSH keys for a remediation tool
-our team is building at Demonware.
+designed to manage transient, single-use, SSH keys for an automated remediation
+tool our team is in the process of building.
 
 In this blog post I'll go over some of the design decisions motivating
 a tool like [Inki][], some of its interesting implementation details and
