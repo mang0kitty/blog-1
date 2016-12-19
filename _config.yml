@@ -52,6 +52,9 @@ markdown:
     permalinkSymbol: ¶
   render:
     html: true
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
 
 # Category & Tag
 default_category: uncategorized
