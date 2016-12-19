@@ -35,8 +35,8 @@ of appearances will likely not yield any tangible benefits and will probably cos
 long run.
 
 On the other side of the coin, there are classes of problems which are elegantly solved by
-Docker, most of them revolving around the concepts of <abbr title="Continuous Integration">CI</abbr>
-and <abbr title="Continuous Deployment">CD</abbr>. If you're considering applying Docker to
+Docker, most of them revolving around the concepts of CI
+and CD. If you're considering applying Docker to
 solve the problem of deploying services in a consistent, accessible and standardized manner
 then I'd say go for it. 
 
@@ -111,7 +111,7 @@ to host his own [GitLab](https://gitlab.com) instance, maybe [Drone](http://read
 a couple of small websites and backend services he's been working on in his free time. Docker Swarm is the
 little guy's cluster framework and you can appreciate it in every small detail of the way it's put together.
 
-The <abbr title="Too Long, Didn't Read">**TL;DR**</abbr> of this is that Docker Swarm works really well for
+The **TL;DR** of this is that Docker Swarm works really well for
 the guy who is spending $20-$100 per month on cloud services, who wants to deploy Docker but doesn't want to
 fork out the $60 overhead on master nodes to run DC/OS, or the $40 on a MySQL DB and master node for Rancher.
 The guy who wants to be able to run his containers on the same machines that are orchestrating them, while still
@@ -138,7 +138,7 @@ to run something which provides those guarantees (implicit or explicit).
 
 ## General Swarm Criticisms
 Docker Swarm has had some interesting criticisms levelled at it since its announcement, some are the
-common <abbr title="Fear, Uncertainty and Doubt">FUD</abbr> associated with new technologies, while
+common FUD associated with new technologies, while
 others are grounded in valid concerns. Some feel that it is too young or that it doesn't have enough
 experience backing it, particularly the proponents of Mesos/[Marathon][marathon] and
 [Kubernetes][kubernetes]. Others complain about its dependency on recent kernels, or the rate at which
@@ -178,3 +178,8 @@ right now, but if you're looking for something that can reliably scale to [Pokem
 [semver]: http://semver.org
 
 [pokego-scale]: https://cloudplatform.googleblog.com/2016/09/bringing-Pokemon-GO-to-life-on-Google-Cloud.html
+
+*[CI]: Continuous integration
+*[CD]: Continuous Deployment
+*[FUD]: Fear, Uncertainty and Doubt
+*[TL;DR]: Too Long; Didn't Read

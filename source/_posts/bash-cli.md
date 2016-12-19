@@ -37,7 +37,7 @@ complexity related to them.
 ## What makes a good CLI?
 I'm sure, if you're reading this post, that you've had experiences with
 both good and bad CLIs; but have you ever analyzed what makes a good
-<abbr title="Command Line Interface">CLI</abbr>?
+CLI?
 
 Before I started building [bash-cli][] I sat down and fleshed out a couple
 of features I felt defined good quality command line interfaces.
@@ -325,3 +325,5 @@ was computed when looking for the command file to determine where to start.
 [bash-cli]: https://github.com/SierraSoftworks/bash-cli
 [urfave/cli]: https://github.com/urfave/cli
 [commander]: https://www.npmjs.com/package/commander
+
+*[CLI]: Command Line Interface

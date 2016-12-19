@@ -9,11 +9,9 @@ categories:
 ---
 Anybody who has worked in the development world for a significant portion of
 time will have built up a vast repertoire of abbreviations to describe how
-they solve problems. Everything from <abbr title="Test Driven Development">TDD</abbr>
-to <abbr title="Domain Driven Development">DDD</abbr> and, my favourites,
-<abbr title="Fear Driven Development">[FDD][fdd]</abbr> and
-<abbr title="Hope Driven Development">[HDD][hdd]</abbr>. There are so many
-in fact that you'll find a [website dedicated to naming and shaming them][drivenby].
+they solve problems. Everything from TDD to DDD and, my favourites, [FDD][fdd]
+and [HDD][hdd]. There are so many in fact that you'll find a
+[website dedicated to naming and shaming them][drivenby].
 
 I'm not one to add another standard to the mix... Oh who am I kidding, let me
 introduce you to Chance Driven Development.
@@ -87,3 +85,8 @@ favour.
 [feeling-lucky-csharp]: https://github.com/SierraSoftworks/feeling-lucky-csharp
 [rsa]: https://www.rsa.com/
 [nist]: https://www.nist.gov/
+
+*[DDD]: Domain Driven Design
+*[TDD]: Test Driven Development
+*[HDD]: Hope Driven Development
+*[FDD]: Fear Driven Development
