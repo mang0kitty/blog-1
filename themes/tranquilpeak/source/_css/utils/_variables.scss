@@ -6,6 +6,7 @@ $open-sans:            'Open Sans';
 $open-sans-sans-serif: 'Open Sans', sans-serif;
 $scope-one:             'Scope One', serif;
 $inconsolata:           'Inconsolata', Menlo, monospace;
+$hack:                  'Hack', Menlo, monospace;
 
 $font-family-base: $open-sans-sans-serif;
 
@@ -13,14 +14,14 @@ $font-families: (
    // base
    'headings':          $scope-one,
    // components
-   'code':              $inconsolata,
+   'code':              $hack,
    'caption':           $scope-one,
    'image-gallery':     $open-sans,
    'post-header-cover': $open-sans-sans-serif,
    'post-meta':         $open-sans-sans-serif,
    'post-content':      $open-sans-sans-serif,
    'post-excerpt-link': $open-sans-sans-serif,
-   'highlight':         $inconsolata,
+   'highlight':         $hack,
    // layout
    'sidebar':           $open-sans-sans-serif
 );
