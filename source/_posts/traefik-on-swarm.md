@@ -143,7 +143,7 @@ confirm that everything is working correctly.
 
 You should see something like the following:
 
-{% image fancybox center fig-100 group:traefik https://minio.sierrasoftworks.com/blog/traefik_on_swarm_dashboard.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161211T152535Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5ec0799f1b1df502c9bcde265ebfcccde3b67040cb9887c84642563617c04969 "Traefik Dashboard" %}
+{% image fancybox center fig-100 group:traefik https://minio.sierrasoftworks.com/blog/traefik_on_swarm_dashboard.PNG "Traefik Dashboard" %}
 
 
 ## Check your Service
@@ -155,7 +155,7 @@ a workaround if you need it.
 
 You should see the demo application, something like this:
 
-{% image fancybox center fig-100 group:traefik https://minio.sierrasoftworks.com/blog/traefik_on_swarm_demo.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161211T153931Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d81352774781332a5cb9f528493d3bb24cca83495b4af0e310a2f7f811a9fe2e "Demo Application" %}
+{% image fancybox center fig-100 group:traefik https://minio.sierrasoftworks.com/blog/traefik_on_swarm_demo.PNG "Demo Application" %}
 
 
 ### DNS Workaround for Localhost

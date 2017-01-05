@@ -9,7 +9,7 @@ tags:
   - security
 ---
 
-{% image center https://minio.sierrasoftworks.com/blog/keybase_logo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161219T110742Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=72bbed889b9fe6d0c61f975c2cb86f63ab50eca69000d2740069c1d3e76076db %}
+{% image center https://minio.sierrasoftworks.com/blog/keybase_logo.png %}
 
 With the increasing popularity of Git as a tool for open source collaboration,
 not to mention distribution of code for tools like [Go][golang], being able
@@ -58,7 +58,7 @@ help prevent it.
 
 Besides, you'll get a cool badge on GitHub...
 
-{% image center https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161219T112032Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fc4fb0905bd8b6e3bdb45a2ed02c81e4540d100502c35ef6f126c82c7e2131e7 "GitHub's Signed Commit Indicator" %}
+{% image center https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG "GitHub's Signed Commit Indicator" %}
 
 
 ## What is Keybase
@@ -128,7 +128,7 @@ which you can grab [here][gpg4win].
 Once you've got the GPG tools installed on your machine, you'll need to grab
 your Keybase private key. You should be able to find it on your account page.
 
-{% image center https://minio.sierrasoftworks.com/blog/keybase_export_key.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161219T113251Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e4edef30e4282ebf82e1f758f4dfe474e96c1af4cb38c6e963c86bfc70ce3873 "Export your Keybase private key" %}
+{% image center https://minio.sierrasoftworks.com/blog/keybase_export_key.PNG "Export your Keybase private key" %}
 
 Save it somewhere on your computer and then fire up your command line again to
 import the key. Assuming you've called your key file `keybase.gpg`, just run the
@@ -246,13 +246,13 @@ Once you've copied your public key from the command above (the PowerShell one wi
 automatically add it to your clipboard on Windows machines), just paste the result
 in the GitHub key window.
 
-{% image center https://minio.sierrasoftworks.com/blog/github_import_gpgkey.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161219T151949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ff721286bee630066bfedb1663ed85e57e476c08566ae223743b061352aeee91 "Add a new GPG key to GitHub" %}
+{% image center https://minio.sierrasoftworks.com/blog/github_import_gpgkey.PNG "Add a new GPG key to GitHub" %}
 
 You should now have your GPG public key added to GitHub, after verifying the email
 addresses associated with it you'll be able to submit commits to GitHub and get your
 awesome {% hl_text green %}Verified{% endhl_text %} badge.
 
-{% image center https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161219T112032Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fc4fb0905bd8b6e3bdb45a2ed02c81e4540d100502c35ef6f126c82c7e2131e7 "GitHub's Signed Commit Indicator" %}
+{% image center https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG "GitHub's Signed Commit Indicator" %}
 
 ## Conclusion
 You should now be in a position to sign every commit you make using your own personal,

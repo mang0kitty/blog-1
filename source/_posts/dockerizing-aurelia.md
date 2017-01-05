@@ -9,7 +9,7 @@ categories:
     - Web Development
 ---
 
-{% image center https://minio.sierrasoftworks.com/blog/aurelia_logo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161221T074308Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=270214a2c9ff8298aad862482a4544b8aa419e6d93129e6c1313b2e382da19a4 "Aurelia's Logo" %}
+{% image center https://minio.sierrasoftworks.com/blog/aurelia_logo.png "Aurelia's Logo" %}
 
 [Aurelia][] is a modern web application framework in the spirit of [Angular][],
 with an exceptionally concise and accessible developer experience and
