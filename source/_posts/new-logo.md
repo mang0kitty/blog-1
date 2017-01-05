@@ -25,7 +25,7 @@ Our first actual logo was very type centric, settling for a simple gradiented mo
 black and white look because it integrated well with our designs at the time, which also focused on a simple - gradient
 centric design paradigm.
 
-![First Logo](https://minio.sierrasoftworks.com/logos/old_logo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161211T085421Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3bc754143b8b024436c554e0e6b64a5209c1d1d62aec99a533dd3f5cb8e3b07a)
+![First Logo](https://minio.sierrasoftworks.com/logos/old_logo.png)
 
 To be honest, when I designed this logo I had very little experience with any kind of design software and most of my
 experience with programs like [Paint.NET](http://www.getpaint.net/) was doing the odd funny picture at school; rather
@@ -72,7 +72,7 @@ wishes to search for it).
 I guess, before I start discussing the design of the logo, I should probably give you a look at it
 (you can click on the image to get access to an SVG version of it).
 
-[![Click for an SVG version, which you can zoom in on](https://minio.sierrasoftworks.com/logos/logo_medium.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161211T085503Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=8815d1fc3a9a8bc7141d1613cad03c6187b76bc66093a8df3fb57228f00031a3)](https://minio.sierrasoftworks.com/logos/logo.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=8XMGEXN5BATZATCT1KKL%2F20161211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20161211T085446Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6ee388740c83fc8c29090386940b3c5f6d20677468cea9706c52f71a7e949efb)
+[![Click for an SVG version, which you can zoom in on](https://minio.sierrasoftworks.com/logos/logo_medium.png)](https://minio.sierrasoftworks.com/logos/logo.svg)
 
 The first thing you're likely to notice is the vast size of the logo - seriously, it is massive.
 Despite this though, it actually weighs in smaller than the original logo which is less than half the physical size.
