@@ -479,7 +479,7 @@ register their data schema with your service and generating tables for it. My re
 tooling which supports your use case and data structures.
 
 Beyond that, there is the matter of complexity. I'm fairly confident that anybody reading this blog
-can read and understand exactly what is going on in the [Document DB implementation][#document-implementation].
+can read and understand exactly what is going on in the [Document DB implementation](#document-implementation).
 On the other hand, the relational implementation is rather complex, it's using `INTERSECT`s, flattening
 and deepening dictionaries, does `JOIN`s to enforce a layer of safety - and all that before we start
 defending against SQL injection or handling errors...
