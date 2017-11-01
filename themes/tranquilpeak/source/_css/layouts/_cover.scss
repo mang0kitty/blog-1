@@ -8,4 +8,5 @@
     left:              0;
     // position the cover below the whole blog
     z-index:           map-get($z-indexes, l-cover);
+    background-color: #111;
 }
