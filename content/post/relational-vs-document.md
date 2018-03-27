@@ -20,7 +20,7 @@ The truth is that there simply isn't a silver-bullet database solution and
 that by better understanding the benefits and limitations of each, one can
 make vastly better decisions on their adoption.
 
-<!-- more -->
+<!--more-->
 
 ## From a Crow's Height
 At a very high level, there are roughly four camps on the topic, three if you

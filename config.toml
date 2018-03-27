@@ -16,11 +16,11 @@ themesDir = "themes"
     site_description = "The official Sierra Softworks blog"
     location = "Dublin, Ireland"
     avatar = "img/profile-image.png"
-    header_background = "img/desk.jpg"
+    header_background = "img/code.jpg"
     header_title = "Sierra Softworks"
     copyright = "Copyright © Sierra Softworks 2018"
 
-    custom_css = ["css/custom.css"]
+    custom_css = ["/css/custom.css", "/font/entypo.css"]
     custom_js  = []
 
     google_analytics = "UA-40095482-1"

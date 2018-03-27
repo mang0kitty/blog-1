@@ -1,7 +1,34 @@
 ---
 title: Sierra Softworks License
+tags:
+  - licenses
 comments: false
 ---
+
+## Your Rights
+#### You May
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-check"></i> Use it privately</li>
+</ul>
+
+#### You Must
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-warning"></i> Include the original license and copyright notice</li>
+</ul>
+
+#### You Can't
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-times"></i> Use it commercially without written permission</li>
+  <li><i class="fa fa-li fa-times"></i> Distribute the software yourself</li>
+  <li><i class="fa fa-li fa-times"></i> Modify the software</li>
+  <li><i class="fa fa-li fa-times"></i> Hold us liable</li>
+</ul>
+
+<!--more-->
+
+## The License
+
+<pre>
 This licence shall apply to all versions, editions and future updates to Sierra Softworks
 software and consistutes a legal agreement between you (the "Licensee") and Sierra Softworks
 (the "Licensor").
@@ -54,3 +81,4 @@ REGARDLESS OF WHETHER THE LICENSE IS TERMINATED BY SIERRA SOFTWORKS OR LICENSEE.
 
 This Agreement constitutes the entire agreement between Licensor and Licensee and supersedes any prior
 statements, whether written or oral.
+</pre>

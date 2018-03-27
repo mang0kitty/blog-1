@@ -4,6 +4,21 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+@media only screen and (min-width: 720px) {
+    body {
+        padding-top: 400px;
+    }
+
+    .site-header {
+        position: fixed;
+        top: 0;
+    }
+
+    .container {
+        background: #fff;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Scope One", serif;
 }
@@ -82,10 +97,11 @@ label.codeblock-tab {
     line-height: 30px;
     cursor: pointer;
     width: auto;
+    border-bottom: 4px solid transparent;
 }
 
 input.codeblock-tab:checked + label.codeblock-tab {
-    background: rgb(103, 184, 255);
+    border-bottom: 4px solid #0074D9;
 }
 
 input.codeblock-tab:checked + label.codeblock-tab + .codeblock-tab-content {
@@ -108,4 +124,38 @@ input.codeblock-tab:checked + label.codeblock-tab + .codeblock-tab-content {
 
 .image-figure > figcaption {
     font-size: 0.8rem;
+}
+
+.github-project {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0.5em;
+    border-top: 1px solid #eee;
+    padding-top: 1em;
+}
+
+.github-project:first-of-type {
+    border-top: none;
+}
+
+.github-project__title {
+    margin-right: auto;
+}
+
+.github-project__name {
+    font-weight: bold;
+    color: #000;
+}
+
+.github-project__links {
+    width: 100%;
+    font-size: 0.8rem;
+    margin-top: 0.2em;
+}
+
+.github-project__description {
+    width: 100%;
+    margin: 0.5em 0;
 }

@@ -4,6 +4,35 @@ comments: false
 tags:
   - licenses
 ---
+
+## Your Rights
+#### You May
+
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-check"></i> Use it commercially</li>
+  <li><i class="fa fa-li fa-check"></i> Distribute freely</li>
+  <li><i class="fa fa-li fa-check"></i> Modify as you wish</li>
+  <li><i class="fa fa-li fa-check"></i> Use it privately</li>
+  <li><i class="fa fa-li fa-check"></i> Use any included patents</li>
+</ul>
+
+#### You Must
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-warning"></i> Disclose your source code</li>
+  <li><i class="fa fa-li fa-warning"></i> Include the original license and copyright notice</li>
+  <li><i class="fa fa-li fa-warning"></i> Use the same license</li>
+  <li><i class="fa fa-li fa-warning"></i> State any changes you make</li>
+</ul>
+
+#### You Can't
+<ul class="fa-ul">
+  <li><i class="fa fa-li fa-times"></i> Hold us liable</li>
+</ul>
+
+<!--more-->
+
+## The License
+
 <pre>
  GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007

@@ -33,33 +33,33 @@ This allows you to ensure that a container is run every `H 0 * * *` - or every d
 Let's take a simple example that shows how one would convert a [Job][] to a [CronJob][] script.
 
 {{< codeblock "Converting Jobs" >}}
-  {{< codeblock-tab yaml "Job" >}}
-  apiVersion: batch/v1
-    kind: Job
-    metadata:
-      name: say-hi
-    spec:
-      template:
-        spec:
-          containers:
-            - name: hello-world
-              image: hello-world
-  {{< /codeblock-tab >}}
-  {{< codeblock-tab yaml "CronJob" >}}
-  apiVersion: batch/v1beta1
-    kind: CronJob
-    metadata:
-      name: say-hi
-    spec:
-      schedule: "H 0 * * *"
-      jobTemplate:
-        spec:
-          template:
-            spec:
-              containers:
-                - name: hello-world
-                  image: hello-world
-  {{< /codeblock-tab >}}
+{{< codeblock-tab yaml "Job" >}}
+apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: say-hi
+  spec:
+    template:
+      spec:
+        containers:
+          - name: hello-world
+            image: hello-world
+{{< /codeblock-tab >}}
+{{< codeblock-tab yaml "CronJob" >}}
+apiVersion: batch/v1beta1
+  kind: CronJob
+  metadata:
+    name: say-hi
+  spec:
+    schedule: "H 0 * * *"
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+              - name: hello-world
+                image: hello-world
+{{< /codeblock-tab >}}
 {{< /codeblock >}}
 
 As you can see from this example, it is actually pretty trivial to convert an existing Kubernetes
@@ -80,49 +80,49 @@ But let's not make this too easy, I personally want my backups to end up somewhe
 reliable][s3-durability] place to keep track of them.
 
 {{< codeblock "Backup Container" >}}
-  {{< codeblock-tab Dockerfile Dockerfile >}}
-    # Fetch the mc command line client
-    FROM alpine:latest
-    RUN apk update && apk add ca-certificates wget && update-ca-certificates
-    RUN wget -O /tmp/mc https://dl.minio.io/client/mc/release/linux-amd64/mc
-    RUN chmod +x /tmp/mc
+{{< codeblock-tab Dockerfile Dockerfile >}}
+# Fetch the mc command line client
+FROM alpine:latest
+RUN apk update && apk add ca-certificates wget && update-ca-certificates
+RUN wget -O /tmp/mc https://dl.minio.io/client/mc/release/linux-amd64/mc
+RUN chmod +x /tmp/mc
 
-    # Then build our backup image
-    FROM postgres:9.6
-    LABEL maintainer="Benjamin Pannell <admin@sierrasoftworks.com>"
+# Then build our backup image
+FROM postgres:9.6
+LABEL maintainer="Benjamin Pannell <admin@sierrasoftworks.com>"
 
-    COPY --from=0 /tmp/mc /usr/bin/mc
+COPY --from=0 /tmp/mc /usr/bin/mc
 
-    ENV MINIO_SERVER=""
-    ENV MINIO_BUCKET="backups"
-    ENV MINIO_ACCESS_KEY=""
-    ENV MINIO_SECRET_KEY=""
-    ENV MINIO_API_VERSION="S3v4"
+ENV MINIO_SERVER=""
+ENV MINIO_BUCKET="backups"
+ENV MINIO_ACCESS_KEY=""
+ENV MINIO_SECRET_KEY=""
+ENV MINIO_API_VERSION="S3v4"
 
-    ENV DATE_FORMAT="+%Y-%m-%d"
+ENV DATE_FORMAT="+%Y-%m-%d"
 
-    ADD entrypoint.sh /app/entrypoint.sh
+ADD entrypoint.sh /app/entrypoint.sh
 
-    ENTRYPOINT [ "/app/entrypoint.sh" ]
-  {{< /codeblock-tab >}}
-  {{< codeblock-tab sh "entrypoint.sh" >}}
-    #! /bin/bash
-    set -e -o pipefail
+ENTRYPOINT [ "/app/entrypoint.sh" ]
+{{< /codeblock-tab >}}
+{{< codeblock-tab sh "entrypoint.sh" >}}
+#! /bin/bash
+set -e -o pipefail
 
-    DB="$1"
-    ARGS="${@:2}"
+DB="$1"
+ARGS="${@:2}"
 
-    mc config host add pg "$MINIO_SERVER" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" "$MINIO_API_VERSION" > /dev/null
+mc config host add pg "$MINIO_SERVER" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" "$MINIO_API_VERSION" > /dev/null
 
-    ARCHIVE="${MINIO_BUCKET}/${DB}-$(date $DATE_FORMAT).archive"
+ARCHIVE="${MINIO_BUCKET}/${DB}-$(date $DATE_FORMAT).archive"
 
-    echo "Dumping $DB to $ARCHIVE"
-    echo "> pg_dump ${ARGS} -Fc $DB"
+echo "Dumping $DB to $ARCHIVE"
+echo "> pg_dump ${ARGS} -Fc $DB"
 
-    pg_dump $ARGS -Fc "$DB" | mc pipe "pg/$ARCHIVE" || { echo "Backup failed"; mc rm "pg/$ARCHIVE"; exit 1; }
+pg_dump $ARGS -Fc "$DB" | mc pipe "pg/$ARCHIVE" || { echo "Backup failed"; mc rm "pg/$ARCHIVE"; exit 1; }
 
-    echo "Backup complete"
-  {{< /codeblock-tab >}}
+echo "Backup complete"
+{{< /codeblock-tab >}}
 {{< /codeblock >}}
 
 We're going to use the [Minio][] command line client, a fully standards compliant S3 client, to

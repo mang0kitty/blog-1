@@ -1,5 +1,5 @@
-<input class="codeblock-tab" type="radio" name="tabs" id="tab-{{ sha1 .Inner }}" checked="checked">
-<label class="codeblock-tab" for="tab-{{ sha1 .Inner }}">
+<input class="codeblock-tab" type="radio" name="tabs" id="tab-{{ sha1 (print .Params .Inner) }}" checked="checked">
+<label class="codeblock-tab" for="tab-{{ sha1 (print .Params .Inner) }}">
     {{ if gt (len .Params) 1}}
     {{ .Get 1  }}
     {{ else }}
