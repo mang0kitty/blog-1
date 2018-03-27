@@ -1,15 +1,14 @@
 pipeline:
 
-    npm:install:
-        image: node
+    hugo:install:
+        image: go
         commands:
-            - npm install --silent --progress=false
-            - npm run install:theme
+            - go get -v github.com/gohugoio/hugo
 
-    npm:build:
-        image: node
+    hugo:build:
+        image: go
         commands:
-            - npm run build
+            - hugo
 
     publish:docker:
         image: plugins/docker
