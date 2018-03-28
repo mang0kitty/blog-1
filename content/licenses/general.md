@@ -1,7 +1,5 @@
 ---
 title: Sierra Softworks License
-tags:
-  - licenses
 comments: false
 ---
 

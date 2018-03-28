@@ -1,7 +1,5 @@
 ---
 title: The MIT License (MIT)
-tags:
-  - licenses
 comments: false
 ---
 

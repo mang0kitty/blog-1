@@ -4,6 +4,10 @@
     </div>
 
     <div class="github-project__stats">
+        <span class="github-project__stat">
+            {{ .language }}
+        </span>
+
         <a href="{{ .html_url }}/stargazers" class="github-project__stat">
             <i class="icon-star"></i>
             {{ .stargazers_count }}
@@ -32,7 +36,7 @@
     {{ if isset . "description" }}
     {{ if ne .description "" }}
     <div class="github-project__description">
-        {{ .description | markdownify }}
+        {{ markdownify .description }}
     </div>
     {{ end }}
     {{ end }}

@@ -1,0 +1,17 @@
+{{ partial "header" . }}
+<div class="container clearfix">
+    {{ partial "menu" . }}
+
+    <main role="main" class="content">
+        {{ range .Data.Pages }}
+            <h2>
+                <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+            </h2>
+
+            {{ .Content }}
+        {{ end }}
+    </main>
+
+    {{ partial "aside" . }}
+</div>
+{{ partial "footer" . }}

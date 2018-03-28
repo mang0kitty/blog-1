@@ -144,3 +144,20 @@ input.codeblock-tab:checked + label.codeblock-tab + .codeblock-tab-content {
     width: 100%;
     margin: 0.5em 0;
 }
+
+figure.fig-33 {
+    width: 33%;
+    float: left;
+}
+
+figure.fig-50 {
+    width: 50%;
+    float: left;
+}
+
+@media only screen and (max-width: 719px) {
+    figure.fig-33, figure.fig-50 {
+        margin: 1em 0;
+        width: 100%;
+    }
+}

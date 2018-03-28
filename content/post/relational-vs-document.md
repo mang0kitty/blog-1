@@ -95,9 +95,9 @@ answer questions like "Where does Charles live?". In addition to reducing the nu
 of operations required, they also enable easy parallelization across multiple machines,
 making the process of scaling to meet demand far less painful.
 
-{% image fig-33 https://minio.sierrasoftworks.com/blog/relational_document_cabinets_table.png "Relational Access" %}
+{{< figure "Relational Access" "https://minio.sierrasoftworks.com/blog/relational_document_cabinets_table.png" fig-33 >}}
 
-{% image fig-33 right clear https://minio.sierrasoftworks.com/blog/relational_document_cabinets_document.png "Document Access" %}
+{{< figure "Document Access" "https://minio.sierrasoftworks.com/blog/relational_document_cabinets_document.png" fig-33 clearfix >}}
 
 Let's take a real world example to showcase this. Assume we've got a couple of filing
 cabinets in our office. These cabinets hold the details of our various customers and in
@@ -146,9 +146,9 @@ properties not present in the relational model. Specifically, by treating data a
 dumb blob with a flexible structure you make it possible for many different models to be
 represented.
 
-{% image fig-50 https://minio.sierrasoftworks.com/blog/relational_document_data_table.png "Tabular Data Representation" %}
+{{< figure "Tabular Data Representation" "https://minio.sierrasoftworks.com/blog/relational_document_data_table.png" fig-33 >}}
 
-{% image fig-50 right clear https://minio.sierrasoftworks.com/blog/relational_document_data_document.png "Document Data Representation" %}
+{{< figure "Document Data Representation" "https://minio.sierrasoftworks.com/blog/relational_document_data_document.png" fig-33 clearfix >}}
 
 This contrasts with the tabular nature of most relational databases, where you are limited
 to a single dimension of complexity. This can be expanded, to a degree, through the use of
@@ -235,9 +235,9 @@ not necessarily the same between each log entry, one must either create a number
 models to represent each possible configuration, or one must fall back on storing blob data
 which cannot be indexed, effectively queried or aggregated.
 
-{% image fig-50 https://minio.sierrasoftworks.com/blog/relational_document_audit_table.png "Relational Audit Structure" %}
+{{< figure "Relational Audit Structure" "https://minio.sierrasoftworks.com/blog/relational_document_audit_table.png" fig-33 >}}
 
-{% image fig-50 right clear https://minio.sierrasoftworks.com/blog/relational_document_audit_document.png "Document Audit Structure" %}
+{{< figure "Document Audit Structure" "https://minio.sierrasoftworks.com/blog/relational_document_audit_document.png" fig-33 clearfix >}}
 
 This makes questions like "How many times did people make changes to the `charles` account
 entity?" almost impossible to answer safely and effectively in the relational case, while in

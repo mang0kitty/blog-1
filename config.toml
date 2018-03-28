@@ -2,6 +2,7 @@ baseurl = "https://blog.sierrasoftworks.com"
 languageCode = "en-GB"
 title = "Sierra Softworks"
 
+sectionPagesMenu = "menu"
 paginate = 10
 
 disqusShortname = "sierrasoftworks"
@@ -17,7 +18,7 @@ themesDir = "themes"
     location = "Dublin, Ireland"
     avatar = "img/profile-image.png"
     header_background = "img/code.jpg"
-    header_title = "Sierra Softworks"
+    header_title = "Sierra Softworks Blog"
     copyright = "Copyright © Sierra Softworks 2018"
 
     custom_css = ["/css/custom.css"]
@@ -39,5 +40,8 @@ themesDir = "themes"
     post = "/:year/:month/:day/:filename/"
 
 [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
+    name = "GitHub"
+    title = "View our GitHub organization"
+    url = "https://github.com/SierraSoftworks"
+    weight = 200
+    pre = "<i class='icon-github'></i>"
