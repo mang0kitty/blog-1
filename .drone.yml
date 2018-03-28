@@ -1,14 +1,11 @@
 pipeline:
 
-    hugo:install:
-        image: go
-        commands:
-            - go get -v github.com/gohugoio/hugo
-
     hugo:build:
-        image: go
+        image: alpine:3.4
         commands:
-            - hugo
+            - apk add -U ca-certificates openssl
+            - wget -O - https://github.com/gohugoio/hugo/releases/download/v0.37.1/hugo_0.37.1_Linux-64bit.tar.gz | tar -xzf - -C /bin
+            - /bin/hugo
 
     publish:docker:
         image: plugins/docker
