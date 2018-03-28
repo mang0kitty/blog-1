@@ -4,21 +4,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-@media only screen and (min-width: 720px) {
-    body {
-        padding-top: 400px;
-    }
-
-    .site-header {
-        position: fixed;
-        top: 0;
-    }
-
-    .container {
-        background: #fff;
-    }
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Scope One", serif;
 }
