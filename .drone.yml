@@ -13,9 +13,22 @@ pipeline:
         repo: sierrasoftworks/blog
         tags:
             - latest
+        build_args:
+            - "VERSION=${DRONE_COMMIT_SHA}"
+        secrets: [ docker_username, docker_password ]
+        when:
+            branch: master
+            event: push
+
+    publish:docker:tagged:
+        image: plugins/docker
+        repo: sierrasoftworks/blog
+        tags:
+            - latest
             - "${DRONE_TAG}"
         build_args:
             - "VERSION=${DRONE_COMMIT_SHA}"
         secrets: [ docker_username, docker_password ]
         when:
             branch: master
+            event: tag
