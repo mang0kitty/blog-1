@@ -167,3 +167,19 @@ figure.fig-50 {
     background: rgba(0, 116, 217, 0.219);
     padding: 0.2em;
 }
+
+.quotes {
+    font-size: 0.8rem;
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.quotes blockquote {
+    margin: 0;
+}
+
+.quotes figcaption {
+    margin-left: 0.5em;
+}

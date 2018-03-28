@@ -19,7 +19,7 @@ themesDir = "themes"
     avatar = "img/profile-image.png"
     header_background = "img/code.jpg"
     header_title = "Sierra Softworks Blog"
-    copyright = "Copyright © Sierra Softworks 2018"
+    copyright = "Copyright Sierra Softworks"
 
     custom_css = ["/css/custom.css"]
     custom_js  = []
