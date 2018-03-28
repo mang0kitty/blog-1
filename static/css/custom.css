@@ -59,6 +59,7 @@ kbd {
 .codeblock {
     border: 1px solid #ddd;
     border-radius: 2px;
+    margin: 2em 0;
 
     display: flex;
     justify-content: flex-end;
@@ -160,4 +161,9 @@ figure.fig-50 {
         margin: 1em 0;
         width: 100%;
     }
+}
+
+.hl-text-primary {
+    background: rgba(0, 116, 217, 0.219);
+    padding: 0.2em;
 }
