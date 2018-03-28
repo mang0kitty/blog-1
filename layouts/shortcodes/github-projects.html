@@ -1,5 +1,8 @@
 <div class="github-projects">
     {{ $urlBase := "https://api.github.com" }}
+    {{ if getenv "SECRET_GITHUB_USER" }}
+    {{ $urlBase := printf "https://%s:%s@api.github.com" (getenv "SECRET_GITHUB_USER") (getenv "SECRET_GITHUB_TOKEN") }}
+    {{ end }}
     {{ $pageLimit := false }}
     {{ $type := (.Get 0) }}
     {{ $id := (.Get 1) }}

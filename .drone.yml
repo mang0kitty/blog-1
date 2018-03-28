@@ -6,6 +6,7 @@ pipeline:
             - apk add -U ca-certificates openssl
             - wget -O - https://github.com/gohugoio/hugo/releases/download/v0.37.1/hugo_0.37.1_Linux-64bit.tar.gz | tar -xzf - -C /bin
             - /bin/hugo
+        secrets: [ github_user, github_token ]
 
     publish:docker:
         image: plugins/docker
