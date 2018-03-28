@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Scope+One|Source+Code+Pro');
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Scope One", serif;
+}
+
+code {
+    font-family: "Source Code Pro", monospace;
+}
+
+.hljs {
+    padding: 0;
+}
+
+.highlight > pre,
+pre > .hljs {
+    border-radius: 2px;
+    padding: 0.5em 1em;
+}
+
+.highlight > pre > .hljs {
+    border-radius: 0;
+    padding: 0;
+}
+
+kbd {
+    border: 1px solid #aaa;
+    background: #eee;
+    border-radius: 3px;
+    padding: 0 0.2em;
+}
+
+.alert {
+    padding: 0.5em 2em;
+    margin-bottom: 1em;
+    border-left: 3px solid #aaa;
+}
+
+.alert.info {
+    border-color: #0074D9;
+}
+
+.alert.warning {
+    border-color: #FF851B;
+}
+
+.alert.danger {
+    border-color: #FF4136;
+}
+
+.alert.success {
+    border-color: #2ECC40;
+}
+
+.codeblock {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.codeblock-title {
+    line-height: 30px;
+    height: 30px;
+    padding: 0.5em 1em;
+    margin-right: auto;
+}
+
+input.codeblock-tab {
+    position: absolute;
+    opacity: 0;
+}
+
+label.codeblock-tab {
+    padding: 0.5em 1em;
+    line-height: 30px;
+    cursor: pointer;
+    width: auto;
+    border-bottom: 4px solid transparent;
+}
+
+input.codeblock-tab:checked + label.codeblock-tab {
+    border-bottom: 4px solid #0074D9;
+}
+
+input.codeblock-tab:checked + label.codeblock-tab + .codeblock-tab-content {
+    display: block;
+}
+
+.codeblock-tab-content {
+    width: 100%;
+    order: 99;
+    display: none;
+}
+
+.codeblock-tab-content pre {
+    margin: 0;
+}
+
+.image-figure {
+    text-align: center;
+}
+
+.image-figure > figcaption {
+    font-size: 0.8rem;
+}
+
+.github-project {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0.5em;
+    border-top: 1px solid #eee;
+    padding-top: 1em;
+}
+
+.github-project:first-of-type {
+    border-top: none;
+}
+
+.github-project__title {
+    margin-right: auto;
+}
+
+.github-project__name {
+    font-weight: bold;
+    color: #000;
+}
+
+.github-project__links {
+    width: 100%;
+    font-size: 0.8rem;
+    margin-top: 0.2em;
+}
+
+.github-project__description {
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+figure.fig-33 {
+    width: 33%;
+    float: left;
+}
+
+figure.fig-50 {
+    width: 50%;
+    float: left;
+}
+
+@media only screen and (max-width: 719px) {
+    figure.fig-33, figure.fig-50 {
+        margin: 1em 0;
+        width: 100%;
+    }
+}

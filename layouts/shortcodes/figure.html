@@ -1,0 +1,16 @@
+{{ if gt (len .Params) 2 }}
+<figure class="image-figure{{ range after 2 .Params }} {{ . }}{{ end }}">
+{{ else }}
+<figure class="image-figure">
+{{ end }}
+    <img src="{{ .Get 1 }}" alt="{{ .Get 0 }}">
+    <figcaption>{{ .Get 0 }}</figcaption>
+</figure>
+
+{{ if gt (len .Params) 2 }}
+{{ range after 2 .Params }}
+{{ if eq . "clearfix" }}
+<div class="clearfix"></div>
+{{ end }}
+{{ end }}
+{{ end }}

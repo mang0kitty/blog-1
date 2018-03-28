@@ -1,0 +1,3 @@
+[submodule "themes/minimalist"]
+	path = themes/minimalist
+	url = https://github.com/SierraSoftworks/hugo-minimalist-theme.git

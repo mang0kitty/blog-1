@@ -1,0 +1,43 @@
+<div class="github-project">
+    <div class="github-project__title">
+        <a href="{{ .owner.html_url }}" class="github-project__owner">{{ .owner.login }}</a>/<a href="{{ .html_url }}" class="github-project__name">{{ .name }}</a>
+    </div>
+
+    <div class="github-project__stats">
+        <span class="github-project__stat">
+            {{ .language }}
+        </span>
+
+        <a href="{{ .html_url }}/stargazers" class="github-project__stat">
+            <i class="icon-star"></i>
+            {{ .stargazers_count }}
+        </a>
+        <a href="{{ .html_url }}" class="github-project__stat">
+            <i class="icon-flow-branch"></i>
+            {{ .forks_count }}
+        </a>
+
+        {{ if .has_issues }}
+        <a href="{{ .html_url }}/issues" class="github-project__stat">
+            <i class="icon-alert"></i>
+            {{ .open_issues_count }}
+        </a>
+        {{ end }}
+    </div>
+
+    <div class="github-project__links">
+        {{ if isset . "homepage" }}
+        <div class="github-project__link">
+            <a href="{{ .homepage }}">{{ .homepage }}</a>
+        </div>
+        {{ end }}
+    </div>
+
+    {{ if isset . "description" }}
+    {{ if ne .description "" }}
+    <div class="github-project__description">
+        {{ markdownify .description }}
+    </div>
+    {{ end }}
+    {{ end }}
+</div>

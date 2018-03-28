@@ -1,0 +1,47 @@
+baseurl = "https://blog.sierrasoftworks.com"
+languageCode = "en-GB"
+title = "Sierra Softworks"
+
+sectionPagesMenu = "menu"
+paginate = 10
+
+disqusShortname = "sierrasoftworks"
+googleAnalytics = "UA-40095482-1"
+
+theme = "minimalist"
+
+themesDir = "themes"
+
+[params]
+    site_author = "Benjamin Pannell"
+    site_description = "The official Sierra Softworks blog"
+    location = "Dublin, Ireland"
+    avatar = "img/profile-image.png"
+    header_background = "img/code.jpg"
+    header_title = "Sierra Softworks Blog"
+    copyright = "Copyright © Sierra Softworks 2018"
+
+    custom_css = ["/css/custom.css"]
+    custom_js  = []
+
+    google_analytics = "UA-40095482-1"
+
+[social]
+    twitter   = "SierraSoftworks"
+    facebook  = ""
+    linkedin  = ""
+    behance   = ""
+    dribbble  = ""
+    instagram = ""
+    github    = "SierraSoftworks"
+    gplus     = "+sierrasoftworks"
+
+[permalinks]
+    post = "/:year/:month/:day/:filename/"
+
+[[menu.main]]
+    name = "GitHub"
+    title = "View our GitHub organization"
+    url = "https://github.com/SierraSoftworks"
+    weight = 200
+    pre = "<i class='icon-github'></i>"
