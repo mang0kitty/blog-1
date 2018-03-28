@@ -12,7 +12,7 @@ pipeline:
         repo: sierrasoftworks/blog
         tags:
             - latest
-            - "${DRONE_COMMIT_BRANCH}"
+            - "${DRONE_TAG}"
         build_args:
             - "VERSION=${DRONE_COMMIT_SHA}"
         secrets: [ docker_username, docker_password ]
