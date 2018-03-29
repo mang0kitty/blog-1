@@ -250,7 +250,7 @@ in the GitHub key window.
 
 You should now have your GPG public key added to GitHub, after verifying the email
 addresses associated with it you'll be able to submit commits to GitHub and get your
-awesome {% hl_text green %}Verified{% endhl_text %} badge.
+awesome {{% hl-text green %}}Verified{{% /hl-text %}} badge.
 
 {{< figure "GitHub's Signed Commit Indicator" "https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG" >}}
 

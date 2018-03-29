@@ -95,9 +95,7 @@ who is unfamiliar with your API to identify what something does or what they can
 provide it without needing to dive through your docs.
 
 Remember that the more time someone spends writing their own code, the happier they
-are likely to be with your API. {% hl_text red %}
-Don't make your user's lives difficult.
-{% endhl_text %}
+are likely to be with your API. {{% hl-text red %}}Don't make your users' lives difficult.{{% /hl-text %}}
 
 {{< codeblock "API Verb Usage" >}}
 {{< codeblock-tab "http" "list" >}}

@@ -168,6 +168,16 @@ figure.fig-50 {
     padding: 0.2em;
 }
 
+.hl-text-green {
+    background: rgba(46, 204, 64, 0.219);
+    padding: 0.2em;
+}
+
+.hl-text-red {
+    background: rgba(255, 64, 54, 0.219);
+    padding: 0.2em;
+}
+
 .quotes {
     font-size: 0.8rem;
     text-align: left;
