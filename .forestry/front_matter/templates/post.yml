@@ -33,3 +33,5 @@ fields:
   name: comments
   label: Comments
   description: Whether comments are enabled on this post or not
+pages:
+- content/post/evented-io-for-production-systems.md
