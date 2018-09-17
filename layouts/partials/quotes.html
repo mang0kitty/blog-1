@@ -3,6 +3,10 @@
 </section>
 
 <script defer>
+    let quoteShadowDoms = Array.prototype.slice.call(
+        document.getElementsByClassName("quotes")
+    ).map(elem => elem.attachShadow({ mode: "open" }))
+
     function updateQuote() {
         fetch("https://bender.sierrasoftworks.com/api/v1/quote", {
             headers: {
@@ -13,7 +17,7 @@
 
             return res.text()
         }).then(quote => {
-            document.getElementById("quotes-container").innerHTML = quote
+            quoteShadowDoms.forEach(dom => dom.innerHTML = quote)
         }).catch(err => {
             console.error("failed to fetch a quote", err)
         })
