@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Scope+One|Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans|Open+Sans+Condensed:300');
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Scope One", serif;
+    font-family: "Open Sans Condensed", sans-serif;
 }
 
 code {
     font-family: "Source Code Pro", monospace;
+    color: #B21D12;
+    display: inline;
+    white-space: pre-wrap;
 }
 
 .hljs {
@@ -58,7 +61,7 @@ kbd {
 
 .codeblock {
     border: 1px solid #ddd;
-    border-radius: 2px;
+    border-radius: 3px;
     margin: 2em 0;
 
     display: flex;
@@ -192,4 +195,8 @@ figure.fig-50 {
 
 .quotes figcaption {
     margin-left: 0.5em;
+}
+
+.menubar {
+    font-family: "Open Sans Condensed", sans-serif;
 }

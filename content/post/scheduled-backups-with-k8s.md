@@ -137,7 +137,7 @@ In the real world, you're going to want to draw things like your `ACCESS_KEY` an
 from the Kubernetes Secrets API and provide some additional metadata for tracking and organization,
 but the result isn't much more complicated than what we started with.
 
-{{< highlight yaml >}}
+```yaml
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -176,7 +176,7 @@ spec:
                   secretKeyRef:
                     key: secret-key
                     name: minio-secrets
-{{< /highlight >}}
+```
 
 ## Existing Backup Containers
 In the interest of speeding up adoption, we have open sourced some of the backup containers

@@ -12,14 +12,18 @@ theme = "minimalist"
 
 themesDir = "themes"
 
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
 [params]
     site_author = "Benjamin Pannell"
     site_description = "The official Sierra Softworks blog"
     location = "Dublin, Ireland"
-    avatar = "img/profile-image.png"
-    header_background = "img/code.jpg"
-    header_title = "Sierra Softworks Blog"
+    avatar = "https://cv.sierrasoftworks.com/resources/avatar.jpg"
+    logo = "https://minio.sierrasoftworks.com/logos/icon.png"
+    subtitle = "Blog"
     copyright = "Copyright Sierra Softworks"
+    occupation = "Site Reliability Engineer, Demonware"
 
     custom_css = ["/css/custom.css"]
     custom_js  = []
@@ -41,7 +45,7 @@ themesDir = "themes"
 
 [[menu.main]]
     name = "GitHub"
-    title = "View our GitHub organization"
+    title = "View my open source GitHub projects"
     url = "https://github.com/SierraSoftworks"
     weight = 200
     pre = "<i class='icon-github'></i>"
