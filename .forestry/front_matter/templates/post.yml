@@ -1,0 +1,39 @@
+---
+label: Post
+hide_body: false
+is_partial: false
+fields:
+- type: text
+  label: Title
+  name: title
+  description: The title of the blog post you are writing
+  config:
+    required: true
+- type: datetime
+  name: date
+  label: Date
+  description: The date at which this post should go live
+  config:
+    display_utc: true
+    required: true
+    date_format: YYYY-MM-DD
+- type: tag_list
+  name: categories
+  label: Categories
+  description: The list of categories that this post belongs to
+- type: tag_list
+  label: Tags
+  name: tags
+  description: The list of tags that apply to this post
+- type: boolean
+  label: Draft
+  name: draft
+  description: Whether this post is in draft state or not
+- type: boolean
+  name: comments
+  label: Comments
+  description: Whether comments are enabled on this post or not
+pages:
+- content/post/rotating-backups.md
+- content/post/the-cost-of-backups.md
+- content/post/evented-io-for-production-systems.md
