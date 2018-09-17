@@ -19,7 +19,7 @@ Hopefully, by the time you've finished reading this article you should have a go
 
 > **TODO**: Talk about how async io uses a combination of coroutines, event loops and tasks
 >
-> **TODO**: Talk about how 
+> **TODO**: Talk about how
 
 ## Effects on Scalability
 
@@ -28,3 +28,9 @@ Hopefully, by the time you've finished reading this article you should have a go
 ### How a simple application behaves
 
 > **TODO**: Talk about how a basic application performing a single task works and how it needs to be scaled as your request rate and latency increase.
+
+### How to scale a simple application
+
+> **TODO**: Show how one could scale  the simple application by adding more processes or threads.
+
+### How performance changes when latency increases
