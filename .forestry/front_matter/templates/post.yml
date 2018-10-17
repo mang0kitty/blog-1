@@ -34,6 +34,7 @@ fields:
   label: Comments
   description: Whether comments are enabled on this post or not
 pages:
+- content/post/backups-and-google-cloud-storage.md
 - content/post/recipe-for-a-monitoring-service.md
 - content/post/evented-io-for-production-systems.md
 - content/post/rotating-backups.md
