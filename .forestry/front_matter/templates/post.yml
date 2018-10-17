@@ -26,10 +26,6 @@ fields:
   name: tags
   description: The list of tags that apply to this post
 - type: boolean
-  label: Draft
-  name: draft
-  description: Whether this post is in draft state or not
-- type: boolean
   name: comments
   label: Comments
   description: Whether comments are enabled on this post or not
