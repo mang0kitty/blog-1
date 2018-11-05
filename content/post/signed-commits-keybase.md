@@ -1,15 +1,15 @@
 ---
 title: Signing Git Commits using Keybase
-date: 2016-12-19 07:55:47
+date: 2016-12-19 07:55:47 +0000
 tags:
-  - github
-  - git
-  - opensource
-  - development
-  - security
----
+- github
+- git
+- opensource
+- development
+- security
 
-{{< figure "KeyBase's Logo" "https://minio.sierrasoftworks.com/blog/keybase_logo.png" >}}
+---
+{{< figure "KeyBase's Logo" "https://cdn.sierrasoftworks.com/blog/keybase_logo.png" >}}
 
 With the increasing popularity of Git as a tool for open source collaboration,
 not to mention distribution of code for tools like [Go][golang], being able
@@ -58,7 +58,7 @@ help prevent it.
 
 Besides, you'll get a cool badge on GitHub...
 
-{{< figure "GitHub's Signed Commit Indicator" "https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG" >}}
+{{< figure "GitHub's Signed Commit Indicator" "https://cdn.sierrasoftworks.com/blog/github_signed_commit.PNG" >}}
 
 
 ## What is Keybase
@@ -128,7 +128,7 @@ which you can grab [here][gpg4win].
 Once you've got the GPG tools installed on your machine, you'll need to grab
 your Keybase private key. You should be able to find it on your account page.
 
-{{< figure "Export your Keybase private key" "https://minio.sierrasoftworks.com/blog/keybase_export_key.PNG" >}}
+{{< figure "Export your Keybase private key" "https://cdn.sierrasoftworks.com/blog/keybase_export_key.PNG" >}}
 
 Save it somewhere on your computer and then fire up your command line again to
 import the key. Assuming you've called your key file `keybase.gpg`, just run the
@@ -246,13 +246,13 @@ Once you've copied your public key from the command above (the PowerShell one wi
 automatically add it to your clipboard on Windows machines), just paste the result
 in the GitHub key window.
 
-{{< figure "Add a new GPG key to GitHub" "https://minio.sierrasoftworks.com/blog/github_import_gpgkey.PNG" >}}
+{{< figure "Add a new GPG key to GitHub" "https://cdn.sierrasoftworks.com/blog/github_import_gpgkey.PNG" >}}
 
 You should now have your GPG public key added to GitHub, after verifying the email
 addresses associated with it you'll be able to submit commits to GitHub and get your
 awesome {{% hl-text green %}}Verified{{% /hl-text %}} badge.
 
-{{< figure "GitHub's Signed Commit Indicator" "https://minio.sierrasoftworks.com/blog/github_signed_commit.PNG" >}}
+{{< figure "GitHub's Signed Commit Indicator" "https://cdn.sierrasoftworks.com/blog/github_signed_commit.PNG" >}}
 
 ## Conclusion
 You should now be in a position to sign every commit you make using your own personal,
