@@ -40,13 +40,15 @@ Sure, that's cool, but "What about a `for` loop?" I hear you asking. Well, the b
 Let's show you what an example of that might look like...
 
 ```python
-class Counter:
-  def __iter__(self):
-    self.i = 1
-    return self
-
-  def __next__(self):
-    x = self.i
-    self.i += 1
-    return x
+def counter():
+  i = 0
+  while True:
+    i += 1
+    yield i
+    
+iterator = iter(counter())
+one = next(iterator)
+two = next(iterator)
+three = next(iterator)
+# ...
 ```
