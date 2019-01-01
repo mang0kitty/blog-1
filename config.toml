@@ -26,9 +26,12 @@ pygmentsCodeFences = true
     occupation = "Site Reliability Engineer, Demonware"
 
     custom_css = ["/css/custom.css"]
-    custom_js  = []
+    custom_js  = [
+        "https://js.sentry-cdn.com/9b2237ebb25e438bb6bf3b819c419495.min.js"
+    ]
 
     google_analytics = "UA-40095482-1"
+    
 
 [social]
     twitter   = "SierraSoftworks"
