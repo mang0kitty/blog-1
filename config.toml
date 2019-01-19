@@ -20,10 +20,10 @@ pygmentsCodeFences = true
     site_description = "The official Sierra Softworks blog"
     location = "Dublin, Ireland"
     avatar = "https://cv.sierrasoftworks.com/resources/avatar.jpg"
-    logo = "https://minio.sierrasoftworks.com/logos/icon.png"
+    logo = "https://cdn.sierrasoftworks.com/logos/icon.png"
     subtitle = "Blog"
     copyright = "Copyright Sierra Softworks"
-    occupation = "Site Reliability Engineer, Demonware"
+    occupation = "Site Reliability Engineer, Microsoft"
 
     custom_css = ["/css/custom.css"]
     custom_js  = [
