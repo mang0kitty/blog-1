@@ -54,8 +54,26 @@ I'll shamelessly admit that I stole much of this from Go. While I'm not sure tha
 
 While this layout looks great, it also allows us to do some really nice tricks when it comes to managing those repos. For starters, we know precisely where we should clone a given GitHub repository to without the user needing to provide that information.
 
-\`\`\`powershell
+```powershell
+λ Get-Repo sierrasoftworks/blog
+Synchronizing https://github.com/sierrasoftworks/blog
+ - Git URL:   git@github.com:sierrasoftworks/blog.git
+ - Target:    C:\dev\github.com\sierrasoftworks\blog
+Running git clone
+Cloning into 'C:\dev\github.com\sierrasoftworks\blog'...
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (42/42), done.
+remote: Compressing objects: 100% (36/36), done.
+remote: Total 902 (delta 13), reused 30 (delta 1), pack-reused 860
+Receiving objects: 100% (902/902), 2.05 MiB | 1.33 MiB/s, done.
+Resolving deltas: 100% (352/352), done.
 
-Get-Repo sierrasoftworks/blog
-
-\`\`\`
+Name                           Value
+----                           -----
+WebURL                         https://github.com/sierrasoftworks/blog
+Service                        github.com
+Repo                           sierrasoftworks/blog
+Path                           C:\dev\github.com\sierrasoftwork...
+Exists                         False
+GitURL                         git@github.com:sierrasoftworks/blog.git
+```
