@@ -1,11 +1,11 @@
 ---
 title: Organizing your Development Directory
-date: 2019-04-15 12:05:00
+date: 2019-04-15 19:05:00
 categories:
     - development
 tags:
     - development
-draft: true
+draft: false
 comments: true
 ---
 
@@ -164,35 +164,206 @@ and avoid the issue of duplication by having a unique ID form their path.
 
 This layout is also one that is instantly familiar to anybody who has used `Go` and is one that
 has been proven to be easily parsable by automation tools. This enabled me to build [Git-Tool][],
-a set of `PowerShell` commandlets which automate the management of this directory structure.
-
-```powershell
-λ New-Repo sierrasoftworks/demo -GitIgnore csharp
-
-Name                           Value
-----                           -----
-Service                        github.com
-Exists                         True
-Namespace                      sierrasoftworks
-Name                           demo
-Repo                           sierrasoftworks/demo
-Path                           C:\dev\github.com\sierrasoftworks\demo
-GitURL                         git@github.com:sierrasoftworks/demo.git
-WebURL                         https://github.com/sierrasoftworks/demo
-```
+a set of `PowerShell` commands which automate the management of this directory structure.
 
 ## Introducing Git-Tool
 
-**Give them an example of what the theory looks like when applied**
+Git-Tool is a PowerShell module I've developed to assist with managing this particular repo structure.
+It provides commands for creating new repositories, fetching existing ones and quickly opening local
+copies by introducing native tab-completion.
 
-> This post is an example of what a good blog post could look
-> like if you follow all these great steps.
+For example, getting the latest version of a repo could be done with `Get-Repo sierrasoftworks/git-tool`,
+while a new repo might be created by running `New-Repo spartan563/iot-test`. Finally, when opening a
+shell, I need only type `Open-Repo sierrasoftworks/git-tool` to have my shell's working directory
+changed to the location of that repo on my machine. Clean, simple, consistent and predictable; regardless
+of which machine I'm on.
 
-## Closing
+Git-Tool also supports services other than [GitHub][], including [GitLab][], [BitBucket][] and [Azure DevOps][].
 
-**Finish up and present your conclusions**
+### Installing Git-Tool
+Git-Tool is available in the [PowerShell Gallery](https://www.powershellgallery.com/packages/Git-Tool) and
+can be installed using `Install-Module Git-Tool` from any administrative PowerShell prompt.
 
-> After all that, you should be convinced that posts are the
-> way to go and have a good idea of how to structure them.
+You'll then want to configure your `$PROFILE` to ensure that `Git-Tool` is imported when your shell starts
+and configured with the correct dev directory automatically. You can do this by opening up Notepad (or your
+favourite editor) and pointing it at the `$PROFILE.CurrentUserAllHosts` configuration file.
+
+{{< codeblock "Installing Git-Tool" >}}
+{{< codeblock-tab "powershell" "Profile File" >}}
+# notepad.exe $PROFILE.CurrentUserAllHosts
+
+Import-Module Git-Tool
+
+$GitTool.Directory = "C:\dev"
+{{< /codeblock-tab >}}
+{{< codeblock-tab "powershell" "Installation" >}}
+Install-Module Git-Tool
+
+notepad.exe $PROFILE.CurrentUserAllHosts
+{{< /codeblock-tab >}}
+{{< /codeblock >}}
+
+### Creating a new repo
+The process to create a new repo is incredibly straightforward, you simply need to call the `New-Repo` command
+with the full name of the repo you wish to create.
+
+
+{{< codeblock "Creating a Repo" >}}
+{{< codeblock-tab "powershell" "Azure DevOps" >}}
+New-Repo -Service dev.azure.com sierrasoftworks/opensource/bender
+
+<# --------------------------------------------------------------------------------------------
+Creating https://dev.azure.com/sierrasoftworks/opensource/_git/bender
+ - Git URL:   git@ssh.dev.azure.com:v3/sierrasoftworks/opensource/bender
+ - Target:    C:\dev\dev.azure.com\sierrasoftworks\opensource\bender
+
+Running git init
+Running git remote add origin
+Adding .gitignore file
+
+Name                           Value
+----                           -----
+Service                        dev.azure.com
+Exists                         False
+Namespace                      sierrasoftworks/opensource
+Name                           bender
+Repo                           sierrasoftworks/opensource/bender
+Path                           C:\dev\dev.azure.com\sierrasoftworks\opensource\bender
+GitURL                         git@ssh.dev.azure.com:v3/sierrasoftworks/opensource/bender
+WebURL                         https://dev.azure.com/sierrasoftworks/opensource/_git/bender
+-------------------------------------------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< codeblock-tab "powershell" "GitHub" >}}
+New-Repo sierrasoftworks/git-tool -Open -GitIgnore csharp
+
+<# -----------------------------------------------------------
+Creating https://github.com/SierraSoftworks/demo
+ - Git URL:   git@github.com:SierraSoftworks/demo.git
+ - Target:    C:\dev\github.com\SierraSoftworks\demo
+
+Running git init
+Running git remote add origin
+Adding .gitignore file
+
+Name              Value
+----              -----
+Service           github.com
+Exists            False
+Namespace         SierraSoftworks
+Name              demo
+Repo              SierraSoftworks/demo
+Path              C:\dev\github.com\SierraSoftworks\demo
+GitURL            git@github.com:SierraSoftworks/demo.git
+WebURL            https://github.com/SierraSoftworks/demo
+----------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< /codeblock >}}
+
+### Fetching an existing repo
+Similarly, when you wish to fetch an existing repo, you simply call the `Get-Repo` command
+with the full name of the repo. If you've got it locally already, tab completion will help
+you fill in the name, otherwise it'll probably get you close by suggesting other similar
+names to modify.
+
+Of course, if you wish to also open up the repo once it has been fetched, you can pass the
+`-Open` flag.
+
+{{< codeblock "Fetching a Repo" >}}
+{{< codeblock-tab "powershell" "Azure DevOps" >}}
+Get-Repo -Service dev.azure.com sierrasoftworks/opensource/bender
+
+<# --------------------------------------------------------------------------------------------
+Synchronizing https://dev.azure.com/sierrasoftworks/opensource/_git/bender
+ - Git URL:   git@ssh.dev.azure.com:v3/sierrasoftworks/opensource/bender
+ - Target:    C:\dev\dev.azure.com\sierrasoftworks\opensource\bender
+Running git pull
+Already up to date.
+
+Name                           Value
+----                           -----
+Service                        dev.azure.com
+Exists                         False
+Namespace                      sierrasoftworks/opensource
+Name                           bender
+Repo                           sierrasoftworks/opensource/bender
+Path                           C:\dev\dev.azure.com\sierrasoftworks\opensource\bender
+GitURL                         git@ssh.dev.azure.com:v3/sierrasoftworks/opensource/bender
+WebURL                         https://dev.azure.com/sierrasoftworks/opensource/_git/bender
+-------------------------------------------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< codeblock-tab "powershell" "GitHub" >}}
+Get-Repo sierrasoftworks/git-tool -Open
+
+<# -----------------------------------------------------------
+Synchronizing https://github.com/SierraSoftworks/git-tool
+ - Git URL:   git@github.com:SierraSoftworks/git-tool.git
+ - Target:    C:\dev\github.com\SierraSoftworks\git-tool
+Running git pull
+Already up to date.
+
+Name             Value
+----             -----
+Service          github.com
+Exists           True
+Namespace        SierraSoftworks
+Name             git-tool
+Repo             SierraSoftworks/git-tool
+Path             C:\dev\github.com\SierraSoftworks\git-tool
+GitURL           git@github.com:SierraSoftworks/git-tool.git
+WebURL           https://github.com/SierraSoftworks/git-tool
+----------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< /codeblock >}}
+
+### Opening a local repo
+Finally, when you want to open a repo which you have cloned or created, you'll simply 
+
+{{< codeblock "Opening a Repo" >}}
+{{< codeblock-tab "powershell" "Azure DevOps" >}}
+Open-Repo -Service dev.azure.com sierrasoftworks/opensource/bender
+
+<# --------------------------------------------------------------------------------------------
+Name                           Value
+----                           -----
+Service                        dev.azure.com
+Exists                         False
+Namespace                      sierrasoftworks/opensource
+Name                           bender
+Repo                           sierrasoftworks/opensource/bender
+Path                           C:\dev\dev.azure.com\sierrasoftworks\opensource\bender
+GitURL                         git@ssh.dev.azure.com:v3/sierrasoftworks/opensource/bender
+WebURL                         https://dev.azure.com/sierrasoftworks/opensource/_git/bender
+-------------------------------------------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< codeblock-tab "powershell" "GitHub" >}}
+Open-Repo sierrasoftworks/git-tool
+
+<# -----------------------------------------------------------
+Name             Value
+----             -----
+Service          github.com
+Exists           True
+Namespace        SierraSoftworks
+Name             git-tool
+Repo             SierraSoftworks/git-tool
+Path             C:\dev\github.com\SierraSoftworks\git-tool
+GitURL           git@github.com:SierraSoftworks/git-tool.git
+WebURL           https://github.com/SierraSoftworks/git-tool
+----------------------------------------------------------- #>
+{{< /codeblock-tab >}}
+{{< /codeblock >}}
+
+### Everything else
+There are, of course, more commands included in [Git-Tool][], things like `Get-GitIgnore` which
+pulls down a `.gitignore` template from https://gitignore.io for you, or `Get-RepoInfo` which
+allows you to quickly get details like the web address, Git URL and more for a given repo.
+
+In the future I'm sure I'll extend [Git-Tool][] even further to support use cases like Gists,
+organized scratch folders and more. If you've got ideas for features you'd like to see or
+improvements which can be made - I'd love to hear them.
 
 [Git-Tool]: https://github.com/sierrasoftworks/git-tool
+[GitHub]: https://github.com
+[GitLab]: https://gitlab.com
+[BitBucket]: https://bitbucket.org 
+[Azure DevOps]: https://dev.azure.com
