@@ -27,7 +27,7 @@ they are going to live for a period. For some organizations and systems
 thay may be decades or centuries, while for others the backup retention
 window may be measured in minutes.
 
-{{< figure "**Figure 1** Backup Storage Intervals" "https://minio.sierrasoftworks.com/blog/rotating_backups_intervals.svg" >}}
+{{< figure "**Figure 1** Backup Storage Intervals" "https://cdn.sierrasoftworks.com/blog/rotating_backups_intervals.svg" >}}
 
 You can usually classify a backup into one of a few types based on its age,
 however. Long term backups, or archival backups, are primarily used for
@@ -79,7 +79,7 @@ At its most innocuous, data loss can simply be someone accidentally deleting
 the wrong file. This happens a lot more frequently than you'd imagine and there
 have been a number of high profile instances like [GitLab's][gitlab-database-loss].
 
-{{< figure "**Figure 2** Data Deletion" "https://minio.sierrasoftworks.com/blog/rolling_backups_deletion.jpg" >}}
+{{< figure "**Figure 2** Data Deletion" "https://cdn.sierrasoftworks.com/blog/rolling_backups_deletion.jpg" >}}
 
 A lot of the time, you'll find short term or even nightly backups being used to
 restore user data that has been accidentally removed by someone who was a bit too
@@ -91,7 +91,7 @@ long term storage decay is a common source of corruption, it isn't the only thin
 can leave data in a form that prevents you from accessing the information you are looking
 for.
 
-{{< figure "**Figure 3** Data Corruption" "https://minio.sierrasoftworks.com/blog/rolling_backups_corruption.jpeg" >}}
+{{< figure "**Figure 3** Data Corruption" "https://cdn.sierrasoftworks.com/blog/rolling_backups_corruption.jpeg" >}}
 
 In practice, everything from hardware failures to bad software updates can result in
 your data being damaged (and making you thankful for your backups when it comes time
@@ -102,7 +102,7 @@ Finally, data destruction involves the actual loss of your data. This could
 be the result of a fire in your datacenter, a natural disaster or even a
 faulty HDD in systems that don't have redundancy on the hardware level.
 
-{{< figure "**Figure 4** Data Destruction" "https://minio.sierrasoftworks.com/blog/rolling_backups_destruction.jpg" >}}
+{{< figure "**Figure 4** Data Destruction" "https://cdn.sierrasoftworks.com/blog/rolling_backups_destruction.jpg" >}}
 
 While complete data destruction is rare in most production-grade systems
 as a result of application level, and even disk level, data replication;

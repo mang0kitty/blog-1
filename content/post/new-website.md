@@ -28,10 +28,10 @@ If you can't find one of our older projects here, please
 While we're in the process of migrating older projects, here are links at which
 you can download some of their installers...
 
- - [**ArmA 2 Mod Launcher**](https://minio.sierrasoftworks.com/arma2ml/ArmA2ML.exe)
- - [**CoreMonitor**](https://minio.sierrasoftworks.com/coremonitor/CoreMonitorSetup.exe)
- - [**Standby Inhibitor**](https://minio.sierrasoftworks.com/standby-inhibitor/Standby%20Inhibitor%201.0.exe)
- - [**WKD**](https://minio.sierrasoftworks.com/wkd/WKDSetup.exe)
+ - [**ArmA 2 Mod Launcher**](https://cdn.sierrasoftworks.com/arma2ml/ArmA2ML.exe)
+ - [**CoreMonitor**](https://cdn.sierrasoftworks.com/coremonitor/CoreMonitorSetup.exe)
+ - [**Standby Inhibitor**](https://cdn.sierrasoftworks.com/standby-inhibitor/Standby%20Inhibitor%201.0.exe)
+ - [**WKD**](https://cdn.sierrasoftworks.com/wkd/WKDSetup.exe)
 
 
 [hexo]: https://hexo.io

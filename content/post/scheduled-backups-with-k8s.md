@@ -4,7 +4,7 @@ date: 2017-11-01 20:32:07
 tags:
     - kuberentes
     - operations
-    - minio
+    - cdn
     - s3
 ---
 
@@ -84,7 +84,7 @@ reliable][s3-durability] place to keep track of them.
 # Fetch the mc command line client
 FROM alpine:latest
 RUN apk update && apk add ca-certificates wget && update-ca-certificates
-RUN wget -O /tmp/mc https://dl.minio.io/client/mc/release/linux-amd64/mc
+RUN wget -O /tmp/mc https://dl.cdn.io/client/mc/release/linux-amd64/mc
 RUN chmod +x /tmp/mc
 
 # Then build our backup image
@@ -93,11 +93,11 @@ LABEL maintainer="Benjamin Pannell <admin@sierrasoftworks.com>"
 
 COPY --from=0 /tmp/mc /usr/bin/mc
 
-ENV MINIO_SERVER=""
-ENV MINIO_BUCKET="backups"
-ENV MINIO_ACCESS_KEY=""
-ENV MINIO_SECRET_KEY=""
-ENV MINIO_API_VERSION="S3v4"
+ENV cdn_SERVER=""
+ENV cdn_BUCKET="backups"
+ENV cdn_ACCESS_KEY=""
+ENV cdn_SECRET_KEY=""
+ENV cdn_API_VERSION="S3v4"
 
 ENV DATE_FORMAT="+%Y-%m-%d"
 
@@ -112,9 +112,9 @@ set -e -o pipefail
 DB="$1"
 ARGS="${@:2}"
 
-mc config host add pg "$MINIO_SERVER" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" "$MINIO_API_VERSION" > /dev/null
+mc config host add pg "$cdn_SERVER" "$cdn_ACCESS_KEY" "$cdn_SECRET_KEY" "$cdn_API_VERSION" > /dev/null
 
-ARCHIVE="${MINIO_BUCKET}/${DB}-$(date $DATE_FORMAT).archive"
+ARCHIVE="${cdn_BUCKET}/${DB}-$(date $DATE_FORMAT).archive"
 
 echo "Dumping $DB to $ARCHIVE"
 echo "> pg_dump ${ARGS} -Fc $DB"
@@ -125,7 +125,7 @@ echo "Backup complete"
 {{< /codeblock-tab >}}
 {{< /codeblock >}}
 
-We're going to use the [Minio][] command line client, a fully standards compliant S3 client, to
+We're going to use the [cdn][] command line client, a fully standards compliant S3 client, to
 upload our backup as it is created, so we grab the official binary and use Docker's new
 [Multi Stage Builds][Multi Stage Build] functionality to toss that binary into the Postgres
 image (which includes `pg_dump`).
@@ -162,26 +162,26 @@ spec:
               - -h
               - mongodb
             env:
-              - name: MINIO_SERVER
-                value: http://minio:9000/
-              - name: MINIO_BUCKET
+              - name: cdn_SERVER
+                value: http://cdn:9000/
+              - name: cdn_BUCKET
                 value: backups
-              - name: MINIO_ACCESS_KEY
+              - name: cdn_ACCESS_KEY
                 valueFrom:
                   secretKeyRef:
                     key: access-key
-                    name: minio-secrets
-              - name: MINIO_SECRET_KEY
+                    name: cdn-secrets
+              - name: cdn_SECRET_KEY
                 valueFrom:
                   secretKeyRef:
                     key: secret-key
-                    name: minio-secrets
+                    name: cdn-secrets
 ```
 
 ## Existing Backup Containers
 In the interest of speeding up adoption, we have open sourced some of the backup containers
 we use in our infrastructure. These containers will run a backup of a given datastore and push
-the resulting backup to S3 using the Minio CLI.
+the resulting backup to S3 using the cdn CLI.
 
  - [MongoDB](https://github.com/SierraSoftworks/minback-mongo) - `minback/mongo:latest`
  - [PostgreSQL](https://github.com/SierraSoftworks/minback-postgres) - `minback/postgres:latest`
@@ -189,6 +189,6 @@ the resulting backup to S3 using the Minio CLI.
 [CronJob]: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 [Deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [Job]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-[Minio]: https://www.minio.io/
+[cdn]: https://www.cdn.io/
 [Multi Stage Build]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [s3-durability]: https://aws.amazon.com/s3/faqs/#data-protection

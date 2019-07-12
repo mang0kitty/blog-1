@@ -143,7 +143,7 @@ confirm that everything is working correctly.
 
 You should see something like the following:
 
-{{< figure "Traefik Dashboard" "https://minio.sierrasoftworks.com/blog/traefik_on_swarm_dashboard.PNG" >}}
+{{< figure "Traefik Dashboard" "https://cdn.sierrasoftworks.com/blog/traefik_on_swarm_dashboard.PNG" >}}
 
 
 ## Check your Service
@@ -156,7 +156,7 @@ simple.
 
 You should see the demo application, something like this:
 
-{{< figure "Demo Application" "https://minio.sierrasoftworks.com/blog/traefik_on_swarm_demo.PNG" >}}
+{{< figure "Demo Application" "https://cdn.sierrasoftworks.com/blog/traefik_on_swarm_demo.PNG" >}}
 
 
 ## Retrospective

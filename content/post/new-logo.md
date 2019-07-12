@@ -25,7 +25,7 @@ Our first actual logo was very type centric, settling for a simple gradiented mo
 black and white look because it integrated well with our designs at the time, which also focused on a simple - gradient
 centric design paradigm.
 
-![First Logo](https://minio.sierrasoftworks.com/logos/old_logo.png)
+![First Logo](https://cdn.sierrasoftworks.com/logos/old_logo.png)
 
 To be honest, when I designed this logo I had very little experience with any kind of design software and most of my
 experience with programs like [Paint.NET](http://www.getpaint.net/) was doing the odd funny picture at school; rather
@@ -72,7 +72,7 @@ wishes to search for it).
 I guess, before I start discussing the design of the logo, I should probably give you a look at it
 (you can click on the image to get access to an SVG version of it).
 
-[![Click for an SVG version, which you can zoom in on](https://minio.sierrasoftworks.com/logos/logo_medium.png)](https://minio.sierrasoftworks.com/logos/logo.svg)
+[![Click for an SVG version, which you can zoom in on](https://cdn.sierrasoftworks.com/logos/logo_medium.png)](https://cdn.sierrasoftworks.com/logos/logo.svg)
 
 The first thing you're likely to notice is the vast size of the logo - seriously, it is massive.
 Despite this though, it actually weighs in smaller than the original logo which is less than half the physical size.

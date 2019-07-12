@@ -5,7 +5,7 @@ draft: true
 tags:
     - kubernetes
     - operations
-    - minio
+    - cdn
     - s3
 ---
 
