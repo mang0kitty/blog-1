@@ -1,11 +1,12 @@
 ---
 title: Behind Our Corporate Logo
 tags:
-    - branding
-    - design
+- branding
+- design
 categories:
-    - Design
-date: 2013-09-13 20:13:00
+- Design
+date: 2013-09-13T20:13:00.000+00:00
+
 ---
 First off, I'm not a graphic designer by profession and haven't received any kind of training in the field -
 so don't take this as a tutorial on how to create your company's logo because in all likelihood I haven't got
@@ -13,6 +14,7 @@ the faintest clue what I'm talking about. I am, however, a huge fan of learning 
 that generally involves mashing together a bunch of Google searches until I find some information that gets me on the way.
 
 <!--more-->
+
 
 ## Our First Logo
 I guess before I get started on the design of our new logo, I should probably look at some of our previous logos and how
