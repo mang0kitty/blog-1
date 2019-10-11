@@ -29,6 +29,7 @@ fields:
   label: Comments
   description: Whether comments are enabled on this post or not
 pages:
+- content/post/live-unit-testing-with-net-core.md
 - content/post/organizing-your-project-directory.md
 - content/post/python-iterators-next.md
 - content/post/backups-and-google-cloud-storage.md
