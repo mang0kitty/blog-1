@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300');
 
 body {
     font-family: "Open Sans", sans-serif;
@@ -9,7 +9,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code {
-    font-family: "Source Code Pro", monospace;
     color: #B21D12;
     display: inline;
     white-space: pre-wrap;
@@ -202,7 +201,7 @@ figure.fig-50 {
 }
 
 .filetree {
-    font-family: "Source Code Pro", monospace;
+    font-family: "Fira Code", monospace;
     font-size: 1em;
     line-height: 1.1;
     -webkit-text-size-adjust: none;
