@@ -39,9 +39,9 @@ pygmentsCodeFences = true
     linkedin  = ""
     behance   = ""
     dribbble  = ""
-    instagram = ""
+    instagram = "notheotherben"
     github    = "SierraSoftworks"
-    gplus     = "+sierrasoftworks"
+    gplus     = ""
 
 [permalinks]
     post = "/:year/:month/:day/:filename/"
