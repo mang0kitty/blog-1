@@ -18,10 +18,10 @@ and provide a dynamically generated list of them [here](/projects/). Unfortunate
 not every project we had previously is on GitHub, so we're busy migrating some
 of the older content across to this website.
 
-{{% alert info %}}
+{{< alert info >}}
 If you can't find one of our older projects here, please
 [send us an email](mailto:contact@sierrasoftworks.com).
-{{% /alert %}}
+{{< /alert >}}
 
 <!--more-->
 

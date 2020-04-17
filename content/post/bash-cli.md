@@ -8,10 +8,10 @@ tags:
   - "opensource"
 ---
 
-{{% alert info %}}
+{{< alert info >}}
 If you're just looking to hop straight to the final project, you'll want
 to check out [SierraSoftworks/bash-cli](https://github.com/SierraSoftworks/bash-cli) on GitHub.
-{{% /alert %}}
+{{< /alert >}}
 
 Anybody who has worked in the ops space as probably built up a veritable
 library of scripts which they use to manage everything from deployments

@@ -3,7 +3,7 @@ languageCode = "en-GB"
 title = "Sierra Softworks"
 
 sectionPagesMenu = "menu"
-paginate = 10
+paginate = 20
 
 disqusShortname = "sierrasoftworks"
 googleAnalytics = "UA-40095482-1"

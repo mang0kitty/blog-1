@@ -8,11 +8,11 @@ tags:
   - opensource
 ---
 
-{{% alert info %}}
+{{< alert info >}}
 If you haven't yet read the article on
 [Bash CLI](https://github.com/SierraSoftworks/bash-cli) then
 go [read it now](/post/bash-cli). 
-{{% /alert %}}
+{{< /alert >}}
 
 Bash's ability to automatically provide suggested completions to a command
 by pressing the <kbd>Tab</kbd> key is one of its most useful features. It

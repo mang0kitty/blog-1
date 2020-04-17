@@ -96,9 +96,9 @@ sudo cp ./unsquashfs /bin/unsquashfs
 When that is done you should be able to make and decompress the SQX files which comprise the SplashTop system.
 
 
-{{% alert warning %}}
+{{< alert warning >}}
 Note that version 3.4 of squashfs-tools is required for compatibility with the SplashTop kernel.
-{{% /alert %}}
+{{< /alert >}}
 
 <h3 id="extractingdfi">Extracting the DFI</h3>
 
@@ -182,15 +182,14 @@ export DI_HAVE_RES_LIST='640x480x24x60,800x600x24x60,1024x768x24x60,
 ```
 
 
-{{% alert info %}}
-The <code>DI_HAVE_RES_LIST</code> value is all on a single line and is made up of the following:
-[horizontal resolution] <b>x</b> [vertical resolution] <b>x</b> [colour depth] <b>x</b> [refresh rate].  So for a <code>1024x768</code> screen the entry would be <code>1024x768x24x60</code>.
-<br/>
-{{% /alert %}}
+{{< alert info >}}
+The `DI_HAVE_RES_LIST` value is all on a single line and is made up of the following:
+[horizontal resolution] **x** [vertical resolution] **x** [colour depth] **x** [refresh rate].  So for a `1024x768` screen the entry would be `1024x768x24x60`.
+{{< /alert >}}
 
-{{% alert warning %}}
+{{< alert warning >}}
 Note that all entries are separated by commas and there should be no newlines between any of the resolutions.
-{{% /alert %}}
+{{< /alert >}}
 
 That's only half the work though, you also need to create the files that let SplashTop know what to do with your patch.
 This is relatively easy as the files are present in all of the other folders in the `extracted-image` folder.
@@ -228,13 +227,13 @@ Once all of that is done you should be able to go back to the terminal which you
 After hitting enter you should see it start to run a whole bunch of stuff, that is re-compressing all of the required files and adding them to the image.
 The script will then ask you if you want to update the version file, if you have made any changes to the original DFI files or would like to make sure that your image has not been corrupted, I recommend pressing "`y`".
 
-{{% alert info %}}
+{{< alert info >}}
 The old method for bypassing the MD5 check was to remove all of the file information from the version file. This would then prevent SplashTop
-from checking to see if any of the files were modified. The method that this script uses (thanks to <code>DVM-Version.exe</code>) is to generate a new version
+from checking to see if any of the files were modified. The method that this script uses (thanks to `DVM-Version.exe`) is to generate a new version
 file which has updated checksums and file information, this not only allows the modified files to pass the MD5 check but also allows SplashTop to
 check your modified files for consistency. This is a considerable bonus with regards to stability and system security as instead of disabling this
 security feature it just updates the files to support it.
-{{% /alert %}}
+{{< /alert >}}
 
 Once "`Complete`" appears you should have a shiny new `UpdatedDFI.DFI` file on your desktop. Seriously, if this thing isn't sparkling then there is something wrong (jokes).
 
@@ -256,9 +255,9 @@ and click on Launch. Once the Express Gate Updater starts press `Ctrl+D` to disa
 <h4 id="terminalcommands">Method 2 - Terminal Commands</h4>
 
 
-{{% alert info %}}
+{{< alert info >}}
 It appears that some EeePC laptops do not have the selection screen for resolutions. In this case you can try Method 3 however it is (as yet) untested and may be likely to fail.
-{{% /alert %}}
+{{< /alert >}}
 
 This method requires that you have added the [va-term.sqx][va-term.sqx] file to your extracted image, and then updated and flashed your new image.
 Start ExpressGate and click on the Term icon in your launch bar.
@@ -304,9 +303,9 @@ The resulting va-customres.sqx file will need to be added to your upgraded Expre
 With any luck this will work and your ExpressGate will boot up correctly with the latest version. You can then use [Method 2](#terminalcommands) to set your resolution to whatever you desire.
 
 
-{{% alert info %}}
-This method has not been tested by myself as I do not have an ExpressGate Lite machine. You may also find that your EeePC is unable to run at the resolution you are attempting to use. Remember that although you may be able to select a higher resolution in Windows it is usually a trick which scrolls the screen around when you move the mouse. This <b>CAN NOT</b> be replicated in SplashTop and as such the only resolutions that will work are the actual resolutions supported by your screen.
-{{% /alert %}}
+{{< alert info >}}
+This method has not been tested by myself as I do not have an ExpressGate Lite machine. You may also find that your EeePC is unable to run at the resolution you are attempting to use. Remember that although you may be able to select a higher resolution in Windows it is usually a trick which scrolls the screen around when you move the mouse. This **CAN NOT** be replicated in SplashTop and as such the only resolutions that will work are the actual resolutions supported by your screen.
+{{< /alert >}}
 
 <h2 id="pointers">Some Pointers</h2>
 

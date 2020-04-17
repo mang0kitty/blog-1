@@ -1,15 +1,16 @@
-+++
-categories = ["development"]
-comments = true
-date = "2018-12-07T21:36:15+00:00"
-draft = true
-tags = ["development"]
-title = "Python Iterators, Next"
+---
+title: Python Iterators, Next
+date: 2018-12-07 21:36:15
+categories:
+  - development
+tags: 
+  - development
+comments: true
+draft: true
+---
 
-+++
-# Python Iterators, Next
 
-**How iterators work in Python, details about the** `**next**` **function and a lesson from production**
+**How iterators work in Python, details about the `next` function and a lesson from production**
 
 Recently we had an outage. It was a small one, by all accounts and as a result of the way our system is designed, it didn't impact any users, lose any data and wasn't in any way noticeable to anybody except us. It did happen though and that's a problem.
 
@@ -17,7 +18,7 @@ The cause of this outage was pretty simple, engineer A designed a nice new featu
 
 This time, however, it went wrong and caused an outage so let's talk about how that happened and take a detour through the land of Python iterators at the same time.
 
-<!-- more -->
+<!--more-->
 
 ## What is an iterator?
 

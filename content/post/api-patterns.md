@@ -95,7 +95,7 @@ who is unfamiliar with your API to identify what something does or what they can
 provide it without needing to dive through your docs.
 
 Remember that the more time someone spends writing their own code, the happier they
-are likely to be with your API. {{% hl-text red %}}Don't make your users' lives difficult.{{% /hl-text %}}
+are likely to be with your API. {{< hl-text red >}}Don't make your users' lives difficult.{{< /hl-text >}}
 
 {{< codeblock "API Verb Usage" >}}
 {{< codeblock-tab "http" "list" >}}
@@ -324,7 +324,7 @@ most websites (with `?q=my search query`) and is simple to support with any HTTP
 Unfortunately, implementations tend to limit the maximum number of characters in a URL, which places
 a constraint on how long/complex your query can be and can realistically cause problems for your
 users. More information can be found in this excellent [StackOverflow answer][url-length-answer],
-but {{% hl-text primary %}}as a rule of thumb you should avoid using URL strings over 2048 characters in length.{{% /hl-text %}}
+but {{< hl-text primary >}}as a rule of thumb you should avoid using URL strings over 2048 characters in length.{{< /hl-text >}}
 
 To work around this limitation, you can make use of the body of your request to embed much larger
 queries. This does, however, introduce the problem that some HTTP clients and servers do not support

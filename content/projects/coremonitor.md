@@ -37,13 +37,13 @@ Easily monitor your system's resource usage using our powerful replacement for t
     to easily display notifications using either a basic HTTP API, or by sending
     structured XML.
 
-{{% alert info %}}
-<a href=https://cdn.sierrasoftworks.com/coremonitor/CoreMonitorSetup.exe">Download CoreMonitor</a>
-{{% /alert %}}
+{{< alert info >}}
+[Download CoreMonitor](https://cdn.sierrasoftworks.com/coremonitor/CoreMonitorSetup.exe)
+{{< /alert >}}
 
-{{% alert %}}
-<a href=https://github.com/SierraSoftworks/coremonitor">View on GitHub</a>
-{{% /alert %}}
+{{< alert >}}
+[View on GitHub](https://github.com/SierraSoftworks/coremonitor)
+{{< /alert >}}
 
 <!--more-->
 

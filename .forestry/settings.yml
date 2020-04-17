@@ -33,7 +33,7 @@ instant_preview: true
 build:
   preview_env:
     - HUGO_ENV=staging
-    - HUGO_VERSION=0.58
+    - HUGO_VERSION=0.69
   preview_output_directory: public
   preview_docker_image: forestryio/hugo:latest
   mount_path: "/srv"
@@ -43,7 +43,7 @@ build:
   publish_command: hugo -d public
   publish_env:
     - HUGO_ENV=production
-    - HUGO_VERSION=0.58
+    - HUGO_VERSION=0.69
   output_directory: public
   preview_command: hugo -E -F -D -b $DEPLOY_URL -d public
-version: "0.58"
+version: "0.69"

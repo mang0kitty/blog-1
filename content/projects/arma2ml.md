@@ -27,9 +27,9 @@ line syntax makes creating shortcuts for your favourite mod configurations dead 
     ArmA 2 Mod Launcher is designed to be as lightweight as possible to ensure minimal disk usage 
     and ultra-fast startup times, because we all know how ArmA 2 loves to hog both of those.
 
-{{% alert info %}}
-<a href=https://cdn.sierrasoftworks.com/arma2ml/arma2ml.exe">Download ArmA 2 Mod Launcher</a>
-{{% /alert %}}
+{{< alert info >}}
+[Download ArmA 2 Mod Launcher](https://cdn.sierrasoftworks.com/arma2ml/arma2ml.exe)
+{{< /alert >}}
 
 <!--more-->
 

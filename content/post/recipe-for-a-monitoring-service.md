@@ -1,30 +1,44 @@
-+++
-categories = ["development", "operations", "theory"]
-comments = false
-date = "2018-09-28T15:03:05+00:00"
-draft = true
-tags = ["development", "operations", "theory"]
-title = "Blueprint for a Monitoring Stack"
+---
+title: Blueprint for a Monitoring Stack
+date: 2018-09-28 15:03:05
+categories:
+    - development
+    - operations
+    - theory
+tags: 
+    - development
+    - operations
+    - theory
+comments: false
+draft: true
+---
 
-+++
-For the last two years I've been working as the lead designer on a monitoring stack for Demonware. This stack is responsible everything from data acquisition to alerting and much besides. In this post I'll go over some of the design decisions we made, why we made them and some guidance for anybody designing their own monitoring stack.
+At one point in my career, I spent over 2 years building a monitoring stack. It started out
+the way many do; with people staring at dashboards, hoping to divine the secrets of production
+from ripples in the space time continuum before an outage occurred.
 
-<!-- more -->
+Over these two years we was able to transform not just the technology used, but the entire
+way the organization viewed monitoring, eventually removing the need for a NOC altogether.
+
+I'll walk you through the final design which was responsible everything from data acquisition
+to alerting and much besides. In this post I'll go over some of the design decisions we made,
+why we made them and some guidance for anybody designing their own monitoring stack.
+
+<!--more-->
 
 # What must it do?
-
 When evaluating a monitoring stack, there are a few things I look for. It must be **sensitive** to changes in the expected state of the things it is monitoring - it is always better to have more information than less. It must have a **high signal to noise ratio** because you really don't want to have to try and clean up a noisy event stream as a human, that leads to alert fatigue and defeats the point of the endeavour.
 
 The monitoring stack should **provide added value** over and above what is available from a basic check system like Nagios. This might mean that it attaches **additional, useful, context** to the events it presents, is able to route **problems to the people who can fix them** and allows **configuration by customers**.
 
 With that in mind, you're looking to build a stack which takes what you probably have already (a stream of events indicating that things have broken) and intelligently presents those events, at the right time, to the right people with all of the information they need to be able to triage the problem as quickly as possible.
 
-Remember that there is a distinct difference between a monitoring stack and a metrics/logging stack. Where metrics and logging are exceptionally good at tracking down root causes, providing long-term behavioural insights and exposing detailed runtime data; monitoring is responsible for precisely and reliably identifying when things break. Where an engineer during their normal work week might use logs and metrics to track down why something broke so that they can fix the underlying issue, an engineer being paged at 0300 on a Sunday is looking for the quickest way to restore service. Two very different use cases and two very different stacks to support them.
+Remember that there is a distinct difference between a monitoring stack and a metrics/logging stack. Where metrics and logging are exceptionally good at supporting humans in tracking down root causes, providing long-term behavioural insights and exposing detailed runtime data; monitoring is responsible for precisely and reliably identifying when things break. Where an engineer during their normal work week might use logs and metrics to track down why something broke so that they can fix the underlying issue, an engineer being paged at 0300 on a Sunday is looking for the quickest way to restore service. Two very different use cases and two very different stacks to support them.
 
 # How does it do this?
 Let's start with the bad news: on its own, the tech doesn't. The only way to get this right is by changing the way that your organization approaches monitoring and setting solid expectations around it. The technology you use and the stack you build will play a huge role in enabling that transformation, but without the support of your people, you'll just have a very fancy NOC dashboard.
 
-The good news is that once you've got the kind of stack we have, people actually want to make those changes. So let's talk about how you can build that stack.
+The good news is that once you've got the kind of stack we built, people actually want to make those changes. So let's talk about how you can build that stack.
 
 ## Customer Driven
 Remember how I said that people are what makes or breaks this transformation? Giving those people the tools they need to tailor behaviour to suit their use cases is a critical feature for building that initial engagement and supporting teams through that evolution.
@@ -93,7 +107,7 @@ You should also be careful about how you select your grouping keys, ideally allo
 The purpose of grouping isn't to ensure that you catch everything under the banner of a single incident, but rather to help reduce the human workload of managing incidents by aggregating a large number of events into a small number of incident entries.
 
 ### Context Collection
-While filtering and grouping of alerts will get you most of the way towards a functional stack and will certainly provide you with a much more managable NOC dashboard, if you really want to provide an offering that drives organizational value, you're going to want to differentiate yourself from everything else out there that does "AI powered alerting"... Yes [Moogsoft](https://www.moogsoft.com/), I'm looking at you!
+While filtering and grouping of alerts will get you most of the way towards a functional stack and will certainly provide you with a much more manageable NOC dashboard, if you really want to provide an offering that drives organizational value, you're going to want to differentiate yourself from everything else out there that does "AI powered alerting"... Yes [Moogsoft](https://www.moogsoft.com/), I'm looking at you!
 
 The best way to provide this value add is to expose contextual information that an engineer would need to seek out in their process of identifying and triaging the problem. This might mean collecting related logs and injecting them into your alert, or showing the system metrics that preceded a rise in application latency. You might gather information from your runbooks for the service, find recent occurrences of the same or similar problems to draw useful information from and provide a list of recent changes made. All of these things can help an engineer quickly and accurately track down why a service is encountering problems before they have even clicked the **Acknowledge** button on their pager.
 

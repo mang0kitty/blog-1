@@ -70,9 +70,9 @@ The genius of this idea was soon noticed when his snippet of code became sentien
 and took control of the Slack group it had been posted in. The community was later
 tricked into relocating by this sentience, a moment we shall never forget.
 
-{{% alert info %}}
-Show your support for the displaced by using the <strong>#zadevelopers4lyf</strong> hashtag.
-{{% /alert %}}
+{{< alert info >}}
+Show your support for the displaced by using the **#zadevelopers4lyf** hashtag.
+{{< /alert >}}
 
 ## Disclaimer
 
