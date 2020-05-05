@@ -65,7 +65,7 @@ stages:
                     SourcePath: '$(Pipeline.Workspace)/staging'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: 'blog-sierrasoftworks'
+                    azureSubscription: 'MSFT Benefit'
                     storage: $(Storage.Staging)
                     sasTokenTimeOutInMinutes: 15
             routeTraffic:
@@ -74,7 +74,7 @@ stages:
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'blog-sierrasoftworks'
+                    ConnectedServiceNameARM: 'MSFT Benefit'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Staging)
                     ProfileName: $(Cdn.Profile)
@@ -102,7 +102,7 @@ stages:
                     SourcePath: '$(Pipeline.Workspace)/live'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: 'blog-sierrasoftworks'
+                    azureSubscription: 'MSFT Benefit'
                     storage: $(Storage.Live)
                     sasTokenTimeOutInMinutes: 15
             routeTraffic:
@@ -111,7 +111,7 @@ stages:
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'blog-sierrasoftworks'
+                    ConnectedServiceNameARM: 'MSFT Benefit'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Live)
                     ProfileName: $(Cdn.Profile)
