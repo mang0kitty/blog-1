@@ -5,6 +5,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  - name: Subscription
+    value: MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)
   - name: Storage.Staging
     value: blogsierrasoftworksbeta
   - name: Storage.Live
