@@ -76,10 +76,6 @@ stages:
                     PurgeContent: '/*'
             postRouteTraffic:
               steps:
-                - task: Delay@1
-                  displayName: Wait for Purge
-                  inputs:
-                    delayForMinutes: 15
                 - pwsh: Invoke-WebRequest -UseBasicParsing https://staging.blog.sierrasoftworks.com
                   displayName: Confirm Website is Available
   - stage: release_live
@@ -116,9 +112,5 @@ stages:
                     PurgeContent: '/*'
             postRouteTraffic:
               steps:
-                - task: Delay@1
-                  displayName: Wait for Purge
-                  inputs:
-                    delayForMinutes: 5
                 - pwsh: Invoke-WebRequest -UseBasicParsing https://blog.sierrasoftworks.com
                   displayName: Confirm Website is Available
