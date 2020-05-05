@@ -61,10 +61,11 @@ stages:
           runOnce:
             deploy:
               steps:
+                - pwsh: ls ./staging/
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/staging/web'
+                    SourcePath: '$(Pipeline.Workspace)/staging'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
@@ -97,10 +98,11 @@ stages:
           runOnce:
             deploy:
               steps:
+                - pwsh: ls ./live/
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/live/web'
+                    SourcePath: '$(Pipeline.Workspace)/live'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
