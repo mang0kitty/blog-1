@@ -63,7 +63,7 @@ stages:
                     SourcePath: '$(Pipeline.Workspace)/staging'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: $(Subscription)
+                    azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
                     storage: $(Storage.Staging)
             routeTraffic:
               steps:
@@ -71,7 +71,7 @@ stages:
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: $(Subscription)
+                    ConnectedServiceNameARM: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Staging)
                     ProfileName: $(Cdn.Profile)
@@ -99,7 +99,7 @@ stages:
                     SourcePath: '$(Pipeline.Workspace)/live'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: $(Subscription)
+                    azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
                     storage: $(Storage.Live)
             routeTraffic:
               steps:
@@ -107,7 +107,7 @@ stages:
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: $(Subscription)
+                    ConnectedServiceNameARM: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Live)
                     ProfileName: $(Cdn.Profile)
