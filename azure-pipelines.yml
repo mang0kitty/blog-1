@@ -5,8 +5,6 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  - name: Subscription
-    value: MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)
   - name: Storage.Staging
     value: blogsierrasoftworksbeta
   - name: Storage.Live
@@ -64,18 +62,19 @@ stages:
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: './staging'
+                    SourcePath: '$(Pipeline.Workspace)/staging'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
+                    azureSubscription: 'blog-sierrasoftworks'
                     storage: $(Storage.Staging)
+                    sasTokenTimeOutInMinutes: 15
             routeTraffic:
               steps:
                 - task: PurgeAzureCDNEndpoint@2
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
+                    ConnectedServiceNameARM: 'blog-sierrasoftworks'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Staging)
                     ProfileName: $(Cdn.Profile)
@@ -100,18 +99,19 @@ stages:
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: './live'
+                    SourcePath: '$(Pipeline.Workspace)/live'
                     Destination: AzureBlob
                     ContainerName: '$web'
-                    azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
+                    azureSubscription: 'blog-sierrasoftworks'
                     storage: $(Storage.Live)
+                    sasTokenTimeOutInMinutes: 15
             routeTraffic:
               steps:
                 - task: PurgeAzureCDNEndpoint@2
                   displayName: Purge Azure CDN
                   inputs:
                     ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
+                    ConnectedServiceNameARM: 'blog-sierrasoftworks'
                     ResourceGroupName: $(ResourceGroup)
                     EndpointName: $(Cdn.Endpoint.Live)
                     ProfileName: $(Cdn.Profile)
