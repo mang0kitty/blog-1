@@ -61,7 +61,12 @@ stages:
           runOnce:
             deploy:
               steps:
-                - pwsh: ls ./staging/
+                - pwsh: |
+                    ls ./
+                    ls $(Pipeline.Workspace)/
+                    ls ./staging
+                    ls $(Pipeline.Workspace)/staging/
+                  ignoreLASTEXITCODE: true
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
@@ -98,7 +103,12 @@ stages:
           runOnce:
             deploy:
               steps:
-                - pwsh: ls ./live/
+                - pwsh: |
+                    ls ./
+                    ls $(Pipeline.Workspace)/
+                    ls ./live
+                    ls $(Pipeline.Workspace)/live/
+                  ignoreLASTEXITCODE: true
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
