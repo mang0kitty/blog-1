@@ -50,7 +50,7 @@ stages:
     jobs:
       - deployment: release_staging
         displayName: Release Website (Staging)
-        environment: staging.blog.sierrasoftworks.com
+        environment: staging-blog-sierrasoftworks-com
         strategy:
           runOnce:
             deploy:
@@ -90,7 +90,7 @@ stages:
     jobs:
       - deployment: release_live
         displayName: Release Website (Live)
-        environment: blog.sierrasoftworks.com
+        environment: blog-sierrasoftworks-com
         strategy:
           runOnce:
             deploy:
