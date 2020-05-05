@@ -1,0 +1,124 @@
+trigger:
+- master
+
+pool:
+  name: ubuntu-latest
+
+variables:
+  - name: Storage.Staging
+    value: blogsierrasoftworksbeta
+  - name: Storage.Live
+    value: blogsierrasoftworks
+  - name: ResourceGroup
+    value: app-blog
+  - name: Cdn.Profile
+    value: blog-sierrasoftworks
+  - name: Cdn.Endpoint.Staging
+    value: blog-sierrasoftworks-staging
+  - name: Cdn.Endpoint.Live
+    value: blog-sierrasoftworks-live
+
+stages:
+  - stage: build
+    displayName: Build Website
+    jobs:
+      - job: build_staging
+        displayName: Build Website (Staging)
+        steps:
+          - task: HugoTask@1
+            displayName: Generate Hugo Website
+            inputs:
+              destination: '$(Build.ArtifactStagingDirectory)/staging'
+              buildDrafts: true
+              buildFuture: true
+          - publish: '$(Build.ArtifactStagingDirectory)/staging'
+            artifact: staging
+
+      - job: build_release
+        displayName: Build Website (Live)
+        steps:
+          - task: HugoTask@1
+            displayName: Generate Hugo Website
+            inputs:
+              destination: '$(Build.ArtifactStagingDirectory)/live'
+          - publish: '$(Build.ArtifactStagingDirectory)/live'
+            artifact: live
+  - stage: release_staging
+    displayName: Staging
+    dependsOn:
+      - build
+    jobs:
+      - deployment: release_staging
+        displayName: Release Website (Staging)
+        environment: staging.blog.sierrasoftworks.com
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureFileCopy@4
+                  displayName: Copy Artifacts to Azure
+                  inputs:
+                    SourcePath: '$(Pipeline.Workspace)/staging'
+                    Destination: AzureBlob
+                    ContainerName: '$web'
+                    azureSubscription: $(Subscription)
+                    storage: $(Storage.Staging)
+            routeTraffic:
+              steps:
+                - task: PurgeAzureCDNEndpoint@2
+                  displayName: Purge Azure CDN
+                  inputs:
+                    ConnectedServiceNameSelector: ConnectedServiceNameARM
+                    ConnectedServiceNameARM: $(Subscription)
+                    ResourceGroupName: $(ResourceGroup)
+                    EndpointName: $(Cdn.Endpoint.Staging)
+                    ProfileName: $(Cdn.Profile)
+                    PurgeContent: '/*'
+            postRouteTraffic:
+              steps:
+                - task: Delay@1
+                  displayName: Wait for Purge
+                  inputs:
+                    delayForMinutes: 15
+                - pwsh: Invoke-WebRequest -UseBasicParsing https://staging.blog.sierrasoftworks.com
+                  displayName: Confirm Website is Available
+  - stage: release_live
+    displayName: Live
+    dependsOn:
+      - build
+      - release_staging
+    jobs:
+      - deployment: release_live
+        displayName: Release Website (Live)
+        environment: blog.sierrasoftworks.com
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureFileCopy@4
+                  displayName: Copy Artifacts to Azure
+                  inputs:
+                    SourcePath: '$(Pipeline.Workspace)/live'
+                    Destination: AzureBlob
+                    ContainerName: '$web'
+                    azureSubscription: $(Subscription)
+                    storage: $(Storage.Live)
+            routeTraffic:
+              steps:
+                - task: PurgeAzureCDNEndpoint@2
+                  displayName: Purge Azure CDN
+                  inputs:
+                    ConnectedServiceNameSelector: ConnectedServiceNameARM
+                    ConnectedServiceNameARM: $(Subscription)
+                    ResourceGroupName: $(ResourceGroup)
+                    EndpointName: $(Cdn.Endpoint.Live)
+                    ProfileName: $(Cdn.Profile)
+                    PurgeContent: '/*'
+            postRouteTraffic:
+              steps:
+                - task: Delay@1
+                  displayName: Wait for Purge
+                  inputs:
+                    delayForMinutes: 5
+                - pwsh: Invoke-WebRequest -UseBasicParsing https://blog.sierrasoftworks.com
+                  displayName: Confirm Website is Available
