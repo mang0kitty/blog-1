@@ -32,10 +32,10 @@ stages:
           - task: HugoTask@1
             displayName: Generate Hugo Website
             inputs:
-              destination: '$(Build.ArtifactStagingDirectory)/staging'
+              destination: '$(Build.ArtifactStagingDirectory)/web'
               buildDrafts: true
               buildFuture: true
-          - publish: '$(Build.ArtifactStagingDirectory)/staging'
+          - publish: '$(Build.ArtifactStagingDirectory)/web'
             artifact: staging
 
       - job: build_release
@@ -46,8 +46,8 @@ stages:
           - task: HugoTask@1
             displayName: Generate Hugo Website
             inputs:
-              destination: '$(Build.ArtifactStagingDirectory)/live'
-          - publish: '$(Build.ArtifactStagingDirectory)/live'
+              destination: '$(Build.ArtifactStagingDirectory)/web'
+          - publish: '$(Build.ArtifactStagingDirectory)/web'
             artifact: live
   - stage: release_staging
     displayName: Staging
@@ -64,7 +64,7 @@ stages:
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/staging'
+                    SourcePath: '$(Pipeline.Workspace)/staging/web'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
@@ -100,7 +100,7 @@ stages:
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/live'
+                    SourcePath: '$(Pipeline.Workspace)/live/web'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
