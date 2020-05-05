@@ -63,14 +63,12 @@ stages:
               steps:
                 - pwsh: |
                     ls ./
-                    ls $(Pipeline.Workspace)/
                     ls ./staging
-                    ls $(Pipeline.Workspace)/staging/
                   ignoreLASTEXITCODE: true
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/staging'
+                    SourcePath: './staging'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
@@ -105,14 +103,12 @@ stages:
               steps:
                 - pwsh: |
                     ls ./
-                    ls $(Pipeline.Workspace)/
                     ls ./live
-                    ls $(Pipeline.Workspace)/live/
                   ignoreLASTEXITCODE: true
                 - task: AzureFileCopy@4
                   displayName: Copy Artifacts to Azure
                   inputs:
-                    SourcePath: '$(Pipeline.Workspace)/live'
+                    SourcePath: './live'
                     Destination: AzureBlob
                     ContainerName: '$web'
                     azureSubscription: 'MSFT Benefit (108b3ddb-53fb-4344-80b2-d6c151912be6)'
