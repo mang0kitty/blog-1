@@ -27,6 +27,8 @@ stages:
       - job: build_staging
         displayName: Build Website (Staging)
         steps:
+          - checkout: self
+            submodules: recursive
           - task: HugoTask@1
             displayName: Generate Hugo Website
             inputs:
@@ -39,6 +41,8 @@ stages:
       - job: build_release
         displayName: Build Website (Live)
         steps:
+          - checkout: self
+            submodules: recursive
           - task: HugoTask@1
             displayName: Generate Hugo Website
             inputs:
