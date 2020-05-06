@@ -1,27 +1,17 @@
 trigger:
-- master
+  - master
 
-pool:
-  vmImage: 'windows-latest'
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: SierraSoftworks/devops-pipelines
+      endpoint: SierraSoftworks
 
-variables:
-  - name: Storage.Staging
-    value: blogsierrasoftworksbeta
-  - name: Storage.Live
-    value: blogsierrasoftworks
-  - name: ResourceGroup
-    value: app-blog
-  - name: Cdn.Profile
-    value: blog-sierrasoftworks
-  - name: Cdn.Endpoint.Staging
-    value: blog-sierrasoftworks-staging
-  - name: Cdn.Endpoint.Live
-    value: blog-sierrasoftworks-live
-
-stages:
-  - stage: build
-    displayName: Build Website
-    jobs:
+extends:
+  template: azurecdn/website.yml@templates
+  parameters:
+    build:
       - job: build_staging
         displayName: Build Website (Staging)
         steps:
@@ -47,76 +37,25 @@ stages:
               destination: '$(Build.ArtifactStagingDirectory)/web'
           - publish: '$(Build.ArtifactStagingDirectory)/web'
             artifact: live
-  - stage: release_staging
-    displayName: Staging
-    dependsOn:
-      - build
-    jobs:
-      - deployment: release_staging
-        displayName: Release Website (Staging)
-        environment: staging-blog-sierrasoftworks-com
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - task: AzureFileCopy@4
-                  displayName: Copy Artifacts to Azure
-                  inputs:
-                    SourcePath: '$(Pipeline.Workspace)/staging'
-                    Destination: AzureBlob
-                    ContainerName: '$web'
-                    azureSubscription: 'MSFT Benefit'
-                    storage: $(Storage.Staging)
-                    sasTokenTimeOutInMinutes: 15
-            routeTraffic:
-              steps:
-                - task: PurgeAzureCDNEndpoint@2
-                  displayName: Purge Azure CDN
-                  inputs:
-                    ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'MSFT Benefit'
-                    ResourceGroupName: $(ResourceGroup)
-                    EndpointName: $(Cdn.Endpoint.Staging)
-                    ProfileName: $(Cdn.Profile)
-                    PurgeContent: '/*'
-            postRouteTraffic:
-              steps:
-                - pwsh: Invoke-WebRequest -UseBasicParsing https://staging.blog.sierrasoftworks.com
-                  displayName: Confirm Website is Available
-  - stage: release_live
-    displayName: Live
-    dependsOn:
-      - build
-      - release_staging
-    jobs:
-      - deployment: release_live
-        displayName: Release Website (Live)
-        environment: blog-sierrasoftworks-com
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - task: AzureFileCopy@4
-                  displayName: Copy Artifacts to Azure
-                  inputs:
-                    SourcePath: '$(Pipeline.Workspace)/live'
-                    Destination: AzureBlob
-                    ContainerName: '$web'
-                    azureSubscription: 'MSFT Benefit'
-                    storage: $(Storage.Live)
-                    sasTokenTimeOutInMinutes: 15
-            routeTraffic:
-              steps:
-                - task: PurgeAzureCDNEndpoint@2
-                  displayName: Purge Azure CDN
-                  inputs:
-                    ConnectedServiceNameSelector: ConnectedServiceNameARM
-                    ConnectedServiceNameARM: 'MSFT Benefit'
-                    ResourceGroupName: $(ResourceGroup)
-                    EndpointName: $(Cdn.Endpoint.Live)
-                    ProfileName: $(Cdn.Profile)
-                    PurgeContent: '/*'
-            postRouteTraffic:
-              steps:
-                - pwsh: Invoke-WebRequest -UseBasicParsing https://blog.sierrasoftworks.com
-                  displayName: Confirm Website is Available
+    pool:
+      vmImage: windows-latest
+    
+    subscription: MSFT Benefit
+
+    # If you've got multiple resource groups, this should match the one used by your CDN profile.
+    resourcegroup: app-blog
+    cdn_profile: blog-sierrasoftworks
+
+    staging:
+      environment: staging-blog-sierrasoftworks-com
+      cdn_endpoint: blog-sierrasoftworks-staging
+      artifact: staging
+      storage: blogsierrasoftworksbeta
+      healthcheck: https://staging.blog.sierrasoftworks.com
+
+    production:
+      environment: blog-sierrasoftworks-com
+      cdn_endpoint: blog-sierrasoftworks-live
+      artifact: live
+      storage: blogsierrasoftworks
+      healthcheck: https://blog.sierrasoftworks.com
