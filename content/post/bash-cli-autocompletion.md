@@ -63,7 +63,7 @@ Okay, so if we can't use script completion, what are our other options?
 
 ### Function Completion
 Function completion in Bash allows you to provide the name of a function which
-will handle the generation of autocompletion suggestions. The function recieves
+will handle the generation of autocompletion suggestions. The function receives
 a couple of variables which we can use...
 
 ```sh
