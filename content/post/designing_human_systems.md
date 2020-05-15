@@ -204,7 +204,7 @@ act on that information.
 
 {{< figure "Ice Floe" "https://cdn.sierrasoftworks.com/blog/ice_floe.jpg" "fig-40" >}}
 
-A good example is navigating an oil tanker through an ice floe. When you first run into ice, a the edge of the
+A good example is navigating an oil tanker through an ice floe. When you first run into ice, at the edge of the
 floe, working to ensure that the bridge has better visibility and can chart a course around the floe will work
 wonders. But if you're already in the ice floe, focussing your effort on better visibility for the bridge isn't
 going to help things one bit.
