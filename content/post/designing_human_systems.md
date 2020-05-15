@@ -67,7 +67,7 @@ There's an excellent talk by Nickolas Means on Lockheed Martin's Skunk Works tea
 were formed. Without a doubt, they're an example of an exceptional team of engineers delivering
 some of the most amazing engineering achievements of the past 50 years. Go and watch it, I'll wait.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pL3Yzjk5R4M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube id="pL3Yzjk5R4M" width="560" height="315" >}}
 
 I'm also a strong believer that the vast majority of people want to love their work.
 Sometimes that means working in a field you're passionate about, for a cause you support, with
@@ -275,7 +275,7 @@ strategically introduce velocity and observability into the projects which need 
 > organization are unable to deal with.
 
 ## My Manifesto
-That's a pretty long post, so let me try and sum up my views on being an SRE in a few words.
+This is a pretty long post, so let me try and sum up my views on being an SRE in a few words.
 
 The role of SRE is to foster a sustainable balance between velocity and reliability within an organization.
 They do so by carefully balancing their ability to inject additional velocity into areas which need it most,
