@@ -215,6 +215,11 @@ figure.fig-50 {
     z-index: 1000;
 }
 
+iframe.youtube {
+    margin: 40px auto;
+    display: block;
+}
+
 .filetree {
     font-family: "Fira Code", monospace;
     font-size: 1em;
