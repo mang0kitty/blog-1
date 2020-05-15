@@ -6,6 +6,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Open Sans Condensed", sans-serif;
+    clear: both;
 }
 
 code {
@@ -34,6 +35,14 @@ kbd {
     background: #eee;
     border-radius: 3px;
     padding: 0 0.2em;
+}
+
+hr {
+    clear: both;
+}
+
+li[id]::before {
+    display: none;
 }
 
 .alert {
@@ -153,13 +162,18 @@ figure.fig-33 {
     float: left;
 }
 
+figure.fig-40 {
+    width: 40%;
+    float: left;
+}
+
 figure.fig-50 {
     width: 50%;
     float: left;
 }
 
 @media only screen and (max-width: 719px) {
-    figure.fig-33, figure.fig-50 {
+    figure.fig-33, figure.fig-40, figure.fig-50 {
         margin: 1em 0;
         width: 100%;
     }
