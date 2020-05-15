@@ -30,7 +30,7 @@ question of whether containers are the right solution to the problems you face.
 It is incredibly important that you keep in mind the concept of "Don't fix what isn't broken"
 when considering the adoption of new technologies, Docker is no different. If you've got a
 system in place which suits your business requirements and doesn't place undue stress on
-your employees then it is my oppinion that you leave it be. Adopting Docker for the sake
+your employees then it is my opinion that you leave it be. Adopting Docker for the sake
 of appearances will likely not yield any tangible benefits and will probably cost you in the
 long run.
 
@@ -51,7 +51,7 @@ a lot of literature which implies production deployments are just a `docker run`
 is somewhat more complex.
 
 The fact is, production deployments of any service require certain guarantees around availability
-and failure tolerance which the core Docker runtime isn't inteded to provide. This is the role that
+and failure tolerance which the core Docker runtime isn't intended to provide. This is the role that
 orchestrators are intended to fill, offering the ability to recover from infrastructure failures,
 handling application crashes and monitoring the health of your services.
 
@@ -77,7 +77,7 @@ host.
 docker swarm init
 ```
 
-This simplicity extends far beyond the initial setup, encompasing everything from creating isolated networks
+This simplicity extends far beyond the initial setup, encompassing everything from creating isolated networks
 on which your services can communicate to performing rolling updates of those services as versions change.
 If anything, this simplicity and ease of use - not to mention the ability to run an identical environment
 on your laptop with no extra work - is the primary reason one would choose Swarm over any of its competitors.
@@ -98,7 +98,7 @@ problem - it's something which is glaring in its absence from Swarm itself.
 
 ## Where Swarm Works Well
 Swarm, as it stands right now, lacks some of the more complex features which make a solution like Kubernetes
-so attractie, however it more than makes up for this in its target demographic - people who want to deploy
+so attractive, however it more than makes up for this in its target demographic - people who want to deploy
 Docker in production, on a small cluster, with minimal effort.
 
 The fact is, systems like Kubernetes and DC/OS are designed and intended for use at enterprise scale, where
@@ -152,7 +152,7 @@ decide based on your use case.
 The latter point is a valid concern, APIs which can change under you are something which should make
 any developer or ops guy wary. That being said, instability is something the development community
 is intimately familiar with and the application of processes like Agile and the structuring of
-your tooling to accomodate that instability should mean that, even significant, changes don't interrupt
+your tooling to accommodate that instability should mean that, even significant, changes don't interrupt
 you for an extended period of time.
 
 On the other side of the coin, events like [Swarm3k](http://sematext.com/swarm3k/) have showcased
