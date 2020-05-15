@@ -212,6 +212,7 @@ figure.fig-50 {
 
 .menubar {
     font-family: "Open Sans Condensed", sans-serif;
+    z-index: 1000;
 }
 
 .filetree {
