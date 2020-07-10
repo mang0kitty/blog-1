@@ -1,10 +1,14 @@
 ---
 title: "Designing Human Systems"
 date: 2020-05-15T08:00:52+01:00
+categories:
+  - site reliability engineering
+  - balance
 tags:
   - development
   - site reliability engineering
   - balance
+comments: true
 ---
 
 Recently I was having a conversation with a colleague who asserted that we (SREs) are broadly the
