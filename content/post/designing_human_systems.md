@@ -1,10 +1,10 @@
 ---
 title: "Designing Human Systems"
 date: 2020-05-15T08:00:52+01:00
-draft: true
 tags:
   - development
   - site reliability engineering
+  - balance
 ---
 
 Recently I was having a conversation with a colleague who asserted that we (SREs) are broadly the
@@ -12,12 +12,12 @@ types of engineer who, if given the choice, try to focus on perfecting the funda
 surprised me, because if you were to ask me about my views on engineering, I'd probably lean
 in a slightly different direction.
 
-My personal view on SRE is that its a game of balance. We're not Software Engineers, but we're
-also not Operations Engineers. We tread a fine line in the middle, pushing on aspects of the
-broader (humans included) system to help it find a stable equilibrium in which it delivers
-maximum value for all stakeholders. That kind of balancing requires a very pragmatic, flexible
-approach and often depends more on the subtleties of the system at hand than any theoretical
-approach.
+My personal view on SRE is that its a game of balance. We're not Software Engineers, we're
+not Operations Engineers and we're also not Security Engineers. We tread a fine line in the
+middle, pushing on aspects of the broader (humans included) system to help it find a stable
+equilibrium in which it delivers maximum value for all stakeholders. That kind of balancing
+requires a very pragmatic, flexible approach and often depends more on the subtleties of the
+system at hand than a rigidly theoretical approach can offer.
 
 With that in mind, I think that as engineers, we need to focus on building systems that support
 that healthy equilibrium. Doing so means balancing a wide range of requirements from different,
@@ -247,11 +247,11 @@ the table that neither a pure development team nor an operations team brings.
 
 {{< figure "A Straw-Man" "https://cdn.sierrasoftworks.com/blog/strawman.jpg" "fig-40" >}}
 
-The straw-man examples for a dev team and an Ops team are that they focus purely on features and reliability
-respectively. Where the dev team is benchmarked on meeting customer deadlines, the Ops team is benchmarked on
-whether the service is available. Separating these teams, in the straw-man case, leads to the SWE team shipping
+The straw-man examples for a Dev team and an Ops team are that they focus purely on features and reliability
+respectively. Where the Dev team is benchmarked on meeting customer deadlines, the Ops team is benchmarked on
+whether the service is available. Separating these teams, in the straw-man case, leads to the Dev team shipping
 feature-packed, buggy, software that the Ops team is penalized for. To prevent this, the Ops team places
-limitations on the SWE team: release cycles, planned downtime, bug SLOs etc.
+limitations on the Dev team: release cycles, planned downtime, bug SLOs etc.
 
 In practice, reality is rarely this cut-and-dry and most Dev/Ops teams try to find a comfortable balance
 somewhere in the middle. How successful they are depends on a range of factors and this is where an SRE
@@ -272,7 +272,7 @@ ability to work outside the traditional Dev/Ops team cycle and, with the support
 strategically introduce velocity and observability into the projects which need it most.
 
 > SREs work by carefully and deliberately tackling the systemic weaknesses which other teams within your
-> organization are unable to deal with.
+> organization are unable, or un-incentivized, to deal with.
 
 ## My Manifesto
 This is a pretty long post, so let me try and sum up my views on being an SRE in a few words.
@@ -284,7 +284,7 @@ to magnify the impact of other teams within the organization, enabling the entir
 build high quality products.
 
 With that in mind and with the caveat that this may all change as I learn more, here are the ordering of my
-priorities (stealing shamelessly from the Agile Manifesto style).
+priorities (stealing shamelessly from the Agile Manifesto's style).
 
  - People's happiness over technological perfection.
  - Learning and experimentation over knowledge and correctness.
