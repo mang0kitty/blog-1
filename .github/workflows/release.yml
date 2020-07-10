@@ -60,7 +60,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob sync --container $web --account-name blogsierrasoftworksbeta --source ./out
+            az storage blob sync --container '$web' --account-name blogsierrasoftworksbeta --source ./out
             az cdn endpoint purge -g app-blog -n blog-sierrasoftworks-staging --profile-name blog-sierrasoftworks --content-paths '/*'
   
   deploy-live:
@@ -84,5 +84,5 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob sync --container $web --account-name blogsierrasoftworks --source ./out
+            az storage blob sync --container '$web' --account-name blogsierrasoftworks --source ./out
             az cdn endpoint purge -g app-blog -n blog-sierrasoftworks-live --profile-name blog-sierrasoftworks --content-paths '/*'
