@@ -1,10 +1,23 @@
 name: Release
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+env:
+  STAGING_STORAGE_CONTAINER: "$web"
+  STAGING_STORAGE_ACCOUNT: "blogsierrasoftworksbeta"
+  STAGING_CDN_RESOURCEGROUP: app-blog
+  STAGING_CDN_PROFILE: "blog-sierrasoftworks"
+  STAGING_CDN_ENDPOINT: "blog-sierrasoftworks-staging"
+
+  LIVE_STORAGE_CONTAINER: "$web"
+  LIVE_STORAGE_ACCOUNT: "blogsierrasoftworks"
+  LIVE_CDN_RESOURCEGROUP: app-blog
+  LIVE_CDN_PROFILE: "blog-sierrasoftworks"
+  LIVE_CDN_ENDPOINT: "blog-sierrasoftworks-live"
+  
 
 jobs:
   build:
@@ -61,9 +74,9 @@ jobs:
         with:
           inlineScript: |
             echo "Uploading Site Contents"
-            az storage blob sync --container '$web' --account-name blogsierrasoftworksbeta --source ./out
+            az storage blob sync --container '${{ env.STAGING_STORAGE_CONTAINER }}' --account-name ${{ env.STAGING_STORAGE_ACCOUNT }} --source ./out
             echo "Purging CDN"
-            az cdn endpoint purge -g app-blog -n blog-sierrasoftworks-staging --profile-name blog-sierrasoftworks --content-paths '/*'
+            az cdn endpoint purge -g ${{ env.STAGING_CDN_RESOURCEGROUP }} -n ${{ env.STAGING_CDN_ENDPOINT }} --profile-name ${{ env.STAGING_CDN_PROFILE }} --content-paths '/*'
   
   deploy-live:
     runs-on: ubuntu-latest
@@ -87,6 +100,6 @@ jobs:
         with:
           inlineScript: |
             echo "Uploading Site Contents"
-            az storage blob sync --container '$web' --account-name blogsierrasoftworks --source ./out
+            az storage blob sync --container '${{ env.LIVE_STORAGE_CONTAINER }}' --account-name ${{ env.LIVE_STORAGE_ACCOUNT }} --source ./out
             echo "Purging CDN"
-            az cdn endpoint purge -g app-blog -n blog-sierrasoftworks-live --profile-name blog-sierrasoftworks --content-paths '/*'
+            az cdn endpoint purge -g ${{ env.LIVE_CDN_RESOURCEGROUP }} -n ${{ env.LIVE_CDN_ENDPOINT }} --profile-name ${{ env.LIVE_CDN_PROFILE }} --content-paths '/*'
