@@ -1,4 +1,4 @@
-FROM nginx:1.19.4-alpine
+FROM nginx:1.19.5-alpine
 
 MAINTAINER Benjamin Pannell <admin@sierrasoftworks.com>
 
