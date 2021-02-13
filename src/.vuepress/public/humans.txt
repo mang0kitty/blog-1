@@ -1,0 +1,10 @@
+/* TEAM */
+Lead Developer: Benjamin Pannell
+Site: https://ben.pannell.dev
+Twitter: @Sierra563
+Location: Dublin, Ireland
+
+/* SITE */
+Standards: HTML5, CSS3, ES6
+Components: VuePress
+Software: VSCode, PowerShell, VuePress, Azure CDN
