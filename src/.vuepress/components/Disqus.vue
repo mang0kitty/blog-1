@@ -11,6 +11,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
+import { usePageData } from '@vuepress/client'
+
 export default defineComponent({
   name: "Disqus",
   props: {
@@ -23,8 +25,14 @@ export default defineComponent({
   mounted() {},
   setup(props) {
     const container = ref(null);
+    const pageData = usePageData()
 
     onMounted(() => {
+      window.disqus_config = function() {
+        this.page.url = `https://blog.sierrasoftworks.com${pageData.value.path}`
+        this.page.identifier = `${pageData.value.path}`
+      }
+
       let tag = document.createElement("script");
       tag.src = `https://${props.website}.disqus.com/embed.js`;
       tag.setAttribute("data-timestamp", +new Date());
