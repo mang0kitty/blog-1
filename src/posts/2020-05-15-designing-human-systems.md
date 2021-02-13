@@ -342,7 +342,7 @@ more.
 
 <script>
 import Figure from "../../../components/ImageFigure.vue"
-import Youtube from "../../../components/Youtube.vue"
+import Youtube from "../../../components/YouTube.vue"
 
 export default {
   components: {

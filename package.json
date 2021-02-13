@@ -7,10 +7,10 @@
     "name": "Benjamin Pannell",
     "email": "contact@sierrasoftworks.com"
   },
-  "repository": "https://github.com/SierraSoftworks/blog.git/blog",
+  "repository": "https://github.com/SierraSoftworks/blog.git",
   "scripts": {
     "dev": "vuepress dev src",
-    "build": "vuepress build src --dest ./dist"
+    "build": "vuepress build src --dest dist"
   },
   "license": "MIT",
   "devDependencies": {
