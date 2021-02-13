@@ -69,14 +69,14 @@ jobs:
         with:
           inlineScript: |
             echo "Uploading Site Contents"
-            az storage blob sync --container '${{ env.STAGING_STORAGE_CONTAINER }}' --account-name ${{ env.STAGING_STORAGE_ACCOUNT }} --source ./dist
+            az storage blob sync --container '${{ env.STAGING_STORAGE_CONTAINER }}' --account-name ${{ env.STAGING_STORAGE_ACCOUNT }} --source ./dist --auth-mode login
 
       - name: Purge Azure CDN
         uses: azure/CLI@v1
         with:
           inlineScript: |
             echo "Purging CDN"
-            az cdn endpoint purge -g ${{ env.STAGING_CDN_RESOURCEGROUP }} -n ${{ env.STAGING_CDN_ENDPOINT }} --profile-name ${{ env.STAGING_CDN_PROFILE }} --content-paths '/*'
+            az cdn endpoint purge -g ${{ env.STAGING_CDN_RESOURCEGROUP }} -n ${{ env.STAGING_CDN_ENDPOINT }} --profile-name ${{ env.STAGING_CDN_PROFILE }} --content-paths '/*' --auth-mode login
   
   deploy-live:
     runs-on: ubuntu-latest
@@ -100,11 +100,11 @@ jobs:
         with:
           inlineScript: |
             echo "Uploading Site Contents"
-            az storage blob sync --container '${{ env.LIVE_STORAGE_CONTAINER }}' --account-name ${{ env.LIVE_STORAGE_ACCOUNT }} --source ./dist
+            az storage blob sync --container '${{ env.LIVE_STORAGE_CONTAINER }}' --account-name ${{ env.LIVE_STORAGE_ACCOUNT }} --source ./dist --auth-mode login
 
       - name: Purge Azure CDN
         uses: azure/CLI@v1
         with:
           inlineScript: |
             echo "Purging CDN"
-            az cdn endpoint purge -g ${{ env.LIVE_CDN_RESOURCEGROUP }} -n ${{ env.LIVE_CDN_ENDPOINT }} --profile-name ${{ env.LIVE_CDN_PROFILE }} --content-paths '/*'
+            az cdn endpoint purge -g ${{ env.LIVE_CDN_RESOURCEGROUP }} -n ${{ env.LIVE_CDN_ENDPOINT }} --profile-name ${{ env.LIVE_CDN_PROFILE }} --content-paths '/*' --auth-mode login
