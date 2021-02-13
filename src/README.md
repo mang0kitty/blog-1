@@ -19,39 +19,51 @@ footer: Copyright © Sierra Softworks 2021
 ---
 
 
-<div class="" v-if="latestPost">
+<div class="" v-if="latestPosts">
 
-## Latest Post
+## Latest Posts
 
-<div class="latest-post__excerpt" v-html="latestPost.excerpt"></div>
+<div class="latest-post" v-for="post in latestPosts">
+    <div class="latest-post__excerpt" v-html="post.excerpt"></div>
+    <div class="latest-post__metadata">
+        <DateTime class="latest-post__date" :time="post.frontmatter.date" format="YYYY-MM-DD" />
+        <span class="tag" v-for="tag in (post.frontmatter?.tags || [])">#{{ tag }}</span>
+    </div>
 
-<a :href="latestPost.path">Keep Reading &rarr;</a>
 
+<a :href="post.path">Keep Reading &rarr;</a>
+</div>
 </div>
 
 <script lang="ts">
 import {defineComponent, ref, onMounted, onUpdated} from 'vue'
 import {useRouter} from "vue-router"
 import {usePagesData} from '@vuepress/client'
+import DateTime from "../../components/Date.vue"
 
 export default defineComponent({
+    components: {
+        DateTime
+    },
     setup() {
         const router = useRouter()
-        const latestPost = ref(null)
+        const latestPosts = ref(null)
 
         onMounted(() => {
             Promise.all(Object.values(usePagesData().value).map(get => get()))
                 .then(pages => {
-                    const posts = pages.filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md");
+                    const posts = pages
+                        .filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md")
+                        .filter(page => !!page.excerpt);
 
                     posts.sort((a, b) => b.filePathRelative > a.filePathRelative ? 1 : -1)
 
-                    latestPost.value = posts[0]
+                    latestPosts.value = posts.slice(0, 3)
                 })
         })
 
         return {
-            latestPost
+            latestPosts
         }
     }
 })
@@ -60,5 +72,20 @@ export default defineComponent({
 <style>
     .latest-post__excerpt h1 {
         font-size: 1.4rem;
+    }
+
+    .latest-post__metadata {
+
+    }
+
+    .latest-post__date {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    .tag {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin: 0 5px;
     }
 </style>
