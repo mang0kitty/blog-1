@@ -2,6 +2,8 @@
   <div class="about-me">
     <img
       class="about-me__icon"
+      width="100"
+      height="100"
       src="https://cv.sierrasoftworks.com/resources/avatar.jpg"
       alt="A picture of Benjamin Pannell"
     />
