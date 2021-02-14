@@ -1,14 +1,13 @@
-FROM nginx:1.19.6-alpine
+FROM node:alpine
 
-MAINTAINER Benjamin Pannell <admin@sierrasoftworks.com>
+ADD ./package*.json /src/
+WORKDIR /src
+RUN npm ci
 
-COPY conf/nginx.conf /etc/nginx/conf.d/blog.conf
+ADD ./src /src/src
+RUN npm run build
 
-ARG VERSION
-LABEL version=${VERSION:-development}
+RUN ls -al /src/dist/
 
-COPY public/ /src/blog/
-
-EXPOSE 3000
-#HEALTHCHECK --interval=5s --timeout=1s \
-#    CMD curl -f http://localhost:3000/index.html || exit 1
+FROM nginx:alpine
+COPY --from=0 /src/dist/ /usr/share/nginx/html/

@@ -1,3 +1,5 @@
-*
-!public
-!conf
+/node_modules
+/dist
+/old
+**/.cache/
+**/.temp/
