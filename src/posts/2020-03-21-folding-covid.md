@@ -6,6 +6,7 @@ date: 2020-03-21
 permalinkPattern: :year/:month/:day/:slug/
 layout: GitHubProject
 repo: notheotherben/arm-covid-folding
+download: https://raw.githubusercontent.com/notheotherben/arm-covid-folding/main/template.json
 tags:
     - operations
     - azure
@@ -21,6 +22,10 @@ expected that the default VM (`Standard_NC6_Promo`) will cost about $350 per mon
 (depending on your choice of region etc) which means that on the stock Azure trial benefit
 you should be able to get about 2 weeks of runtime before running out of free credits.
 
+::: tip
+You can view the Azure template [here](https://raw.githubusercontent.com/notheotherben/arm-covid-folding/main/template.json).
+:::
+
 ## Instructions
 To deploy this template, you'll need to first create a Resource Group and then deploy this template to it.
 You'll find instructions for how to do so over here:
@@ -30,7 +35,9 @@ You'll find instructions for how to do so over here:
     
     **IMPORTANT** When asked which template you wish to deploy, select **Build your own template in the editor** and paste the template below.
 
+::: tip
 Once your VM has been deployed, it will install the F@H client and start folding. You can monitor its progress by running `ssh folding@<your VM's IP> tail -f /var/lib/fahclient/log.txt`.
+:::
 
 ### Parameters
 ##### Name (`default: covid19folding`)

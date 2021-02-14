@@ -8,11 +8,11 @@ description: |
 date: 2020-05-15T08:00:52Z
 permalinkPattern: :year/:month/:day/:slug/
 categories:
-  - site reliability engineering
+  - sre
   - balance
 tags:
   - development
-  - site reliability engineering
+  - sre
   - balance
 comments: true
 ---

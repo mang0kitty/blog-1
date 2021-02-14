@@ -9,8 +9,9 @@ permalinkPattern: :year/:month/:day/:slug/
 categories:
     - operations
 tags:
-    - site reliability engineering
+    - sre
     - processes
+    - incidents
 comments: true
 ---
 
