@@ -3,7 +3,7 @@ import type {App, Page, PageHeader} from "@vuepress/core"
 import {DefaultThemeOptions, NavbarGroup} from '@vuepress/theme-default'
 import {join} from "path"
 
-function buildNavMenu(app: App, text: string, prefix: string): NavbarGroup {
+function buildNavMenu(app: App, text: string, prefix: string, sortGroups: (a: string, b: string) => number = (a, b) => a.localeCompare(b)): NavbarGroup {
   const children = app.pages.filter(p => p.path?.startsWith(prefix) && !p.filePathRelative?.endsWith("README.md"))
 
   const ungroupedChildren = children.filter(page => !page.frontmatter.group)
@@ -14,11 +14,14 @@ function buildNavMenu(app: App, text: string, prefix: string): NavbarGroup {
     return groups
   }, <{ [group: string]: Page[] }>{});
 
+  const childGroupKeys = Object.keys(childGroups);
+  childGroupKeys.sort(sortGroups)
+
   return {
     text,
     children: [
       ...ungroupedChildren.map(p => p.path),
-      ...Object.keys(childGroups).map(group => ({
+      ...childGroupKeys.map(group => ({
         text: group,
         children: childGroups[group].map(p => p.path)
       }))
@@ -56,7 +59,7 @@ const config: UserConfig = {
   onInitialized(app) {
     app.options.themeConfig.navbar = [
       "/archive/",
-      buildNavMenu(app, "Projects", "/projects/"),
+      buildNavMenu(app, "Projects", "/projects/", (a, b) => b.localeCompare(a)),
       buildNavMenu(app, "Licenses", "/licenses/"),
       {
         text: "About Me",
