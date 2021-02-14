@@ -68,7 +68,7 @@ export default {
             Promise.all(Object.values(usePagesData().value).map(get => get()))
                 .then(pages => {
                     const postsPages = pages.filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md")
-                    postsPages.sort((a, b) => b.filePathRelative > a.filePathRelative ? -1 : 1)
+                    postsPages.sort((a, b) => b.filePathRelative > a.filePathRelative ? 1 : -1)
 
                     posts.push(...postsPages)
                 })
