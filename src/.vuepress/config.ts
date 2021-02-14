@@ -27,7 +27,7 @@ function buildNavMenu(app: App, text: string, prefix: string): NavbarGroup {
 }
 
 function htmlDecode(input: string): string {
-  return input.replace("&#39;", "'").replace("&amp;", "&")
+  return input.replace("&#39;", "'").replace("&amp;", "&").replace("&quot;", '"')
 }
 
 function fixPageHeader(header: PageHeader) {
@@ -43,8 +43,6 @@ const config: UserConfig = {
   head: [
     ['meta', { name: "description", content: "The official Sierra Softworks blog, written by Benjamin Pannell." }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    // ['script', { async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-WJQ1PVYVH0" }],
-    // ['script', {}, "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}; gtag('js', new Date()); gtag('config', 'G-WJQ1PVYVH0');"]
   ],
 
   theme: join(__dirname, "theme", "index.ts"),
