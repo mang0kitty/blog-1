@@ -8,6 +8,7 @@ permalinkPattern: /projects/:slug/
 date: 2021-02-11
 layout: GitHubProject
 repo: sierrasoftworks/git-tool
+docs: https://github.com/sierrasoftworks/git-tool/wiki
 releases: true
 ---
 

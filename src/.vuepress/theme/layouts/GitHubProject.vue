@@ -10,6 +10,13 @@
               <OutboundLink />
             </a>
           </li>
+
+          <li v-if="frontmatter.docs">
+            <a :href="frontmatter.docs" class="nav-link sidebar-link">
+              Documentation
+              <OutboundLink />
+            </a>
+          </li>
           
           <li v-if="frontmatter.repo && frontmatter.releases">
             <a :href="releasesUrl" class="nav-link sidebar-link">
