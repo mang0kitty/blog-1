@@ -8,6 +8,7 @@ tags:
     - arma
 layout: GitHubProject
 repo: sierrasoftworks/arma2ml
+download: https://cdn.sierrasoftworks.com/arma2ml/arma2ml.exe
 ---
 
 # ArmA 2 Mod Launcher
