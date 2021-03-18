@@ -4,6 +4,7 @@ description: |
     Lessons learnt and thoughts on how to design a full monitoring stack which supports
     your company's success and prioritizes the happiness of your customers.
 date: 2021-02-14T01:53:00Z
+permalinkPattern: :year/:month/:day/:slug/
 categories:
     - development
     - operations
