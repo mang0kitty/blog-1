@@ -10,7 +10,7 @@ tagline: "Follow us in building better services and stronger teams at scale."
 
 actions:
     - text: Get Git-Tool
-      link: /projects/git-tool/
+      link: https://git-tool.sierrasoftworks.com
     - text: Read Something
       link: /archive/
       type: secondary
