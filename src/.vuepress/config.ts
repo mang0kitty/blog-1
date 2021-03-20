@@ -98,7 +98,7 @@ const config: UserConfig = {
     contributors: false,
 
     navbar: [
-      '/archive/README.md',
+      '/archive.md',
       {
         text: "Projects",
         link: "/projects/README.md"
