@@ -3,32 +3,6 @@ import type {App, Page, PageHeader} from "@vuepress/core"
 import {DefaultThemeOptions, NavbarGroup} from '@vuepress/theme-default'
 import {join} from "path"
 
-function buildNavMenu(app: App, text: string, prefix: string, sortGroups: (a: string, b: string) => number = (a, b) => a.localeCompare(b)): NavbarGroup {
-  const children = app.pages.filter(p => p.path?.startsWith(prefix) && !p.filePathRelative?.endsWith("README.md"))
-
-  const ungroupedChildren = children.filter(page => !page.frontmatter.group)
-  const childGroups = children.filter(page => page.frontmatter.group).reduce((groups, page) => {
-    const group = <string>page.frontmatter.group
-    groups[group] = groups[group] || [];
-    groups[group].push(page)
-    return groups
-  }, <{ [group: string]: Page[] }>{});
-
-  const childGroupKeys = Object.keys(childGroups);
-  childGroupKeys.sort(sortGroups)
-
-  return {
-    text,
-    children: [
-      ...ungroupedChildren.map(p => p.path),
-      ...childGroupKeys.map(group => ({
-        text: group,
-        children: childGroups[group].map(p => p.path)
-      }))
-    ]
-  }
-}
-
 function htmlDecode(input: string): string {
   return input.replace("&#39;", "'").replace("&amp;", "&").replace("&quot;", '"')
 }
@@ -56,18 +30,6 @@ const config: UserConfig = {
     md
       .use(require("markdown-it-footnote"))
       .use(require("markdown-it-abbr"))
-  },
-
-  onInitialized(app) {
-    app.options.themeConfig.navbar = [
-      "/archive/",
-      buildNavMenu(app, "Projects", "/projects/", (a, b) => b.localeCompare(a)),
-      buildNavMenu(app, "Licenses", "/licenses/"),
-      {
-        text: "About Me",
-        link: "https://ben.pannell.dev"
-      }
-    ]
   },
 
   extendsPageData(page, app) {
@@ -101,11 +63,55 @@ const config: UserConfig = {
       '/archive.md',
       {
         text: "Projects",
-        link: "/projects/README.md"
+        children: [
+          {
+            text: "Services",
+            children: [
+              "/projects/bender.md"
+            ]
+          },
+          {
+            text: "Tooling",
+            children: [
+              "/projects/git-tool.md",
+              "/projects/minback.md",
+            ]
+          },
+          {
+            text: "Libraries",
+            children: [
+              "/projects/bash-cli.md",
+              "/projects/human-errors.md"
+            ]
+          },
+          {
+            text: "Legacy",
+            children: [
+              "/projects/arma2ml.md",
+              "/projects/coremonitor.md",
+              "/projects/expressgate.md",
+              "/projects/wkd.md",
+            ]
+          }
+        ]
       },
       {
         text: "Licenses",
-        link: "/licenses/README.md",
+        children: [
+          {
+            text: "Open Source",
+            children: [
+              "/licenses/MIT.md",
+              "/licenses/gpl3.md",
+            ]
+          },
+          {
+            text: "Commercial",
+            children: [
+              "/licenses/general.md",
+            ]
+          }
+        ]
       },
       {
         text: "About Me",
