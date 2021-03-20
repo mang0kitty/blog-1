@@ -1,11 +1,11 @@
 import { DefaultThemeOptions, Theme } from "vuepress";
 import { path } from '@vuepress/utils'
 import {defaultTheme as baseTheme} from "@vuepress/theme-default/lib/index"
-import {assignDefaultOptions} from "@vuepress/theme-default/lib/node"
+import {assignDefaultLocaleOptions} from "@vuepress/theme-default/lib/node"
 
 export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
-    assignDefaultOptions(options)
-
+    assignDefaultLocaleOptions(options)
+    
     return {
         ...(<any>baseTheme)(options, app),
         

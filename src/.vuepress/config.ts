@@ -47,6 +47,8 @@ const config: UserConfig = {
     ['meta', { name: "description", content: "The official Sierra Softworks blog, written by Benjamin Pannell." }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
+  
+  bundler: "@vuepress/bundler-vite",
 
   theme: join(__dirname, "theme", "index.ts"),
 
@@ -96,13 +98,18 @@ const config: UserConfig = {
     contributors: false,
 
     navbar: [
+      '/archive/README.md',
       {
         text: "Projects",
-        children: []
+        link: "/projects/README.md"
       },
       {
         text: "Licenses",
-        link: "/licenses/",
+        link: "/licenses/README.md",
+      },
+      {
+        text: "About Me",
+        link: "https://benjamin.pannell.dev"
       }
     ]
   },
