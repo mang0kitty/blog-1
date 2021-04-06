@@ -40,19 +40,18 @@ It will allow you to download all your favorite web comics* to your hard drive f
 * [Chainsaw Suit](http://chainsawsuit.com)
 * [Ctrl + Alt + Del](http://www.cad-comic.com/cad/)
 * [Cyanide and Happiness](http://www.explosm.net/comics)
-* [Endless Origami](http://endlessorigami.com/)
 * [Garfield minus Garfield](http://garfieldminusgarfield.net/)
 * [General Protection Fault](http://www.gpf-comics.com/)
 * [Girl Genius](http://www.girlgeniusonline.com/comic.php)
 * [Head Trip](http://headtrip.keenspot.com/)
 * [Looking for Group](http://www.lfgcomic.com/)
-* [Pon and Zi](http://www.ponandzi.com/Pon_and_Zi/The_Pon%26Zi_Collection.html)
+* [Pon and Zi](http://www.ponandzi.com/)
 * [Real Life Comics](http://www.reallifecomics.com/)
 * [Sequential Art](http://www.collectedcurios.com/sequentialart.php)
 * [VG Cats](http://www.vgcats.com/comics/)
 * [XKCD](http://www.xkcd.com)
 
-The biggest thing you can do to help this project is to create definitions for your favourite web comics and e-mail them to me at [contact@sierrasoftworks.com](mailto:contact@sierrasoftworks.com). I will bundle them with the next release and before you know it anyone will be able to download their favourite web comics with no hassles whatsoever.  
+The biggest thing you can do to help this project is to create definitions for your favourite web comics and add them in a [Pull Request](https://github.com/SierraSoftworks/web-comic-downloader/pullrequests). I will bundle them with the next release and before you know it anyone will be able to download their favourite web comics with no hassles whatsoever.  
 If you do encounter a problem with a specific web site (and you are sure that your definition is correct) then send me your definition and a link to the site and I'll see what I can do to fix it.
 
 ## How can I make a definition?
