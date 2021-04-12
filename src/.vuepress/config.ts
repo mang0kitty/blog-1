@@ -2,6 +2,7 @@ import type {UserConfig} from "@vuepress/cli"
 import type {App, Page, PageHeader} from "@vuepress/core"
 import {DefaultThemeOptions, NavbarGroup} from '@vuepress/theme-default'
 import {join} from "path"
+import {path} from '@vuepress/utils'
 
 function htmlDecode(input: string): string {
   return input.replace("&#39;", "'").replace("&amp;", "&").replace("&quot;", '"')
@@ -19,13 +20,16 @@ const config: UserConfig = {
 
   head: [
     ['meta', { name: "description", content: "The official Sierra Softworks blog, written by Benjamin Pannell." }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['script', { defer: true, src: 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "94b3601619ae48388faf84f0f160538f"}' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   
   bundler: "@vuepress/bundler-vite",
 
   theme: join(__dirname, "theme", "index.ts"),
+
+  clientAppEnhanceFiles: [
+    path.resolve(__dirname, "enhance", "cloudflare.analytics.js")
+  ],
 
   extendsMarkdown(md, app) {
     md
