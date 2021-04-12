@@ -20,6 +20,7 @@ const config: UserConfig = {
   head: [
     ['meta', { name: "description", content: "The official Sierra Softworks blog, written by Benjamin Pannell." }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['script', { defer: true, src: 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "94b3601619ae48388faf84f0f160538f"}' }]
   ],
   
   bundler: "@vuepress/bundler-vite",
