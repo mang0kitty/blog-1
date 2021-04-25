@@ -732,7 +732,8 @@ wait for things, `async` is your best friend. If it involves doing a lot of comp
 
 The caveat to this is that `async` cannot make waiting faster - just let you wait for more
 things at the same time and work on others while you wait. It also can be used as an
-abstraction over threads
+abstraction over threads, in which case you may be willing to give up some single threaded
+performance in exchange for easier to read code (even when doing compute heavy work).
 :::
 
 As a final thought: this is a complex space and I'm sure there is plenty I have
