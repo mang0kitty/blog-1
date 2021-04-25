@@ -231,7 +231,7 @@ Automaton](https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_auto
 
 We can implement this state machine pattern using something like the following:
 
-```python{12-27,49}
+```python{12-27,50}
 class GetNumberStateMachine(object):
     """
     A class which implements a state machine which will fetch
@@ -276,7 +276,8 @@ def get_numbers():
 
     # While we have state machines with outstanding work
     while outstanding_machines:
-        # Call the next() method and remove any which return false (no more work to do)
+        # Call the next() method and remove any which return false
+        # (no more work to do)
         outstanding_machines = [
             machine
             for machine in outstanding_machines
@@ -303,10 +304,37 @@ and [Closures](https://en.wikipedia.org/wiki/Closure_(computer_programming)) to 
 the need for a state machine `class`. While this doesn't change the nature of how the
 implementation runs, it gets us one step closer to simplifying the implementation.
 
-```python{10-18,41}
+While we're at it, we'll create an object to represent the state of an executing task,
+including the final result. This doesn't do much, but it does make the code a bit easier
+to follow (especially as we continue to iterate on it :wink: going forward.)
+
+```python{17-24,33-43,66}
 from typing import Callable, Union
 
-def get_number(n) -> Callable[[], Union[int, None]]:
+INCOMPLETE = None
+
+# You'll notice that the Future is very similar to our StateMachine
+# class from earlier.
+class Future:
+    """
+    The object which is responsible for keeping track of the result from
+    a state machine.
+    """
+
+    def __init__(self, next_step: Callable[[], Union[int, None]]):
+        self.__next_step = next_step
+        self.result = INCOMPLETE
+
+    def next(self):
+        """
+        The method which we call to update the state of the future
+        when we are ready for the state machine to do more work.
+        """
+
+        self.result = self.__next_step()
+        return self.result is INCOMPLETE
+
+def get_number(n) -> Future:
     """
     A function which returns a re-entrant method which will
     eventually return the number.
@@ -316,7 +344,7 @@ def get_number(n) -> Callable[[], Union[int, None]]:
     def next():
         if state == "START":
             state = "FETCHING"
-            return None
+            return INCOMPLETE
 
         if state == "FETCHING":
             state = "DONE"
@@ -330,25 +358,29 @@ def get_numbers():
     Gets a few numbers from the database and returns them in a list
     """
 
-    machines = [
-        get_number(1),
-        get_number(2),
-        get_number(3)
+    futures = [
+        Future(get_number(1)),
+        Future(get_number(2)),
+        Future(get_number(3))
     ]
 
-    results = [
-        None for machine in machines
-    ]
+    # Build up a list of all of the futures which still have work to do
+    outstanding_futures = futures
 
-    # While we have state machines which have not provided results, get their
-    # latest results
-    while any(result is None for result in results):
-        results = [
-            results[i] if results[i] is not None else machine_next()
-            for i, machine_next in enumerate(machines)
+    # While we have futures with outstanding work
+    while outstanding_futures:
+        # Call the next() method and remove any which return false
+        # (no more work to do)
+        outstanding_futures = [
+            future
+            for future in outstanding_futures
+            if future.next()
         ]
 
-    return results
+    return [
+        future.result
+        for future in futures
+    ]
 ```
 
 As with the state machine flow, this code executes on a single thread and allows
@@ -420,9 +452,35 @@ will proceed to the next `yield` in our function, allowing us to take
 bite-sized chunks out of our process and giving ourselves the ability
 to execute multiple functions concurrently.
 
+::: tip
+Most of this code is identical to the re-entrant functions code, with
+only the highlighted parts having changed.
+:::
 
-```python{9-13,35}
-from typing import Union
+
+```python{21,30-34}
+from typing import Iterator, Union
+
+INCOMPLETE = None
+
+class Future:
+    """
+    The object which is responsible for keeping track of the result from
+    a state machine.
+    """
+
+    def __init__(self, states: Iterator[Union[int, None]]):
+        self.__states = states
+        self.result = INCOMPLETE
+
+    def next(self):
+        """
+        The method which we call to update the state of the future
+        when we are ready for the state machine to do more work.
+        """
+
+        self.result = next(self.__states)
+        return self.result is INCOMPLETE
 
 def get_number(n) -> Iterator[Union[int, None]]:
     """
@@ -431,36 +489,39 @@ def get_number(n) -> Iterator[Union[int, None]]:
     """
 
     # We're not done yet
-    yield None
+    yield INCOMPLETE
 
     # Now we're done
     yield n
 
-def get_number():
+def get_numbers():
     """
     Gets a few numbers from the database and returns them in a list
     """
 
-    machines = [
-        get_number(1),
-        get_number(2),
-        get_number(3)
+    futures = [
+        Future(get_number(1)),
+        Future(get_number(2)),
+        Future(get_number(3)),
     ]
 
-    results = [
-        None for machine in machines
-    ]
+    # Build up a list of all of the futures which still have work to do
+    outstanding_futures = futures
 
-    # While we have state machines which have not provided results, get their
-    # latest results
-    while any(result is None for result in results):
-        results = [
-            # StopIteration handling elided for brevity
-            results[i] if results[i] is not None else next(machine)
-            for i, machine in enumerate(machines)
+    # While we have futures with outstanding work
+    while outstanding_futures:
+        # Call the next() method and remove any which return false
+        # (no more work to do)
+        outstanding_futures = [
+            future
+            for future in outstanding_futures
+            if future.next()
         ]
 
-    return results
+    return [
+        future.result
+        for future in futures
+    ]
 ```
 
 ::: danger
@@ -482,15 +543,36 @@ This code executes identically to the re-entrant functions example, but simplify
 the `get_number()` function starts to highlight something interesting:
 how we can wait for concurrent work within our functions.
 
-```python{7-8,17-18}
-from typing import Union
+```python{25-29,37-39}
 from datetime import datetime, timedelta
+from typing import Iterator, Union
+
+INCOMPLETE = None
+
+class Future:
+    """
+    The object which is responsible for keeping track of the result from
+    a state machine.
+    """
+
+    def __init__(self, states: Iterator[Union[int, None]]):
+        self.__states = states
+        self.result = INCOMPLETE
+
+    def next(self):
+        """
+        The method which we call to update the state of the future
+        when we are ready for the state machine to do more work.
+        """
+
+        self.result = next(self.__states)
+        return self.result is INCOMPLETE
 
 def wait_n(n):
     # This is a bad non-blocking version of sleep()
     target = datetime.utcnow() + timedelta(seconds=n)
     while datetime.utcnow() < target:
-        yield None
+        yield INCOMPLETE
 
 def get_number(n) -> Iterator[Union[int, None]]:
     """
@@ -499,10 +581,39 @@ def get_number(n) -> Iterator[Union[int, None]]:
     """
 
     # Let's call wait_n and return the result once we have it
-    for x in wait_n(n):
-        yield x
+    for _ignore in wait_n(n):
+        yield INCOMPLETE
 
     yield n
+
+def get_numbers():
+    """
+    Gets a few numbers from the database and returns them in a list
+    """
+
+    futures = [
+        Future(get_number(1)),
+        Future(get_number(2)),
+        Future(get_number(3)),
+    ]
+
+    # Build up a list of all of the futures which still have work to do
+    outstanding_futures = futures
+
+    # While we have futures with outstanding work
+    while outstanding_futures:
+        # Call the next() method and remove any which return false
+        # (no more work to do)
+        outstanding_futures = [
+            future
+            for future in outstanding_futures
+            if future.next()
+        ]
+
+    return [
+        future.result
+        for future in futures
+    ]
 ```
 
 ::: danger
