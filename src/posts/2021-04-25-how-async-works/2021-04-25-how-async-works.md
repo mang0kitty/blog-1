@@ -292,9 +292,8 @@ def get_numbers():
 
 When we run this, the execution flow looks something akin to this. The
 important thing to note here is that we're never leaving the calling
-thread to do this work but we are still able to run multiple concurrent
-state machines. This is a great example of the different between concurrency
-and parallelism.
+thread but we are still able to run multiple concurrent state machines.
+This is a great example of the different between concurrency and parallelism.
 
 ![A diagram showing how each state machine cycles through its internal states until it is complete, at which point the results are aggregated to return the final values.](./statemachine_flow.svg)
 
@@ -304,7 +303,7 @@ and [Closures](https://en.wikipedia.org/wiki/Closure_(computer_programming)) to 
 the need for a state machine `class`. While this doesn't change the nature of how the
 implementation runs, it gets us one step closer to simplifying the implementation.
 
-```python{10-18,39}
+```python{10-18,41}
 from typing import Callable, Union
 
 def get_number(n) -> Callable[[], Union[int, None]]:
@@ -323,6 +322,8 @@ def get_number(n) -> Callable[[], Union[int, None]]:
             state = "DONE"
         
         return n
+
+    return next
 
 def get_number():
     """
@@ -343,8 +344,8 @@ def get_number():
     # latest results
     while any(result is None for result in results):
         results = [
-            results[i] if results[i] is not None else machine()
-            for i, machine in enumerate(machines)
+            results[i] if results[i] is not None else machine_next()
+            for i, machine_next in enumerate(machines)
         ]
 
     return results
