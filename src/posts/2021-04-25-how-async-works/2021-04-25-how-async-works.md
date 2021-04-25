@@ -325,7 +325,7 @@ def get_number(n) -> Callable[[], Union[int, None]]:
 
     return next
 
-def get_number():
+def get_numbers():
     """
     Gets a few numbers from the database and returns them in a list
     """
