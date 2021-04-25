@@ -617,7 +617,7 @@ def get_numbers():
 ```
 
 ::: danger
-So what happens if we don't `yield` while we wait for `wait_n()` to complete on line 18?
+So what happens if we don't `yield` while we wait for `wait_n()` to complete on line 39?
 Well, turns out that's another *Really Bad&trade;* idea in the async world. It's called
 **Sync over Async** and it occurs when you *synchronously wait for the result of an
 asynchronous operation*.
