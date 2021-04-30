@@ -321,17 +321,17 @@ class Future:
     a state machine.
     """
 
-    def __init__(self, next_step: Callable[[], Union[int, None]]):
-        self.__next_step = next_step
+    def __init__(self, poll: Callable[[], Union[int, None]]):
+        self.__poll = poll
         self.result = INCOMPLETE
 
-    def next(self):
+    def poll(self):
         """
         The method which we call to update the state of the future
         when we are ready for the state machine to do more work.
         """
 
-        self.result = self.__next_step()
+        self.result = self.__poll()
         return self.result is INCOMPLETE
 
 def get_number(n) -> Future:
@@ -369,12 +369,12 @@ def get_numbers():
 
     # While we have futures with outstanding work
     while outstanding_futures:
-        # Call the next() method and remove any which return false
+        # Call the poll() method and remove any which return false
         # (no more work to do)
         outstanding_futures = [
             future
             for future in outstanding_futures
-            if future.next()
+            if future.poll()
         ]
 
     return [
@@ -473,7 +473,7 @@ class Future:
         self.__states = states
         self.result = INCOMPLETE
 
-    def next(self):
+    def poll(self):
         """
         The method which we call to update the state of the future
         when we are ready for the state machine to do more work.
@@ -510,12 +510,12 @@ def get_numbers():
 
     # While we have futures with outstanding work
     while outstanding_futures:
-        # Call the next() method and remove any which return false
+        # Call the poll() method and remove any which return false
         # (no more work to do)
         outstanding_futures = [
             future
             for future in outstanding_futures
-            if future.next()
+            if future.poll()
         ]
 
     return [
@@ -559,7 +559,7 @@ class Future:
         self.__states = states
         self.result = INCOMPLETE
 
-    def next(self):
+    def poll(self):
         """
         The method which we call to update the state of the future
         when we are ready for the state machine to do more work.
@@ -602,12 +602,12 @@ def get_numbers():
 
     # While we have futures with outstanding work
     while outstanding_futures:
-        # Call the next() method and remove any which return false
+        # Call the poll() method and remove any which return false
         # (no more work to do)
         outstanding_futures = [
             future
             for future in outstanding_futures
-            if future.next()
+            if future.poll()
         ]
 
     return [
