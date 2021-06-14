@@ -339,15 +339,3 @@ more.
 [leaddev_three_mile_island]: https://www.youtube.com/watch?v=1xQeXOz0Ncs
 
 [^autobahn_safety]: https://en.wikipedia.org/wiki/Autobahn#Safety
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-import Youtube from "../../../components/YouTube.vue"
-
-export default {
-  components: {
-    Figure,
-    Youtube
-  }
-}
-</script>

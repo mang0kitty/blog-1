@@ -326,13 +326,3 @@ too far wrong, just remember to build your graphs following this process.
 *[SLI]: Service Level Indicator
 *[TSG]: Troubleshooting Guide
 *[TSGs]: Troubleshooting Guides
-
-<script>
-import FileTree from "../../../components/FileTree.vue"
-
-export default {
-  components: {
-    FileTree
-  }
-}
-</script>

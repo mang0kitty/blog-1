@@ -528,13 +528,3 @@ meet cost and time deadlines.
 [RDBMS]: https://en.wikipedia.org/wiki/Relational_database_management_system
 [Sharding]: https://en.wikipedia.org/wiki/Shard_(database_architecture)
 [SQL]: https://en.wikipedia.org/wiki/SQL
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

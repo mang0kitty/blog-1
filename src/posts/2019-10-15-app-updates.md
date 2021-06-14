@@ -50,10 +50,10 @@ all work is saved. In certain conditions you may wish to backup the current work
 a rollback operation, or you may use this chance to ensure your data has been migrated to a format
 supported by both the current application version and the new update.
 
-<img-figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase1.png"
+<Figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase1.png"
     alt="A diagram showing that the current application will download the latest update from the internet and place it at a known temporary location.">
     Phase 1: Preparation
-</img-figure>
+</Figure>
 
 Once the preparation phase has been completed and the application is ready to be updated, it will launch
 a copy of itself (usually the downloaded update instance) and instruct it to run the second phase. The
@@ -67,10 +67,10 @@ artifacts into its place. While not strictly necessary to use the update applica
 (you can have a dedicated updater), this approach does allow you to quickly start running the latest update
 code-paths and can help you address bugs in the update process which would otherwise require human intervention.
 
-<img-figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase2.png"
+<Figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase2.png"
     alt="A figure showing that the latest application is launched from the known temporary location and copies itself over the original application, replacing it.">
     Phase 2: Replacement
-</img-figure>
+</Figure>
 
 Once the application has copied the latest artifacts into place, replacing the old application version, it will
 start a third application instance (generally the newly updated application) and instruct it to commence the
@@ -82,10 +82,10 @@ Finally, the cleanup phase involves the application removing any temporary files
 Usually this means removing the temporary copy of the update which was used to perform the replacement, however
 you may also remove any rollback artifacts if they are no longer needed.
 
-<img-figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase3.png"
+<Figure src="https://cdn.sierrasoftworks.com/blog/threephaseupdate_phase3.png"
     alt="A figure showing how the updated original application now launches to cleanup the temporary update file(s).">
     Phase 3: Cleanup
-</img-figure>
+</Figure>
 
 At this point the application has been updated and depending on your use case you can either exit or
 continue running from where the user left off.
@@ -216,13 +216,3 @@ If you're interested in what that looks like, please have a look at the [GitHub 
 [github-releases]: https://developer.github.com/v3/repos/releases/
 [semver]: https://semver.org/
 [update-go]: https://github.com/sierrasoftworks/update-go
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-    components: {
-        "img-figure": Figure
-    }
-}
-</script>

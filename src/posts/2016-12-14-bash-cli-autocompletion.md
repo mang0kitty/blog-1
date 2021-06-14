@@ -159,13 +159,3 @@ Now that we've added the functionality, let's see a demo of how it works
 on the Bash CLI project's commands.
 
 <asciinema cast="b61d9hay2p1labwayfyg19aq6"/>
-
-<script>
-import Asciinema from "../../../components/Asciinema.vue"
-
-export default {
-    components: {
-        Asciinema
-    }
-}
-</script>

@@ -29,12 +29,8 @@ editLink: false
 <script lang="ts">
 import {onMounted, ref, reactive, computed} from 'vue'
 import {usePagesData} from '@vuepress/client'
-import DateTime from "../../components/Date.vue"
 
 export default {
-    components: {
-        DateTime
-    },
     setup() {
         const posts = reactive([])
         const search = ref(null)

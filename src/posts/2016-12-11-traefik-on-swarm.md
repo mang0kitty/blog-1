@@ -170,14 +170,3 @@ future posts - please don't hesitate to leave a comment below.
 
 [traefik]: https://traefik.io
 [acme]: https://github.com/ietf-wg-acme/acme/
-
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

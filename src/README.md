@@ -39,12 +39,8 @@ footer: Copyright © Sierra Softworks 2021
 import {defineComponent, ref, onMounted, onUpdated} from 'vue'
 import {useRouter} from "vue-router"
 import {usePagesData} from '@vuepress/client'
-import DateTime from "../../components/Date.vue"
 
 export default defineComponent({
-    components: {
-        DateTime
-    },
     setup() {
         const router = useRouter()
         const latestPosts = ref(null)

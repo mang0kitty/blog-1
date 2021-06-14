@@ -150,13 +150,3 @@ a couple of minutes.
 
 \[^1\]: You'll need to have signed up for a Docker Hub account and logged into the registry
 on your machine by using `docker login` first.
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

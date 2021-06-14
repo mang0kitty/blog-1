@@ -127,14 +127,3 @@ fluctuations.
 [gitlab-database-loss]: https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/
 [Kubernetes]: https://kubernetes.io/
 [S3]: https://aws.amazon.com/s3/
-
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

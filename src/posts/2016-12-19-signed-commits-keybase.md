@@ -298,13 +298,3 @@ If you've got any other questions on the topic, please leave them in the comment
 
 [^1]: Barring compromised keys or the cracking of RSA.
 [^2]: Assuming that you actually verify the signatures belong to a known public key.
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

@@ -205,13 +205,3 @@ look at investing in a good backup solution if you survive the process.
 [CronJob]: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 [Kubernetes]: https://kubernetes.io/
 [gitlab-database-loss]: https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

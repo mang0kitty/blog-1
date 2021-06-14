@@ -243,13 +243,3 @@ solve unusual problems in the comments below.
 
 *[CI]: Continuous Integration
 *[CD]: Continuous Deployment
-
-<script>
-import Figure from "../../../components/ImageFigure.vue"
-
-export default {
-  components: {
-    Figure
-  }
-}
-</script>

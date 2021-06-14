@@ -126,7 +126,13 @@ const config: UserConfig = {
   },
 
   plugins: [
-    ["@vuepress/plugin-google-analytics", { id: "G-WJQ1PVYVH0" }]
+    ["@vuepress/plugin-google-analytics", { id: "G-WJQ1PVYVH0" }],
+    [
+      '@vuepress/plugin-register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components'),
+      },
+    ]
   ]
 }
 
