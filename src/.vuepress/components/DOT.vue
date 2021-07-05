@@ -1,5 +1,7 @@
 <template>
-    <GraphViz class="dot-figure" :layout="layout" :value="content?.innerText" />
+    <ClientOnly>
+        <GraphViz class="dot-figure" :layout="layout" :value="content?.innerText" />
+    </ClientOnly>
     <div class="dot-hidden" ref="content">
         <slot></slot>
     </div>
