@@ -1,0 +1,14 @@
+:8081 {
+    root ./dist
+
+    encode gzip
+
+    @unknown {
+        not path /assets/*
+        not file
+    }
+
+    rewrite @unknown /
+
+    file_server
+}

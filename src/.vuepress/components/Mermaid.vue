@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRef, watch, computed } from 'vue'
-import mermaid from 'mermaid'
+import mermaid from 'mermaid/dist/mermaid'
 
 mermaid.initialize({
     theme: 'dark',
