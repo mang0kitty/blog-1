@@ -46,22 +46,12 @@ Let's talk about open and closed loop control systems. An open loop control syst
 one you're going to find and it is characterized by a complete disregard for the impact it has
 on the world. I'm sure we've all worked folks who fall into that category...
 
-<DOT layout="fdp">
-digraph {
-    fontname="Arial";
-    rankdir = "LR";
-    node[fontname="Arial",shape="rect",style="filled",fillcolor="white"];
-    weight=1;
-    splines="ortho";
-
-    in[label="Input",shape="plaintext",pin="true",pos="0,0"]
-    control[label="Control System",fillcolor="lightgrey"]
-    process[label="Process",fillcolor="lightblue"]
-    out[label="Output",shape="plaintext",pin="true",pos="7,0"]
-
-    in -> control -> process -> out;
-}
-</DOT>
+```mermaid
+graph LR
+    Input ---> Control[Control System]
+    Control --> Process[Process]
+    Process ---> Output
+```
 
 The main problem with open loop control is that it is fundamentally incapable of responding
 to changing circumstances. It is possible, for example, to design an open loop controller which
@@ -73,26 +63,14 @@ finger at the cruise control.
 To address this, we introduce the concept of feedback - letting the controller compare the output
 to what was requested and making adjustments as necessary.
 
-<DOT layout="fdp">
-digraph {
-    fontname="Arial";
-    rankdir = "LR";
-    node[fontname="Arial",shape="rect",style="filled",fillcolor="white"];
-    weight=1;
-    splines="ortho";
 
-    in[label="Input",shape="plaintext",pin="true",pos="0,0"]
-    diff[label="+",shape="circle"]
-    control[label="Control System",fillcolor="lightgrey"]
-    feedback[label="Feedback",fillcolor="maroon",pin="true",pos="4,-1"]
-    process[label="Process",fillcolor="lightblue"]
-    out[label="Output",shape="plaintext",pin="true",pos="7,0"]
-
-    in -> diff -> control -> process -> out;
-    out:s -> feedback:e[weight=0];
-    feedback:w -> diff[weight=0];
-}
-</DOT>
+```mermaid
+graph LR
+    Input --> Diff((+)) --> Control[Control System]
+    Control --> Process[Process]
+    Process ---> Output
+    Output -- Feedback --> Diff
+```
 
 In theory, this solves everything since the controller is now able to make corrections to
 the process until the output matches what is expected. In practice, however, things can get

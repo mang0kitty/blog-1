@@ -35,6 +35,20 @@ const config: UserConfig = {
     md
       .use(require("markdown-it-footnote"))
       .use(require("markdown-it-abbr"))
+      .use((md) => {
+        const original = md.renderer.rules.fence.bind(md.renderer.rules)
+        md.renderer.rules.fence = (tokens, idx, options, ...resParams) => {
+          const token = tokens[idx]
+          const code = token.content.trim()
+          if (token.info.startsWith('mermaid')) {
+            const safeCaption = token.info.slice('mermaid'.length+1).replace(/"/g, '&quot;')
+            const safeCode = JSON.stringify(code).replace(/"/g, "&quot;")
+            return `<Mermaid :value="${safeCode}" caption="${safeCaption}" />`
+          }
+
+          return original(tokens, idx, options, ...resParams)
+        }
+      })
   },
 
   extendsPageData(page, app) {

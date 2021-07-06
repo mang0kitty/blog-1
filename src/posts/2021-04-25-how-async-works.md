@@ -122,7 +122,17 @@ def get_numbers():
 When this method runs, it executes in the following order, waiting for each
 call to `get_number(n)` to complete before proceeding to the next.
 
-![A diagram showing how get_numbers calls the get_number methods in order, waiting for each to complete, before returning the list of results.](./synchronous_flow.svg)
+```mermaid: A diagram showing how get_numbers calls the get_number methods in order, waiting for each to complete, before returning the list of results.
+graph LR
+    caller --> getn1
+
+    subgraph getns ["get_numbers()"]
+        getn1["get_number(1)"] --> getn2["get_number(2)"] --> getn3["get_number(3)"] --> list["list(...)"] --> return["return list(...)"]
+    end
+
+    style caller stroke:orange,fill:orange,color:black
+    style return stroke:green,fill:lightgreen,color:black
+```
 
 But `get_number(n)` is meant to be a slow network request in our example, so
 there's no work for us to do while we wait for the result of the first call.
@@ -189,7 +199,22 @@ def get_numbers():
 This results in the execution "fanning out" and then combining again to
 arrive at the final result.
 
-![A diagram showing how get_numbers spawns three threads, waiting for each to complete, before returning the list of results.](./thread_flow.svg)
+```mermaid: A diagram showing how get_numbers spawns three threads, waiting for each to complete, before returning the list of results.
+flowchart LR
+
+    caller --> getn
+
+    subgraph getns ["get_numbers()"]
+        direction LR
+        getn["get_numbers()"] --> |"start()"| getn3["GetNumberThread(3)"] & getn1["GetNumberThread(1)"] & getn2["GetNumberThread(2)"] --> |"join()"| list["list(...)"] --> return["return list(...)"]
+    end
+
+    style caller stroke:orange,fill:orange,color:black
+    style return stroke:green,fill:lightgreen,color:black
+    style getn1 stroke:cyan
+    style getn2 stroke:yellow
+    style getn3 stroke:red
+```
 
 At first glance, this looks pretty good - but the diagram does a good job
 of lying to you by omission. Recall that the caller is waiting on the
@@ -224,10 +249,27 @@ We're going to focus on enabling the caller and each state machine to
 have a conversation which can be modelled as a [Deterministic Acyclic Finite State
 Automaton](https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton).
 
-<p style="text-align: center">
+```mermaid: A sequence diagram showing how a conversation between a caller and coroutine involves multiple calls to check state.
+sequenceDiagram
+    participant gn as get_numbers()
+    participant gn1 as get_number(1)
 
-![A sequence diagram showing how a conversation between a caller and coroutine involves multiple calls to check state.](./coroutine_messages.svg)
-</p>
+    gn -) gn1: start
+    activate gn1
+    gn1 -->> gn: ok
+
+    loop
+        gn ->> gn1: done yet?
+        gn1 -->> gn: nope
+    end
+
+    Note over gn1: Work completed
+    deactivate gn1
+
+    gn ->> gn1: done yet?
+    gn1 -->> gn: yup, result=1
+```
+
 
 We can implement this state machine pattern using something like the following:
 
@@ -296,7 +338,35 @@ important thing to note here is that we're never leaving the calling
 thread but we are still able to run multiple concurrent state machines.
 This is a great example of the different between concurrency and parallelism.
 
-![A diagram showing how each state machine cycles through its internal states until it is complete, at which point the results are aggregated to return the final values.](./statemachine_flow.svg)
+```mermaid: A diagram showing how each state machine cycles through its internal states until it is complete, at which point the results are aggregated to return the final values.
+flowchart LR
+    caller --> getn
+
+    subgraph getns ["get_numbers()"]
+        direction LR
+        
+        getn["get_numbers()"] ---> gn3 & gn1 & gn2 ---> |"!next()"| list["list(...)"] --> return["return list(...)"]
+        
+        subgraph gn1 ["GetNumberStateMachine(1)"]
+            getn1 -.-> getn1["next()"]
+        end
+        
+        subgraph gn2 ["GetNumberStateMachine(2)"]
+            getn2 -.-> getn2["next()"]
+        end
+        
+        subgraph gn3 ["GetNumberStateMachine(3)"]
+            getn3 -.-> getn3["next()"]
+        end
+
+    end
+
+    style caller stroke:orange,fill:orange,color:black
+    style return stroke:green,fill:lightgreen,color:black
+    style gn1 stroke:cyan
+    style gn2 stroke:yellow
+    style gn3 stroke:red
+```
 
 ### Re-entrant Functions
 In languages which allow you to pass functions as values, you can take advantage of this
@@ -387,7 +457,35 @@ As with the state machine flow, this code executes on a single thread and allows
 us to run all of the `get_numbers()` calls concurrently, calling the (hidden)
 `next()` method until we receive the result we are looking for.
 
-![A diagram showing how each state machine cycles through its internal states until it is complete, at which point the results are aggregated to return the final values.](./statemachine_flow.svg)
+```mermaid: A diagram showing how each is polled until it is complete, at which point the results are aggregated to return the final values.
+flowchart LR
+    caller --> getn
+
+    subgraph getns ["get_numbers()"]
+        direction LR
+        
+        getn["get_numbers()"] ---> gn3 & gn1 & gn2 ---> list["list(...)"] --> return["return list(...)"]
+        
+        subgraph gn1 ["Future(get_number(1))"]
+            getn1 -.-> |INCOMPLETE| getn1["poll()"]
+        end
+        
+        subgraph gn2 ["Future(get_number(2))"]
+            getn2 -.-> |INCOMPLETE| getn2["poll()"]
+        end
+        
+        subgraph gn3 ["Future(get_number(3))"]
+            getn3 -.-> |INCOMPLETE| getn3["poll()"]
+        end
+
+    end
+
+    style caller stroke:orange,fill:orange,color:black
+    style return stroke:green,fill:lightgreen,color:black
+    style gn1 stroke:cyan
+    style gn2 stroke:yellow
+    style gn3 stroke:red
+```
 
 ### Iterators and Generators
 If you're sitting there thinking *"This looks a lot like iterator/enumerator/generator pattern"*
@@ -682,11 +780,38 @@ your code runs in production.
 Consider the following diagram, which shows the logical components which make up a modern
 (.NET Core-esque) async worker pool.
 
-<p style="text-align: center;">
+```mermaid: A diagram showing how async work is processed in a multi-threaded worker pool through a combination of local and global queues.
+flowchart TB
 
-![A diagram showing how async work is processed in a multi-threaded worker pool.](./parallel_async.svg)
-</p>
+    Work --> gq[("Global Queue")] --> t1r & t2r & t3r
 
+
+    subgraph t1 [Thread]
+        direction LR
+        t1r[Running] <--> t1q[(Local Queue)]
+    end
+    
+    subgraph t2 [Thread]
+        direction LR
+        t2r[Running] <--> t2q[(Local Queue)]
+    end
+    
+    subgraph t3 [Thread]
+        direction LR
+        t3r[Running] <--> t3q[(Local Queue)]
+    end
+
+    classDef thread stroke:green,fill:lightgreen,color:black
+    classDef queue stroke:grey,fill:lightblue,color:black
+
+    class t1r,t2r,t3r thread
+    class gq,t1q,t2q,t3q queue
+
+    style Work stroke:orange,fill:orange,color:black
+    style t1 stroke:cyan
+    style t2 stroke:yellow
+    style t3 stroke:red
+```
 
 Start off with a pool of threads and a global work queue. Any new work you want to execute
 (an `async` call) gets dropped into this queue. The threads in your pool then compete to
