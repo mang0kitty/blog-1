@@ -82,16 +82,17 @@ export default {
     input.search-box {
         width: 100%;
         border: none;
-        border-bottom: 2px solid #eee;
+        border-bottom: 2px solid rgba(180, 180, 180, 0.3);
         padding: 1rem;
         font-size: 1.5rem;
 
         transition: border-bottom 0.2s ease-in-out;
-        background-color: none;
+        color: var(--c-text);
+        background-color: transparent;
     }
 
     input.search-box:hover {
-        border-bottom: 2px solid #ddd;
+        border-bottom: 2px solid rgba(180, 180, 180, 0.5);
     }
 
     input.search-box:focus {
@@ -103,7 +104,7 @@ export default {
         font-weight: lighter;
         margin-top: 3rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid rgba(180, 180, 180, 0.3);
     }
 
     .tag {
@@ -121,7 +122,7 @@ export default {
     }
 
     .archive-post__title a {
-        color: #000;
+        color: var(--c-text);
     }
 
     .archive-post__metadata {
