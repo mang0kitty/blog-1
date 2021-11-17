@@ -3,7 +3,7 @@ import { defineClientAppEnhance } from '@vuepress/client'
 const token = "94b3601619ae48388faf84f0f160538f"
 
 export default defineClientAppEnhance(() => {
-    if (__DEV__ || __SSR__) return
+    if (__VUEPRESS_DEV__ || __VUEPRESS_SSR__) return
 
     if (window.cfbeacon) {
         return
