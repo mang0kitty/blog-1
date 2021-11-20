@@ -19,7 +19,7 @@ export default defineComponent({
     const container = ref(null)
 
     onMounted(() => {
-        let tag = document.createElement("script")
+        let tag = window.document.createElement("script")
         tag.id = `asciicast-${props.cast}`
         tag.src = `https://asciinema.org/a/${props.cast}.js`
         tag.async = true

@@ -28,14 +28,14 @@ export default defineComponent({
     const pageData = usePageData()
 
     onMounted(() => {
-      window.disqus_config = function() {
+      window['disqus_config'] = function() {
         this.page.url = `https://blog.sierrasoftworks.com${pageData.value.path}`
         this.page.identifier = `${pageData.value.path}`
       }
 
-      let tag = document.createElement("script");
+      let tag = window.document.createElement("script");
       tag.src = `https://${props.website}.disqus.com/embed.js`;
-      tag.setAttribute("data-timestamp", +new Date());
+      tag.setAttribute("data-timestamp", `${+new Date()}`);
       container.value.appendChild(tag);
     });
 

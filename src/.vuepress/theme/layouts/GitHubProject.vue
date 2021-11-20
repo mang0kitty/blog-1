@@ -2,38 +2,38 @@
   <BaseLayout>
     <template #sidebar-bottom>
       <section class="sidebar-group">
-        <p class="sidebar-heading">Extra Links</p>
-        <ul>
+        <ul class="sidebar-links sidebar-links-extra">
+          <p class="sidebar-heading">Extra Links</p>
           <li v-if="frontmatter.download">
-            <a :href="frontmatter.download" class="nav-link sidebar-link">
+            <a :href="frontmatter.download" class="nav-link sidebar-item">
               Download
               <OutboundLink />
             </a>
           </li>
 
           <li v-if="frontmatter.docs">
-            <a :href="frontmatter.docs" class="nav-link sidebar-link">
+            <a :href="frontmatter.docs" class="nav-link sidebar-item">
               Documentation
               <OutboundLink />
             </a>
           </li>
           
           <li v-if="frontmatter.repo && frontmatter.releases">
-            <a :href="releasesUrl" class="nav-link sidebar-link">
+            <a :href="releasesUrl" class="nav-link sidebar-item">
               View Releases
               <OutboundLink />
             </a>
           </li>
 
           <li v-if="frontmatter.repo">
-            <a :href="repoUrl" class="nav-link sidebar-link">
+            <a :href="repoUrl" class="nav-link sidebar-item">
               View on GitHub
               <OutboundLink />
             </a>
           </li>
 
           <li v-if="frontmatter.repo">
-            <a :href="issuesUrl" class="nav-link sidebar-link">
+            <a :href="issuesUrl" class="nav-link sidebar-item">
               Report an Issue
               <OutboundLink />
             </a>
@@ -73,4 +73,7 @@ export default defineComponent({
 </script>
 
 <style>
+.sidebar-links-extra > li {
+  margin: 0 !important;
+}
 </style>

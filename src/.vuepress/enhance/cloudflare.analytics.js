@@ -9,11 +9,11 @@ export default defineClientAppEnhance(() => {
         return
     }
 
-    const cfScript = document.createElement("script")
+    const cfScript = window.document.createElement("script")
     cfScript.src = "https://static.cloudflareinsights.com/beacon.min.js"
     cfScript.defer = true
     cfScript.setAttribute("data-cf-beacon", JSON.stringify({ token }))
 
-    document.head.appendChild(cfScript)
+    window.document.head.appendChild(cfScript)
     window.cfbeacon = true
 })
