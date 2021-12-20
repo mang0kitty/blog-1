@@ -74,7 +74,7 @@ a cost of about $90/month and about 2 days/month worth of maintenance, updates, 
 Hashicorp's own managed HCP Vault offering is available in a "developer" flavour for some $20/month,
 which is cheaper but doesn't offer fail-over or backups (yeesh). If you want backups and fail-over,
 you'll need to step up to their "Starter" plan at ~$340/month (YEESH!) which is a fair bit more than
-I'm willing to spend to support my <strike>addiction</strike> hobby.
+I'm willing to spend to support my <s>addiction</s> hobby.
 
 Contrast that with the $0.65 I've spent running Vault on Azure Functions for the last month, with
 none of the maintenance overhead and native support for backups (not to mention the amazing durability

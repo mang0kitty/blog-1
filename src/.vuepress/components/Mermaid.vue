@@ -36,7 +36,7 @@ export default defineComponent({
                     rendered.value = svg
                 })
             } catch(err) {
-                console.error(err)
+                throw new Error("Mermaid cannot be used in SSR mode, ensure that it is wrapped in <ClientOnly> tags.")
             }
         }, {
             immediate: true
