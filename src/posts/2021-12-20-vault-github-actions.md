@@ -387,3 +387,46 @@ And that's really it, now you're set up and ready to use Vault for basic
 secrets management in GitHub Actions. In a future post I'll walk through
 setting up the policies and backends needed to deploy services to Azure
 using short lived credentials issued by Vault.
+
+### Debugging Issues
+If you're anything like me, you'll probably run into at least one problem when setting up the above.
+At the time of writing, the `hashicorp/vault-action` doesn't do an awfully good job of explaining
+why something goes wrong (short of the HTTP status code returned by Vault), which is a pity because
+the response body is FAR more helpful.
+
+Until that is fixed, you might find some success using a variation of the following in your action
+to debug the issue.
+
+```yaml
+name: Build
+on: push
+
+jobs:
+  - name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Debug Vault Token
+        run: |
+            curl -sSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=$VAULT_AUDIENCE" | \
+            jq "{ jwt: .value, role: \"$VAULT_ROLE\" }" > ./token.json
+            
+            echo 'GitHub Actions Token Claims'
+            cat ./token.json | jq -r '.jwt | split(".") | .[1] | @base64d' | jq
+
+            echo 'Vault Login Response'
+            curl -sSLf -X POST -H "Content-Type: application/json" --data @token.json $VAULT_URL/v1/auth/$VAULT_AUTH_PATH/login
+
+            # Remove the token file when we're done (if we don't fail)
+            rm ./token.json
+        env:
+            VAULT_URL: https://vault.sierasoftworks.com
+            VAULT_AUDIENCE: https://vault.sierrasoftworks.com
+            VAULT_AUTH_PATH: github-actions
+            VAULT_ROLE: build
+```
+
+::: warning
+The above action will output your Vault token in clear-text in the action's build logs. Depending on your security model, you may wish to avoid
+running this on public repositories, or use a role which is intentionally limited within your Vault deployment.
+:::
