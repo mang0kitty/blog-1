@@ -25,6 +25,8 @@ the relative performance increases we've seen in ASP.NET Core over the years, bu
 to show you a one line change you can make which (depending on your use case) might unlock
 a significant amount of additional performance headroom.
 
+<!-- more -->
+
 ## Background
 Microsoft's ASP.NET web framework has been around for over 20 years at this point (first released in January 2002)
 and has been through several major rewrites over the course of that time. Today, most new development is conducted
