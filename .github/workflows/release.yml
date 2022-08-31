@@ -91,6 +91,18 @@ jobs:
           name: site
           path: ./dist
           
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+          
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -110,3 +122,4 @@ jobs:
           inlineScript: |
             echo "Purging CDN"
             az cdn endpoint purge -g ${{ env.LIVE_CDN_RESOURCEGROUP }} -n ${{ env.LIVE_CDN_ENDPOINT }} --profile-name ${{ env.LIVE_CDN_PROFILE }} --content-paths '/*' --auth-mode login
+      
