@@ -1,8 +1,14 @@
-import type {UserConfig} from "@vuepress/cli"
+import {defineUserConfig} from 'vuepress-vite'
 import type {App, Page, PageHeader} from "@vuepress/core"
-import {DefaultThemeOptions, NavbarGroup} from '@vuepress/theme-default'
+import defaultTheme, {DefaultThemeOptions} from '@vuepress/theme-default'
 import {join} from "path"
 import {path} from '@vuepress/utils'
+
+import mitfootnote from "markdown-it-footnote"
+import mitabbr from "markdown-it-abbr"
+
+import {googleAnalyticsPlugin} from "@vuepress/plugin-google-analytics"
+import {registerComponentsPlugin} from "@vuepress/plugin-register-components"
 
 function htmlDecode(input: string): string {
   return input.replace("&#39;", "'").replace("&amp;", "&").replace("&quot;", '"')
@@ -13,7 +19,7 @@ function fixPageHeader(header: PageHeader) {
   header.children.forEach(child => fixPageHeader(child))
 }
 
-const config: UserConfig = {
+export default defineUserConfig({
   lang: 'en-GB',
   title: 'Sierra Softworks Blog',
   description: 'The official Sierra Softworks blog.',
@@ -22,21 +28,13 @@ const config: UserConfig = {
     ['meta', { name: "description", content: "The official Sierra Softworks blog, written by Benjamin Pannell." }],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
-  
-  bundler: "@vuepress/bundler-vite",
-
-  theme: join(__dirname, "theme", "index.ts"),
-
-  clientAppEnhanceFiles: [
-    path.resolve(__dirname, "enhance", "cloudflare.analytics.js")
-  ],
 
   extendsMarkdown(md, app) {
     md
-      .use(require("markdown-it-footnote"))
-      .use(require("markdown-it-abbr"))
+      .use(mitfootnote)
+      .use(mitabbr)
       .use((md) => {
-        const original = md.renderer.rules.fence.bind(md.renderer.rules)
+        const original = md.renderer.rules.fence!
         md.renderer.rules.fence = (tokens, idx, options, ...resParams) => {
           const token = tokens[idx]
           const code = token.content.trim()
@@ -51,21 +49,27 @@ const config: UserConfig = {
       })
   },
 
-  extendsPageData(page, app) {
+  extendsPage(page, app) {
     const fixedHeaders = page.headers || []
     fixedHeaders.forEach(header => fixPageHeader(header))
 
-    return {
-      headers: fixedHeaders,
-      frontmatter: {
-        ...page.frontmatter,
-        layout: page.frontmatter.layout || (page.filePathRelative?.startsWith("posts/") ? "BlogPost" : "Layout")
-      }
-    }
+    page.headers = fixedHeaders
+    page.frontmatter.layout = page.frontmatter.layout || (page.filePathRelative?.startsWith("posts/") ? "BlogPost" : "Layout")
   },
 
-  themeConfig: <DefaultThemeOptions>{
+  async onPrepared(app) {
+    const posts = app.pages
+        .filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md")
+        .filter(page => !!page.excerpt)
+
+    posts.sort((a, b) => b.filePathRelative! > a.filePathRelative! ? 1 : -1)
+    
+    await app.writeTemp("posts.js", `export const posts = ${JSON.stringify(posts)}`)
+  },
+
+  theme: defaultTheme({
     logo: 'https://cdn.sierrasoftworks.com/logos/icon.png',
+    logoDark: 'https://cdn.sierrasoftworks.com/logos/icon_light.png',
 
     repo: "https://github.com/SierraSoftworks",
     repoLabel: "GitHub",
@@ -137,17 +141,12 @@ const config: UserConfig = {
         link: "https://benjamin.pannell.dev"
       }
     ]
-  },
+  }),
 
   plugins: [
-    ["@vuepress/plugin-google-analytics", { id: "G-WJQ1PVYVH0" }],
-    [
-      '@vuepress/plugin-register-components',
-      {
-        componentsDir: path.resolve(__dirname, './components'),
-      },
-    ]
+    googleAnalyticsPlugin({ id: "G-WJQ1PVYVH0" }),
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    })
   ]
-}
-
-export = config
+})

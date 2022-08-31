@@ -3,7 +3,7 @@
     <template #sidebar-bottom>
       <section class="sidebar-group">
         <ul class="sidebar-links sidebar-links-extra">
-          <p class="sidebar-heading">Extra Links</p>
+          <p class="sidebar-item sidebar-heading">Extra Links</p>
           <li v-if="frontmatter.download">
             <a :href="frontmatter.download" class="nav-link sidebar-item">
               Download
@@ -42,8 +42,8 @@
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { usePageFrontmatter } from '@vuepress/client'
-import BaseLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue"
-import Button from "../../components/Button.vue"
+import BaseLayout from "@vuepress/theme-default/layouts/Layout.vue"
+import Button from "../components/Button.vue"
 
 export default defineComponent({
     name: "GitHubProject",

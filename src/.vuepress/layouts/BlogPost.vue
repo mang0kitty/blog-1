@@ -2,7 +2,7 @@
   <BaseLayout>
     <template #sidebar-bottom>
       <section class="sidebar-group">
-        <p class="sidebar-heading">About</p>
+        <p class="sidebar-item sidebar-heading">About</p>
         <ul>
           <li class="post-metadata__item">
             Authored
@@ -28,9 +28,9 @@
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { usePageFrontmatter } from "@vuepress/client";
-import BaseLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
-import AboutMe from "../../components/AboutMe.vue";
-import Disqus from "../../components/Disqus.vue";
+import BaseLayout from "@vuepress/theme-default/layouts/Layout.vue";
+import AboutMe from "../components/AboutMe.vue";
+import Disqus from "../components/Disqus.vue";
 
 export default defineComponent({
   name: "BlogPost",
@@ -51,7 +51,7 @@ export default defineComponent({
 
 <style>
 .post-metadata__item {
-      padding: .35rem 1rem .35rem 2rem;
+  padding: .35rem 1rem .35rem 2rem;
 }
 
 .post-metadata__date {

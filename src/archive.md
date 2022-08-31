@@ -28,11 +28,10 @@ editLink: false
 
 <script lang="ts">
 import {onMounted, ref, reactive, computed} from 'vue'
-import {usePagesData} from '@vuepress/client'
+import {posts} from '@temp/posts'
 
 export default {
     setup() {
-        const posts = reactive([])
         const search = ref(null)
 
         const years = computed(() => {
@@ -58,16 +57,6 @@ export default {
             yearsList.sort((a, b) => b.year - a.year)
 
             return yearsList
-        })
-
-        onMounted(() => {
-            Promise.all(Object.values(usePagesData().value).map(get => get()))
-                .then(pages => {
-                    const postsPages = pages.filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md")
-                    postsPages.sort((a, b) => b.filePathRelative > a.filePathRelative ? 1 : -1)
-
-                    posts.push(...postsPages)
-                })
         })
 
         return {

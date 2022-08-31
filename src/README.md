@@ -19,7 +19,7 @@ footer: Copyright © Sierra Softworks 2021
 ---
 
 
-<div class="" v-if="latestPosts">
+<div v-if="latestPosts">
 
 ## Latest Posts
 
@@ -36,27 +36,12 @@ footer: Copyright © Sierra Softworks 2021
 </div>
 
 <script lang="ts">
-import {defineComponent, ref, onMounted, onUpdated} from 'vue'
-import {useRouter} from "vue-router"
-import {usePagesData} from '@vuepress/client'
+import {defineComponent, ref} from 'vue'
+import { posts } from '@temp/posts'
 
 export default defineComponent({
     setup() {
-        const router = useRouter()
-        const latestPosts = ref(null)
-
-        onMounted(() => {
-            Promise.all(Object.values(usePagesData().value).map(get => get()))
-                .then(pages => {
-                    const posts = pages
-                        .filter(page => page.filePathRelative?.startsWith("posts/") && page.filePathRelative !== "posts/README.md")
-                        .filter(page => !!page.excerpt);
-
-                    posts.sort((a, b) => b.filePathRelative > a.filePathRelative ? 1 : -1)
-
-                    latestPosts.value = posts.slice(0, 3)
-                })
-        })
+        const latestPosts = ref(posts.slice(0, 3))
 
         return {
             latestPosts
