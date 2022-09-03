@@ -5,7 +5,7 @@
 <script lang="ts">
 import {defineComponent, computed, toRef} from "vue"
 import dayjs from "dayjs"
-import dayjsUtc from "dayjs-plugin-utc"
+import dayjsUtc from "dayjs/plugin/utc"
 
 dayjs.extend(dayjsUtc)
 
