@@ -21,6 +21,8 @@ env:
   LIVE_CDN_PROFILE: "blog-sierrasoftworks"
   LIVE_CDN_ENDPOINT: "blog-sierrasoftworks-live"
   
+permissions:
+  id-token: write
 
 jobs:
   build:
