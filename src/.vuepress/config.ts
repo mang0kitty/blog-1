@@ -98,6 +98,7 @@ export default defineUserConfig({
             children: [
               "/projects/git-tool.md",
               "/projects/minback.md",
+              "/projects/roadmap.md",
             ]
           },
           {
